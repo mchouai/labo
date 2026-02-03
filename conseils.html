@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Conseils - Laboratoire Le Colisée</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-cyan-50 to-white text-gray-800">
+
+<!-- HEADER -->
+<header class="sticky top-0 bg-white/70 backdrop-blur shadow z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between p-3 sm:p-4">
+    <div class="flex items-center gap-2 sm:gap-4 flex-1">
+      <img src="./assets/img/logo.jpg" class="h-12 sm:h-16 w-auto drop-shadow-lg rounded-lg border-2 border-cyan-200" alt="logo">
+      <span class="font-bold text-lg sm:text-2xl text-cyan-700 truncate" id="site-title">Laboratoire Le Colisée</span>
+    </div>
+    <!-- Lang Switcher -->
+    <div class="flex items-center gap-2 sm:gap-4">
+      <button id="lang-fr" class="lang-btn font-bold text-cyan-700 text-sm sm:text-base">FR</button>
+      <span class="text-sm sm:text-base">|</span>
+      <button id="lang-ar" class="lang-btn text-sm sm:text-base">AR</button>
+    </div>
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex gap-3 lg:gap-6 font-medium" id="main-nav">
+      <a href="index.html" data-i18n="nav_accueil">Accueil</a>
+      <a href="about.html" data-i18n="nav_apropos">À propos</a>
+      <a href="services.html" data-i18n="nav_services">Services</a>
+      <a href="tarifs.html" data-i18n="nav_tarifs">Tarifs</a>
+      <a href="conseils.html" data-i18n="nav_conseils">Conseils</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
+      <a href="rdv.html" class="bg-cyan-600 text-white px-4 py-2 rounded-full hover:bg-cyan-700 transition" data-i18n="nav_rdv">RDV</a>
+    </nav>
+    <!-- Burger -->
+    <button id="burger" class="md:hidden flex flex-col gap-1" aria-label="Menu mobile">
+      <span class="w-6 h-1 bg-cyan-700 rounded transition-all"></span>
+      <span class="w-6 h-1 bg-cyan-700 rounded transition-all"></span>
+      <span class="w-6 h-1 bg-cyan-700 rounded transition-all"></span>
+    </button>
+  </div>
+  <!-- Mobile Nav -->
+  <nav id="mobile-nav" class="fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex-col items-center justify-center gap-6 sm:gap-8 font-medium text-xl sm:text-2xl hidden transition-all">
+    <div class="flex flex-col items-center justify-center h-full w-full gap-6 sm:gap-8">
+      <a href="index.html" data-i18n="nav_accueil" class="mobile-link">Accueil</a>
+      <a href="about.html" data-i18n="nav_apropos" class="mobile-link">À propos</a>
+      <a href="services.html" data-i18n="nav_services" class="mobile-link">Services</a>
+      <a href="tarifs.html" data-i18n="nav_tarifs" class="mobile-link">Tarifs</a>
+      <a href="conseils.html" data-i18n="nav_conseils" class="mobile-link">Conseils</a>
+      <a href="contact.html" data-i18n="nav_contact" class="mobile-link">Contact</a>
+      <a href="rdv.html" class="bg-cyan-600 text-white px-6 py-2 rounded-full mobile-link hover:bg-cyan-700 transition" data-i18n="nav_rdv">RDV</a>
+      <button id="close-mobile-nav" class="mt-6 sm:mt-10 text-cyan-700 text-3xl sm:text-4xl" aria-label="Fermer le menu">✕</button>
+    </div>
+  </nav>
+</header>
+
+<section class="max-w-5xl mx-auto p-4 sm:p-10">
+  <h1 class="text-2xl sm:text-4xl font-bold text-cyan-700 mb-4 sm:mb-6 text-center" data-i18n="conseils_title">Conseils pour vos analyses</h1>
+  <p class="mb-6 sm:mb-8 text-center text-sm sm:text-lg text-gray-700" data-i18n="conseils_intro">
+    Suivez ces recommandations pour garantir la fiabilité de vos résultats et votre confort lors du prélèvement.
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
+    <div class="flex gap-3 sm:gap-4 items-start bg-white/70 rounded-2xl shadow p-4 sm:p-6 mb-2 sm:mb-4">
+      <img src="https://img.icons8.com/color/48/000000/no-eating.png" class="h-10 sm:h-12 mt-1 flex-shrink-0" alt="À jeun">
+      <div>
+        <h2 class="font-bold text-cyan-700 mb-1 text-sm sm:text-base" data-i18n="conseil1">Être à jeun</h2>
+        <p class="text-gray-700 text-xs sm:text-sm" data-i18n="conseil1_desc">Pour certaines analyses (glycémie, bilan lipidique…), il est nécessaire d'être à jeun 8 à 12h avant le prélèvement.</p>
+      </div>
+    </div>
+    <div class="flex gap-3 sm:gap-4 items-start bg-white/70 rounded-2xl shadow p-4 sm:p-6 mb-2 sm:mb-4">
+      <img src="https://img.icons8.com/color/48/000000/water-bottle.png" class="h-10 sm:h-12 mt-1 flex-shrink-0" alt="Hydratation">
+      <div>
+        <h2 class="font-bold text-cyan-700 mb-1 text-sm sm:text-base" data-i18n="conseil2">Bien s'hydrater</h2>
+        <p class="text-gray-700 text-xs sm:text-sm" data-i18n="conseil2_desc">Buvez de l'eau avant la prise de sang pour faciliter le prélèvement.</p>
+      </div>
+    </div>
+    <div class="flex gap-3 sm:gap-4 items-start bg-white/70 rounded-2xl shadow p-4 sm:p-6 mb-2 sm:mb-4">
+      <img src="https://img.icons8.com/color/48/000000/clock--v1.png" class="h-10 sm:h-12 mt-1 flex-shrink-0" alt="Ponctualité">
+      <div>
+        <h2 class="font-bold text-cyan-700 mb-1 text-sm sm:text-base" data-i18n="conseil3">Respecter l'horaire</h2>
+        <p class="text-gray-700 text-xs sm:text-sm" data-i18n="conseil3_desc">Arrivez à l'heure convenue pour garantir la qualité de l'accueil et la rapidité du service.</p>
+      </div>
+    </div>
+    <div class="flex gap-3 sm:gap-4 items-start bg-white/70 rounded-2xl shadow p-4 sm:p-6 mb-2 sm:mb-4">
+      <img src="https://img.icons8.com/color/48/000000/medicine.png" class="h-10 sm:h-12 mt-1 flex-shrink-0" alt="Traitement">
+      <div>
+        <h2 class="font-bold text-cyan-700 mb-1 text-sm sm:text-base" data-i18n="conseil4">Informer sur vos traitements</h2>
+        <p class="text-gray-700" data-i18n="conseil4_desc">Signalez au laboratoire tout traitement en cours ou pathologie particulière.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-cyan-800 text-white py-8 sm:py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 mb-6 sm:mb-8">
+      <!-- Colonne 1: À propos -->
+      <div>
+        <h4 class="font-bold text-sm sm:text-lg mb-3 sm:mb-4 text-cyan-300">À Propos</h4>
+        <p class="text-xs sm:text-sm text-gray-300" data-i18n="footer_about">Laboratoire Le Colisée offre des services de diagnostic fiables depuis plus de 15 ans avec des équipements modernes et une équipe expérimentée.</p>
+      </div>
+      
+      <!-- Colonne 2: Services -->
+      <div>
+        <h4 class="font-bold text-sm sm:text-lg mb-3 sm:mb-4 text-cyan-300" data-i18n="footer_services">Services</h4>
+        <ul class="text-xs sm:text-sm text-gray-300 space-y-1 sm:space-y-2">
+          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_blood">Analyses sanguines</a></li>
+          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_hormones">Tests hormonaux</a></li>
+          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_bacterio">Bactériologie</a></li>
+          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_home">Prélèvements à domicile</a></li>
+        </ul>
+      </div>
+      
+      <!-- Colonne 3: Liens utiles -->
+      <div>
+        <h4 class="font-bold text-sm sm:text-lg mb-3 sm:mb-4 text-cyan-300" data-i18n="footer_links">Liens utiles</h4>
+        <ul class="text-xs sm:text-sm text-gray-300 space-y-1 sm:space-y-2">
+          <li><a href="index.html" class="hover:text-cyan-400 transition" data-i18n="footer_home_link">Accueil</a></li>
+          <li><a href="about.html" class="hover:text-cyan-400 transition" data-i18n="footer_about_link">À propos</a></li>
+          <li><a href="tarifs.html" class="hover:text-cyan-400 transition" data-i18n="footer_tariffs">Tarifs</a></li>
+          <li><a href="contact.html" class="hover:text-cyan-400 transition" data-i18n="footer_contact_link">Contact</a></li>
+        </ul>
+      </div>
+      
+      <!-- Colonne 4: Contact Info -->
+      <div>
+        <h4 class="font-bold text-sm sm:text-lg mb-3 sm:mb-4 text-cyan-300" data-i18n="footer_contact_info">Contact Info</h4>
+        <ul class="text-xs sm:text-sm text-gray-300 space-y-1 sm:space-y-2">
+          <li>📞 +212 5 22 00 00 00</li>
+          <li>📧 contact@labcolisee.ma</li>
+          <li>📍 123 Bd Mohamed V</li>
+          <li data-i18n="footer_city">Casablanca, Maroc</li>
+        </ul>
+      </div>
+    </div>
+    
+    <hr class="border-cyan-700 my-6 sm:my-8">
+    
+    <!-- Bas du footer -->
+    <div class="flex flex-col text-center sm:flex-row sm:justify-between sm:items-center text-xs sm:text-sm text-gray-400 gap-4 sm:gap-0">
+      <span id="footer-text">© 2026 Laboratoire Le Colisée – Tous droits réservés</span>
+      <div class="flex gap-3 sm:gap-6 justify-center flex-wrap">
+        <a href="#" class="hover:text-cyan-400 transition" data-i18n="footer_privacy">Politique de confidentialité</a>
+        <a href="#" class="hover:text-cyan-400 transition" data-i18n="footer_terms">Conditions d'utilisation</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.glass-card {
+  @apply bg-white/50 backdrop-blur p-6 rounded-2xl shadow text-center font-semibold;
+}
+</style>
+<style>
+@media (max-width: 768px) {
+  .p-10 {
+    padding: 1.5rem !important;
+  }
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  .grid.md\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>
+</style>
+<script>
+// Burger menu
+const burger = document.getElementById('burger');
+const mobileNav = document.getElementById('mobile-nav');
+const closeMobileNav = document.getElementById('close-mobile-nav');
+burger.addEventListener('click', () => {
+  mobileNav.classList.remove('hidden');
+});
+closeMobileNav.addEventListener('click', () => {
+  mobileNav.classList.add('hidden');
+});
+
+
+// Multilingue (FR/AR) enrichi
+const translations = {
+  fr: {
+    nav_accueil: 'Accueil',
+    nav_apropos: 'À propos',
+    nav_services: 'Services',
+    nav_tarifs: 'Tarifs',
+    nav_conseils: 'Conseils',
+    nav_contact: 'Contact',
+    nav_rdv: 'RDV',
+    site_title: 'Laboratoire Le Colisée',
+    footer: '© 2026 Laboratoire Le Colisée – Tous droits réservés',
+    conseils_title: 'Conseils pour vos analyses',
+    conseils_intro: 'Suivez ces recommandations pour garantir la fiabilité de vos résultats et votre confort lors du prélèvement.',
+    conseil1: 'Être à jeun',
+    conseil1_desc: 'Pour certaines analyses (glycémie, bilan lipidique…), il est nécessaire d’être à jeun 8 à 12h avant le prélèvement.',
+    conseil2: 'Bien s’hydrater',
+    conseil2_desc: 'Buvez de l’eau avant la prise de sang pour faciliter le prélèvement.',
+    conseil3: 'Respecter l’horaire',
+    conseil3_desc: 'Arrivez à l’heure convenue pour garantir la qualité de l’accueil et la rapidité du service.',
+    conseil4: 'Informer sur vos traitements',
+    conseil4_desc: 'Signalez au laboratoire tout traitement en cours ou pathologie particulière.',
+  },
+  ar: {
+    nav_accueil: 'الرئيسية',
+    nav_apropos: 'من نحن',
+    nav_services: 'الخدمات',
+    nav_tarifs: 'الأسعار',
+    nav_conseils: 'نصائح',
+    nav_contact: 'اتصل بنا',
+    nav_rdv: 'موعد',
+    site_title: 'مختبر الكوليسي',
+    footer: '© 2026 مختبر الكوليسي – جميع الحقوق محفوظة',
+    conseils_title: 'نصائح قبل التحاليل',
+    conseils_intro: 'اتبعوا هذه التوصيات لضمان دقة النتائج وراحتكم أثناء أخذ العينة.',
+    conseil1: 'الصيام',
+    conseil1_desc: 'لبعض التحاليل (السكر، الدهون...) يجب الصيام 8 إلى 12 ساعة قبل أخذ العينة.',
+    conseil2: 'شرب الماء',
+    conseil2_desc: 'اشربوا الماء قبل التحليل لتسهيل أخذ العينة.',
+    conseil3: 'احترام الموعد',
+    conseil3_desc: 'احضروا في الوقت المحدد لضمان جودة الاستقبال وسرعة الخدمة.',
+    conseil4: 'إبلاغنا بالعلاجات',
+    conseil4_desc: 'يرجى إبلاغ المختبر بأي علاج أو حالة صحية خاصة.',
+  }
+};
+function setLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.textContent = translations[lang][key];
+  });
+  document.getElementById('site-title').textContent = translations[lang].site_title;
+  document.getElementById('footer-text').textContent = translations[lang].footer;
+  document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+}
+document.getElementById('lang-fr').onclick = () => setLang('fr');
+document.getElementById('lang-ar').onclick = () => setLang('ar');
+
+// Animation douce (fade-in)
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('section, .glass-card').forEach(el => {
+    el.style.opacity = 0;
+    el.style.transition = 'opacity 1s';
+    setTimeout(() => { el.style.opacity = 1; }, 200);
+  });
+});
+</script>
+</body>
+</html>

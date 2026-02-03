@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Laboratoire Le Colisée</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-cyan-50 to-white text-gray-800">
+
+<!-- HEADER -->
+<header class="sticky top-0 bg-white/70 backdrop-blur shadow z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+    <div class="flex items-center gap-4">
+      <img src="./assets/img/logo.jpg" class="h-16 w-auto drop-shadow-lg rounded-lg border-2 border-cyan-200" alt="logo">
+      <span class="font-bold text-2xl text-cyan-700" id="site-title">Laboratoire Le Colisée</span>
+    </div>
+    <!-- Lang Switcher -->
+    <div class="flex items-center gap-4">
+      <button id="lang-fr" class="lang-btn font-bold text-cyan-700">FR</button>
+      <span>|</span>
+      <button id="lang-ar" class="lang-btn">AR</button>
+    </div>
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex gap-6 font-medium" id="main-nav">
+      <a href="index.html" data-i18n="nav_accueil">Accueil</a>
+      <a href="about.html" data-i18n="nav_apropos">À propos</a>
+      <a href="services.html" data-i18n="nav_services">Services</a>
+      <a href="tarifs.html" data-i18n="nav_tarifs">Tarifs</a>
+      <a href="conseils.html" data-i18n="nav_conseils">Conseils</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
+      <a href="rdv.html" class="bg-cyan-600 text-white px-4 py-2 rounded-full" data-i18n="nav_rdv">RDV</a>
+    </nav>
+    <!-- Burger -->
+    <button id="burger" class="md:hidden flex flex-col gap-1 ml-4" aria-label="Menu mobile">
+      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
+      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
+      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
+    </button>
+  </div>
+  <!-- Mobile Nav -->
+  <nav id="mobile-nav" class="fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex-col items-center justify-center gap-8 font-medium text-2xl hidden transition-all">
+    <div class="flex flex-col items-center justify-center h-full w-full gap-8">
+      <a href="index.html" data-i18n="nav_accueil" class="mobile-link">Accueil</a>
+      <a href="about.html" data-i18n="nav_apropos" class="mobile-link">À propos</a>
+      <a href="services.html" data-i18n="nav_services" class="mobile-link">Services</a>
+      <a href="tarifs.html" data-i18n="nav_tarifs" class="mobile-link">Tarifs</a>
+      <a href="conseils.html" data-i18n="nav_conseils" class="mobile-link">Conseils</a>
+      <a href="contact.html" data-i18n="nav_contact" class="mobile-link">Contact</a>
+      <a href="rdv.html" class="bg-cyan-600 text-white px-4 py-2 rounded-full mobile-link" data-i18n="nav_rdv">RDV</a>
+      <button id="close-mobile-nav" class="mt-10 text-cyan-700 text-4xl" aria-label="Fermer le menu">✕</button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="min-h-[70vh] sm:min-h-[80vh] flex items-center">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6 sm:gap-10 p-4 sm:p-6">
+    <div>
+      <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold text-cyan-700 mb-3 sm:mb-4" data-i18n="hero_title">
+        Analyses médicales fiables et rapides
+      </h1>
+      <p class="mb-4 sm:mb-6 text-base sm:text-lg" data-i18n="hero_desc">
+        Votre santé est notre priorité. Résultats précis, confidentialité totale et service professionnel.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-wrap">
+        <a href="rdv.html" class="inline-flex items-center justify-center
+           bg-cyan-600 hover:bg-cyan-700
+           text-white font-semibold
+           px-4 sm:px-6 py-3 rounded-full
+           shadow-lg transition text-sm sm:text-base" data-i18n="btn_rdv">
+          Prendre un rendez-vous
+        </a>
+        <a href="https://wa.me/212600000000" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 sm:px-6 py-3 rounded-full shadow flex items-center justify-center gap-2 transition text-sm sm:text-base" id="whatsapp-btn">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="h-5 sm:h-6"> <span>WhatsApp</span>
+        </a>
+      </div>
+      <ul class="mt-6 sm:mt-8 space-y-1 sm:space-y-2 text-gray-700 text-sm sm:text-base list-disc pl-5">
+        <li data-i18n="hero_li1">Laboratoire certifié ISO, résultats rapides</li>
+        <li data-i18n="hero_li2">Personnel expérimenté et accueil chaleureux</li>
+        <li data-i18n="hero_li3">Prélèvements à domicile disponibles</li>
+      </ul>
+    </div>
+    <div class="flex flex-col gap-4 sm:gap-6">
+      <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b" class="rounded-2xl sm:rounded-3xl shadow-lg w-full h-auto" alt="Laboratoire">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" class="rounded-2xl sm:rounded-3xl shadow-lg w-full h-auto hidden sm:block" alt="Personnel médical">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES PREVIEW -->
+<section class="py-16 bg-white/60 backdrop-blur">
+  <div class="max-w-7xl mx-auto p-6">
+    <h2 class="text-3xl font-bold text-center mb-10 text-cyan-700" data-i18n="services_title">Nos services</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass-card flex flex-col items-center">
+        <img src="https://images.unsplash.com/photo-1511174511562-5f97f4f4e0c8" class="h-20 mb-2" alt="Sang">
+        <span data-i18n="service1">Analyses sanguines</span>
+        <p class="text-sm mt-2" data-i18n="service1_desc">Bilan complet, dépistage, suivi diabète, etc.</p>
+      </div>
+      <div class="glass-card flex flex-col items-center">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b" class="h-20 mb-2" alt="Hormones">
+        <span data-i18n="service2">Tests hormonaux</span>
+        <p class="text-sm mt-2" data-i18n="service2_desc">Thyroïde, fertilité, cortisol, et plus.</p>
+      </div>
+      <div class="glass-card flex flex-col items-center">
+        <img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29" class="h-20 mb-2" alt="Bactériologie">
+        <span data-i18n="service3">Bactériologie</span>
+        <p class="text-sm mt-2" data-i18n="service3_desc">Analyses d’urines, cultures, antibiogrammes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI NOUS CHOISIR -->
+<section class="py-16 bg-gradient-to-r from-cyan-600 to-cyan-700 text-white">
+  <div class="max-w-7xl mx-auto p-6">
+    <h2 class="text-3xl font-bold text-center mb-12" data-i18n="why_title">Pourquoi nous choisir?</h2>
+    <div class="grid md:grid-cols-4 gap-6 text-center">
+      <div>
+        <div class="text-5xl font-bold mb-2">98%</div>
+        <p data-i18n="why_1">Satisfaction clients</p>
+      </div>
+      <div>
+        <div class="text-5xl font-bold mb-2">15+</div>
+        <p data-i18n="why_2">Années d'expérience</p>
+      </div>
+      <div>
+        <div class="text-5xl font-bold mb-2">50K+</div>
+        <p data-i18n="why_3">Patients servis</p>
+      </div>
+      <div>
+        <div class="text-5xl font-bold mb-2">24h</div>
+        <p data-i18n="why_4">Résultats rapides</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES DETAILLES -->
+<section class="py-16 bg-white/60 backdrop-blur">
+  <div class="max-w-7xl mx-auto p-6">
+    <h2 class="text-3xl font-bold text-center mb-10 text-cyan-700" data-i18n="services_title">Nos services</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass-card flex flex-col items-center hover:shadow-xl hover:scale-105 transition-all">
+        <img src="https://images.unsplash.com/photo-1511174511562-5f97f4f4e0c8" class="h-24 mb-4 rounded-lg object-cover w-full" alt="Sang">
+        <span class="font-bold text-lg mb-2" data-i18n="service1">Analyses sanguines</span>
+        <p class="text-sm" data-i18n="service1_desc">Bilan complet, dépistage, suivi diabète, et analyses spécialisées</p>
+      </div>
+      <div class="glass-card flex flex-col items-center hover:shadow-xl hover:scale-105 transition-all">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b" class="h-24 mb-4 rounded-lg object-cover w-full" alt="Hormones">
+        <span class="font-bold text-lg mb-2" data-i18n="service2">Tests hormonaux</span>
+        <p class="text-sm" data-i18n="service2_desc">Thyroïde, fertilité, cortisol, hormones de croissance et métabolisme</p>
+      </div>
+      <div class="glass-card flex flex-col items-center hover:shadow-xl hover:scale-105 transition-all">
+        <img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29" class="h-24 mb-4 rounded-lg object-cover w-full" alt="Bactériologie">
+        <span class="font-bold text-lg mb-2" data-i18n="service3">Bactériologie</span>
+        <p class="text-sm" data-i18n="service3_desc">Analyses d'urines, cultures, antibiogrammes et diagnostic pathogène</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES -->
+<section class="py-12 sm:py-16 bg-white">
+  <div class="max-w-7xl mx-auto p-4 sm:p-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-10 text-cyan-700" data-i18n="testimonials_title">Témoignages de nos clients</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+      <div class="bg-gradient-to-br from-cyan-50 to-white p-4 sm:p-6 rounded-2xl shadow-md border-l-4 border-cyan-500">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-yellow-400 text-sm sm:text-base">★★★★★</span>
+        </div>
+        <p class="text-gray-700 mb-4 italic text-xs sm:text-sm" data-i18n="test1_text">"Accueil chaleureux, résultats rapides et précis. Je recommande vivement!"</p>
+        <p class="font-bold text-cyan-700 text-sm" data-i18n="test1_name">Fatima B.</p>
+        <p class="text-xs text-gray-500" data-i18n="test1_date">Casablanca</p>
+      </div>
+      <div class="bg-gradient-to-br from-cyan-50 to-white p-4 sm:p-6 rounded-2xl shadow-md border-l-4 border-cyan-500">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-yellow-400 text-sm sm:text-base">★★★★★</span>
+        </div>
+        <p class="text-gray-700 mb-4 italic text-xs sm:text-sm" data-i18n="test2_text">"Personnel très professionnel. Les prélèvements à domicile sont très pratiques."</p>
+        <p class="font-bold text-cyan-700 text-sm" data-i18n="test2_name">Ahmed M.</p>
+        <p class="text-xs text-gray-500" data-i18n="test2_date">Rabat</p>
+      </div>
+      <div class="bg-gradient-to-br from-cyan-50 to-white p-4 sm:p-6 rounded-2xl shadow-md border-l-4 border-cyan-500">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-yellow-400 text-sm sm:text-base">★★★★★</span>
+        </div>
+        <p class="text-gray-700 mb-4 italic text-xs sm:text-sm" data-i18n="test3_text">"Meilleur laboratoire en ville. Équipement moderne et résultats fiables."</p>
+        <p class="font-bold text-cyan-700 text-sm" data-i18n="test3_name">Mariam L.</p>
+        <p class="text-xs text-gray-500" data-i18n="test3_date">Fès</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORAIRES & LOCALISATION -->
+<section class="py-12 sm:py-16 bg-white/60 backdrop-blur">
+  <div class="max-w-7xl mx-auto p-4 sm:p-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-10 text-cyan-700" data-i18n="hours_title">Horaires et Localisation</h2>
+    <div class="grid md:grid-cols-2 gap-6 sm:gap-10">
+      <div class="glass-card">
+        <h3 class="text-xl sm:text-2xl font-bold mb-4 text-cyan-700" data-i18n="hours_heading">Horaires d'ouverture</h3>
+        <ul class="space-y-2 text-sm sm:text-base">
+          <li class="flex justify-between flex-wrap"><span data-i18n="day_lun">Lundi - Vendredi:</span> <span class="font-semibold">07:00 - 18:00</span></li>
+          <li class="flex justify-between flex-wrap"><span data-i18n="day_sam">Samedi:</span> <span class="font-semibold">08:00 - 13:00</span></li>
+          <li class="flex justify-between flex-wrap"><span data-i18n="day_dim">Dimanche:</span> <span class="font-semibold text-red-600" data-i18n="closed">Fermé</span></li>
+        </ul>
+        <div class="mt-4 sm:mt-6 p-3 sm:p-4 bg-cyan-100 rounded-lg">
+          <p class="text-xs sm:text-sm text-gray-700" data-i18n="hours_emergency">Service d'urgence 24h/24 disponible</p>
+        </div>
+      </div>
+      <div class="glass-card">
+        <h3 class="text-xl sm:text-2xl font-bold mb-4 text-cyan-700" data-i18n="contact_heading">Nous contacter</h3>
+        <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
+          <li class="flex gap-2 sm:gap-3">
+            <span class="text-lg sm:text-xl text-cyan-600 flex-shrink-0">📞</span>
+            <div>
+              <p class="text-xs sm:text-sm text-gray-600" data-i18n="phone_label">Téléphone:</p>
+              <p class="font-semibold">+212 5 22 00 00 00</p>
+            </div>
+          </li>
+          <li class="flex gap-2 sm:gap-3">
+            <span class="text-lg sm:text-xl text-cyan-600 flex-shrink-0">📧</span>
+            <div>
+              <p class="text-xs sm:text-sm text-gray-600" data-i18n="email_label">Email:</p>
+              <p class="font-semibold">contact@labcolisee.ma</p>
+            </div>
+          </li>
+          <li class="flex gap-2 sm:gap-3">
+            <span class="text-lg sm:text-xl text-cyan-600 flex-shrink-0">📍</span>
+            <div>
+              <p class="text-xs sm:text-sm text-gray-600" data-i18n="address_label">Adresse:</p>
+              <p class="font-semibold">123 Bd Mohamed V, Casablanca</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="bg-cyan-800 text-white py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <!-- Colonne 1: À propos -->
+      <div>
+        <h4 class="font-bold text-lg mb-4 text-cyan-300">À Propos</h4>
+        <p class="text-sm text-gray-300" data-i18n="footer_about">Laboratoire Le Colisée offre des services de diagnostic fiables depuis plus de 15 ans avec des équipements modernes et une équipe expérimentée.</p>
+      </div>
+      
+      <!-- Colonne 2: Services Rapides -->
+      <div>
+        <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_services">Services</h4>
+        <ul class="text-sm text-gray-300 space-y-2">
+          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_blood">Analyses sanguines</a></li>
+          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_hormones">Tests hormonaux</a></li>
+          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_bacterio">Bactériologie</a></li>
+          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_home">Prélèvements à domicile</a></li>
+        </ul>
+      </div>
+      
+      <!-- Colonne 3: Liens utiles -->
+      <div>
+        <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_links">Liens utiles</h4>
+        <ul class="text-sm text-gray-300 space-y-2">
+          <li><a href="index.html" class="hover:text-cyan-400 transition" data-i18n="footer_home_link">Accueil</a></li>
+          <li><a href="about.html" class="hover:text-cyan-400 transition" data-i18n="footer_about_link">À propos</a></li>
+          <li><a href="tarifs.html" class="hover:text-cyan-400 transition" data-i18n="footer_tariffs">Tarifs</a></li>
+          <li><a href="contact.html" class="hover:text-cyan-400 transition" data-i18n="footer_contact_link">Contact</a></li>
+        </ul>
+      </div>
+      
+      <!-- Colonne 4: Contact Info -->
+      <div>
+        <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_contact_info">Contact Info</h4>
+        <ul class="text-sm text-gray-300 space-y-2">
+          <li>📞 +212 5 22 00 00 00</li>
+          <li>📧 contact@labcolisee.ma</li>
+          <li>📍 123 Bd Mohamed V</li>
+          <li data-i18n="footer_city">Casablanca, Maroc</li>
+        </ul>
+      </div>
+    </div>
+    
+    <hr class="border-cyan-700 my-8">
+    
+    <!-- Bas du footer -->
+    <div class=\"flex flex-col text-center sm:flex-row sm:justify-between sm:items-center text-xs sm:text-sm text-gray-400 gap-4 sm:gap-0\">
+      <span id="footer-text">© 2026 Laboratoire Le Colisée – Tous droits réservés</span>
+      <div class=\"flex gap-3 sm:gap-6 justify-center flex-wrap\">
+        <a href="#" class="hover:text-cyan-400 transition" data-i18n="footer_privacy">Politique de confidentialité</a>
+        <a href="#" class="hover:text-cyan-400 transition" data-i18n="footer_terms">Conditions d'utilisation</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.glass-card {
+  @apply bg-white/50 backdrop-blur p-6 rounded-2xl shadow text-center font-semibold;
+}
+</style>
+<style>
+#mobile-nav {
+  background: rgba(17, 94, 89, 0.97);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s, visibility 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+#mobile-nav.show {
+  opacity: 1;
+  visibility: visible;
+}
+#mobile-nav .mobile-link {
+  color: #fff;
+  font-size: 2rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1.5rem;
+  transition: background 0.2s, color 0.2s;
+  text-align: center;
+}
+#mobile-nav .mobile-link:hover {
+  background: #22d3ee;
+  color: #065f46;
+}
+#close-mobile-nav {
+  font-size: 2.5rem;
+  color: #22d3ee;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+</style>
+</style>
+<script>
+// Burger menu amélioré mobile
+const burger = document.getElementById('burger');
+const mobileNav = document.getElementById('mobile-nav');
+const closeMobileNav = document.getElementById('close-mobile-nav');
+const mobileLinks = document.querySelectorAll('#mobile-nav .mobile-link');
+
+function openMobileNav() {
+  mobileNav.classList.add('show');
+  mobileNav.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  closeMobileNav.focus();
+}
+function closeMobileNavFn() {
+  mobileNav.classList.remove('show');
+  setTimeout(() => mobileNav.classList.add('hidden'), 300);
+  document.body.style.overflow = '';
+  burger.focus();
+}
+burger.addEventListener('click', openMobileNav);
+closeMobileNav.addEventListener('click', closeMobileNavFn);
+mobileLinks.forEach(link => link.addEventListener('click', closeMobileNavFn));
+
+// Accessibilité : fermer avec ESC
+document.addEventListener('keydown', e => {
+  if (mobileNav.classList.contains('show') && (e.key === 'Escape' || e.key === 'Esc')) {
+    closeMobileNavFn();
+  }
+});
+
+
+// Multilingue (FR/AR) amélioré
+const translations = {
+  fr: {
+    nav_accueil: 'Accueil',
+    nav_apropos: 'À propos',
+    nav_services: 'Services',
+    nav_tarifs: 'Tarifs',
+    nav_conseils: 'Conseils',
+    nav_contact: 'Contact',
+    nav_rdv: 'RDV',
+    site_title: 'Laboratoire Le Colisée',
+    footer: '© 2026 Laboratoire Le Colisée – Tous droits réservés',
+    hero_title: 'Analyses médicales fiables et rapides',
+    hero_desc: 'Votre santé est notre priorité. Résultats précis, confidentialité totale et service professionnel.',
+    btn_rdv: 'Prendre un rendez-vous',
+    hero_li1: 'Laboratoire certifié ISO, résultats rapides',
+    hero_li2: 'Personnel expérimenté et accueil chaleureux',
+    hero_li3: 'Prélèvements à domicile disponibles',
+    services_title: 'Nos services',
+    service1: 'Analyses sanguines',
+    service1_desc: 'Bilan complet, dépistage, suivi diabète, et analyses spécialisées',
+    service2: 'Tests hormonaux',
+    service2_desc: 'Thyroïde, fertilité, cortisol, hormones de croissance et métabolisme',
+    service3: 'Bactériologie',
+    service3_desc: 'Analyses d\'urines, cultures, antibiogrammes et diagnostic pathogène',
+    why_title: 'Pourquoi nous choisir?',
+    why_1: 'Satisfaction clients',
+    why_2: 'Années d\'expérience',
+    why_3: 'Patients servis',
+    why_4: 'Résultats rapides',
+    testimonials_title: 'Témoignages de nos clients',
+    test1_text: 'Accueil chaleureux, résultats rapides et précis. Je recommande vivement!',
+    test1_name: 'Fatima B.',
+    test1_date: 'Casablanca',
+    test2_text: 'Personnel très professionnel. Les prélèvements à domicile sont très pratiques.',
+    test2_name: 'Ahmed M.',
+    test2_date: 'Rabat',
+    test3_text: 'Meilleur laboratoire en ville. Équipement moderne et résultats fiables.',
+    test3_name: 'Mariam L.',
+    test3_date: 'Fès',
+    hours_title: 'Horaires et Localisation',
+    hours_heading: 'Horaires d\'ouverture',
+    day_lun: 'Lundi - Vendredi:',
+    day_sam: 'Samedi:',
+    day_dim: 'Dimanche:',
+    closed: 'Fermé',
+    hours_emergency: 'Service d\'urgence 24h/24 disponible',
+    contact_heading: 'Nous contacter',
+    phone_label: 'Téléphone:',
+    email_label: 'Email:',
+    address_label: 'Adresse:',
+    footer_about: 'Laboratoire Le Colisée offre des services de diagnostic fiables depuis plus de 15 ans avec des équipements modernes et une équipe expérimentée.',
+    footer_services: 'Services',
+    footer_blood: 'Analyses sanguines',
+    footer_hormones: 'Tests hormonaux',
+    footer_bacterio: 'Bactériologie',
+    footer_home: 'Prélèvements à domicile',
+    footer_links: 'Liens utiles',
+    footer_home_link: 'Accueil',
+    footer_about_link: 'À propos',
+    footer_tariffs: 'Tarifs',
+    footer_contact_link: 'Contact',
+    footer_contact_info: 'Contact Info',
+    footer_city: 'Casablanca, Maroc',
+    footer_privacy: 'Politique de confidentialité',
+    footer_terms: 'Conditions d\'utilisation',
+  },
+  ar: {
+    nav_accueil: 'الرئيسية',
+    nav_apropos: 'من نحن',
+    nav_services: 'الخدمات',
+    nav_tarifs: 'الأسعار',
+    nav_conseils: 'نصائح',
+    nav_contact: 'اتصل بنا',
+    nav_rdv: 'موعد',
+    site_title: 'مختبر الكوليسي',
+    footer: '© 2026 مختبر الكوليسي – جميع الحقوق محفوظة',
+    hero_title: 'تحاليل طبية دقيقة وسريعة',
+    hero_desc: 'صحتكم أولويتنا. نتائج دقيقة، سرية تامة وخدمة احترافية.',
+    btn_rdv: 'حجز موعد',
+    hero_li1: 'مختبر معتمد ISO ونتائج سريعة',
+    hero_li2: 'طاقم ذو خبرة واستقبال مميز',
+    hero_li3: 'خدمة أخذ العينات في المنزل',
+    services_title: 'خدماتنا',
+    service1: 'تحاليل الدم',
+    service1_desc: 'تحاليل شاملة، كشف، متابعة السكري، وتحاليل متخصصة',
+    service2: 'اختبارات الهرمونات',
+    service2_desc: 'الغدة الدرقية، الخصوبة، الكورتيزول، هرمونات النمو والأيض',
+    service3: 'البكتريولوجيا',
+    service3_desc: 'تحاليل البول، الزرع، اختبار المضادات الحيوية والتشخيص المسبب للمرض',
+    why_title: 'لماذا تختارنا؟',
+    why_1: 'رضا العملاء',
+    why_2: 'سنوات من الخبرة',
+    why_3: 'مريض خدمناهم',
+    why_4: 'نتائج سريعة',
+    testimonials_title: 'آراء عملائنا',
+    test1_text: 'استقبال دافئ، نتائج سريعة وموثوقة. أوصي بشدة!',
+    test1_name: 'فاطمة ب.',
+    test1_date: 'الدار البيضاء',
+    test2_text: 'موظفون احترافيون جداً. خدمة أخذ العينات في المنزل مريحة جداً.',
+    test2_name: 'أحمد م.',
+    test2_date: 'الرباط',
+    test3_text: 'أفضل مختبر في المدينة. معدات حديثة ونتائج موثوقة.',
+    test3_name: 'مريم ل.',
+    test3_date: 'فاس',
+    hours_title: 'الساعات والموقع',
+    hours_heading: 'ساعات العمل',
+    day_lun: 'الاثنين - الجمعة:',
+    day_sam: 'السبت:',
+    day_dim: 'الأحد:',
+    closed: 'مغلق',
+    hours_emergency: 'خدمة الطوارئ متاحة 24 ساعة في اليوم',
+    contact_heading: 'اتصل بنا',
+    phone_label: 'الهاتف:',
+    email_label: 'البريد الإلكتروني:',
+    address_label: 'العنوان:',
+    footer_about: 'يقدم مختبر الكوليسي خدمات تشخيصية موثوقة منذ أكثر من 15 سنة مع معدات حديثة وفريق ذو خبرة.',
+    footer_services: 'الخدمات',
+    footer_blood: 'تحاليل الدم',
+    footer_hormones: 'اختبارات الهرمونات',
+    footer_bacterio: 'البكتريولوجيا',
+    footer_home: 'أخذ العينات في المنزل',
+    footer_links: 'روابط مفيدة',
+    footer_home_link: 'الرئيسية',
+    footer_about_link: 'من نحن',
+    footer_tariffs: 'الأسعار',
+    footer_contact_link: 'اتصل بنا',
+    footer_contact_info: 'معلومات الاتصال',
+    footer_city: 'الدار البيضاء، المغرب',
+    footer_privacy: 'سياسة الخصوصية',
+    footer_terms: 'شروط الاستخدام',
+  }
+};
+function setLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.textContent = translations[lang][key];
+  });
+  document.getElementById('site-title').textContent = translations[lang].site_title;
+  document.getElementById('footer-text').textContent = translations[lang].footer;
+  document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  // WhatsApp align RTL
+  document.getElementById('whatsapp-btn').style.flexDirection = lang === 'ar' ? 'row-reverse' : 'row';
+}
+document.getElementById('lang-fr').onclick = () => setLang('fr');
+document.getElementById('lang-ar').onclick = () => setLang('ar');
+
+// Animation douce (fade-in)
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('section, .glass-card').forEach(el => {
+    el.style.opacity = 0;
+    el.style.transition = 'opacity 1s';
+    setTimeout(() => { el.style.opacity = 1; }, 200);
+  });
+});
+</script>
+</style>
+
+</body>
+</html>

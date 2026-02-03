@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact - Laboratoire Le Colisée</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-cyan-50 to-white text-gray-800">
+
+<!-- HEADER -->
+<header class="sticky top-0 bg-white/70 backdrop-blur shadow z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+    <div class="flex items-center gap-4">
+      <img src="./assets/img/logo.jpg" class="h-16 w-auto drop-shadow-lg rounded-lg border-2 border-cyan-200" alt="logo">
+      <span class="font-bold text-2xl text-cyan-700" id="site-title">Laboratoire Le Colisée</span>
+    </div>
+    <!-- Lang Switcher -->
+    <div class="flex items-center gap-4">
+      <button id="lang-fr" class="lang-btn font-bold text-cyan-700">FR</button>
+      <span>|</span>
+      <button id="lang-ar" class="lang-btn">AR</button>
+    </div>
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex gap-6 font-medium" id="main-nav">
+      <a href="index.html" data-i18n="nav_accueil">Accueil</a>
+      <a href="about.html" data-i18n="nav_apropos">À propos</a>
+      <a href="services.html" data-i18n="nav_services">Services</a>
+      <a href="tarifs.html" data-i18n="nav_tarifs">Tarifs</a>
+      <a href="conseils.html" data-i18n="nav_conseils">Conseils</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
+      <a href="rdv.html" class="bg-cyan-600 text-white px-4 py-2 rounded-full" data-i18n="nav_rdv">RDV</a>
+    </nav>
+    <!-- Burger -->
+    <button id="burger" class="md:hidden flex flex-col gap-1 ml-4" aria-label="Menu mobile">
+      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
+      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
+      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
+    </button>
+  </div>
+  <!-- Mobile Nav -->
+  <nav id="mobile-nav" class="fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex-col items-center justify-center gap-8 font-medium text-2xl hidden transition-all">
+    <a href="index.html" data-i18n="nav_accueil">Accueil</a>
+    <a href="about.html" data-i18n="nav_apropos">À propos</a>
+    <a href="services.html" data-i18n="nav_services">Services</a>
+    <a href="tarifs.html" data-i18n="nav_tarifs">Tarifs</a>
+    <a href="conseils.html" data-i18n="nav_conseils">Conseils</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
+    <a href="rdv.html" class="bg-cyan-600 text-white px-4 py-2 rounded-full" data-i18n="nav_rdv">RDV</a>
+    <button id="close-mobile-nav" class="mt-10 text-cyan-700">✕</button>
+  </nav>
+</header>
+
+<section class="max-w-4xl mx-auto p-10">
+  <h1 class="text-4xl font-bold text-cyan-700 mb-6 text-center" data-i18n="contact_title">Contactez-nous</h1>
+  <div class="grid md:grid-cols-2 gap-8 mb-10">
+    <div class="bg-white/70 rounded-2xl shadow p-6 flex flex-col gap-4 justify-center">
+      <h2 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="contact_info">Informations</h2>
+      <div class="flex items-center gap-2"><img src="https://img.icons8.com/color/48/000000/marker.png" class="h-6"> <span data-i18n="contact_address">123 Avenue des Sciences, Casablanca</span></div>
+      <div class="flex items-center gap-2"><img src="https://img.icons8.com/color/48/000000/phone.png" class="h-6"> <a href="tel:+212600000000" class="underline">+212 6 00 00 00 00</a></div>
+      <div class="flex items-center gap-2"><img src="https://img.icons8.com/color/48/000000/new-post.png" class="h-6"> <a href="mailto:contact@labo-colisee.ma" class="underline">contact@labo-colisee.ma</a></div>
+      <a href="https://wa.me/212600000000" target="_blank" class="bg-green-500 text-white px-6 py-2 rounded-full shadow flex items-center gap-2 w-max" id="whatsapp-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="h-6"> WhatsApp</a>
+      <div class="mt-4">
+        <iframe src="https://www.google.com/maps?q=Laboratoire+Le+Colisée,+Casablanca&output=embed" width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <form class="bg-white/60 backdrop-blur p-6 rounded-2xl shadow space-y-4 flex flex-col justify-center" id="contact-form">
+      <label class="block text-gray-700 font-semibold" for="name" data-i18n="contact_name">Nom</label>
+      <input id="name" class="w-full p-3 rounded border" placeholder="Votre nom" required>
+      <label class="block text-gray-700 font-semibold" for="email" data-i18n="contact_email">Email</label>
+      <input id="email" type="email" class="w-full p-3 rounded border" placeholder="Votre email" required>
+      <label class="block text-gray-700 font-semibold" for="message" data-i18n="contact_message">Message</label>
+      <textarea id="message" class="w-full p-3 rounded border" placeholder="Votre message" required></textarea>
+      <div class="flex gap-4 flex-wrap">
+        <button type="submit" class="bg-cyan-600 text-white px-6 py-2 rounded-full" data-i18n="contact_send">Envoyer</button>
+        <a href="#" id="whatsapp-link" class="bg-green-500 text-white px-6 py-2 rounded-full flex items-center gap-2"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="h-6"> WhatsApp</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-cyan-800 text-white py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <h4 class="font-bold text-lg mb-4 text-cyan-300">À Propos</h4>
+        <p class="text-sm text-gray-300" data-i18n="footer_about">Laboratoire Le Colisée offre des services de diagnostic fiables depuis plus de 15 ans avec des équipements modernes et une équipe expérimentée.</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_services">Services</h4>
+        <ul class="text-sm text-gray-300 space-y-2">
+          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_blood">Analyses sanguines</a></li>
+          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_hormones">Tests hormonaux</a></li>
+          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_bacterio">Bactériologie</a></li>
+          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_home">Prélèvements à domicile</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_links">Liens utiles</h4>
+        <ul class="text-sm text-gray-300 space-y-2">
+          <li><a href="index.html" class="hover:text-cyan-400 transition" data-i18n="footer_home_link">Accueil</a></li>
+          <li><a href="about.html" class="hover:text-cyan-400 transition" data-i18n="footer_about_link">À propos</a></li>
+          <li><a href="tarifs.html" class="hover:text-cyan-400 transition" data-i18n="footer_tariffs">Tarifs</a></li>
+          <li><a href="contact.html" class="hover:text-cyan-400 transition" data-i18n="footer_contact_link">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_contact_info">Contact Info</h4>
+        <ul class="text-sm text-gray-300 space-y-2">
+          <li>📞 +212 5 22 00 00 00</li>
+          <li>📧 contact@labcolisee.ma</li>
+          <li>📍 123 Bd Mohamed V</li>
+          <li data-i18n="footer_city">Casablanca, Maroc</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="border-cyan-700 my-8">
+    <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+      <span id="footer-text">© 2026 Laboratoire Le Colisée – Tous droits réservés</span>
+      <div class="flex gap-6 mt-4 md:mt-0">
+        <a href="#" class="hover:text-cyan-400 transition" data-i18n="footer_privacy">Politique de confidentialité</a>
+        <a href="#" class="hover:text-cyan-400 transition" data-i18n="footer_terms">Conditions d'utilisation</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.glass-card {
+  @apply bg-white/50 backdrop-blur p-6 rounded-2xl shadow text-center font-semibold;
+}
+</style>
+<style>
+@media (max-width: 768px) {
+  .p-10 {
+    padding: 1.5rem !important;
+  }
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  .grid.md\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>
+</style>
+<script>
+// Burger menu
+const burger = document.getElementById('burger');
+const mobileNav = document.getElementById('mobile-nav');
+const closeMobileNav = document.getElementById('close-mobile-nav');
+burger.addEventListener('click', () => {
+  mobileNav.classList.remove('hidden');
+});
+closeMobileNav.addEventListener('click', () => {
+  mobileNav.classList.add('hidden');
+});
+
+
+// Multilingue (FR/AR) enrichi
+const translations = {
+  fr: {
+    nav_accueil: 'Accueil',
+    nav_apropos: 'À propos',
+    nav_services: 'Services',
+    nav_tarifs: 'Tarifs',
+    nav_conseils: 'Conseils',
+    nav_contact: 'Contact',
+    nav_rdv: 'RDV',
+    site_title: 'Laboratoire Le Colisée',
+    footer: '© 2026 Laboratoire Le Colisée – Tous droits réservés',
+    contact_title: 'Contactez-nous',
+    contact_info: 'Informations',
+    contact_address: '123 Avenue des Sciences, Casablanca',
+    contact_name: 'Nom',
+    contact_email: 'Email',
+    contact_message: 'Message',
+    contact_send: 'Envoyer',
+    contact_whatsapp: 'WhatsApp',
+    contact_map: 'Localisation',
+    contact_success: 'Votre message a été préparé pour WhatsApp.',
+    contact_error: 'Veuillez remplir tous les champs.',
+    contact_cta: 'Envoyez-nous un message ou contactez-nous directement.',
+    footer_about: 'Laboratoire Le Colisée offre des services de diagnostic fiables depuis plus de 15 ans avec des équipements modernes et une équipe expérimentée.',
+    footer_services: 'Services',
+    footer_blood: 'Analyses sanguines',
+    footer_hormones: 'Tests hormonaux',
+    footer_bacterio: 'Bactériologie',
+    footer_home: 'Prélèvements à domicile',
+    footer_links: 'Liens utiles',
+    footer_home_link: 'Accueil',
+    footer_about_link: 'À propos',
+    footer_tariffs: 'Tarifs',
+    footer_contact_link: 'Contact',
+    footer_contact_info: 'Contact Info',
+    footer_city: 'Casablanca, Maroc',
+    footer_privacy: 'Politique de confidentialité',
+    footer_terms: 'Conditions d\'utilisation',
+  },
+  ar: {
+    nav_accueil: 'الرئيسية',
+    nav_apropos: 'من نحن',
+    nav_services: 'الخدمات',
+    nav_tarifs: 'الأسعار',
+    nav_conseils: 'نصائح',
+    nav_contact: 'اتصل بنا',
+    nav_rdv: 'موعد',
+    site_title: 'مختبر الكوليسي',
+    footer: '© 2026 مختبر الكوليسي – جميع الحقوق محفوظة',
+    contact_title: 'اتصل بنا',
+    contact_info: 'معلومات',
+    contact_address: '123 شارع العلوم، الدار البيضاء',
+    contact_name: 'الاسم',
+    contact_email: 'البريد الإلكتروني',
+    contact_message: 'رسالتك',
+    contact_send: 'إرسال',
+    contact_whatsapp: 'واتساب',
+    contact_map: 'الموقع',
+    contact_success: 'تم تجهيز رسالتك لإرسالها عبر واتساب.',
+    contact_error: 'يرجى ملء جميع الحقول.',
+    contact_cta: 'أرسل لنا رسالة أو تواصل معنا مباشرة.',
+    footer_about: 'يقدم مختبر الكوليسي خدمات تشخيصية موثوقة منذ أكثر من 15 سنة مع معدات حديثة وفريق ذو خبرة.',
+    footer_services: 'الخدمات',
+    footer_blood: 'تحاليل الدم',
+    footer_hormones: 'اختبارات الهرمونات',
+    footer_bacterio: 'البكتريولوجيا',
+    footer_home: 'أخذ العينات في المنزل',
+    footer_links: 'روابط مفيدة',
+    footer_home_link: 'الرئيسية',
+    footer_about_link: 'من نحن',
+    footer_tariffs: 'الأسعار',
+    footer_contact_link: 'اتصل بنا',
+    footer_contact_info: 'معلومات الاتصال',
+    footer_city: 'الدار البيضاء، المغرب',
+    footer_privacy: 'سياسة الخصوصية',
+    footer_terms: 'شروط الاستخدام',
+  }
+};
+function setLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.textContent = translations[lang][key];
+  });
+  document.getElementById('site-title').textContent = translations[lang].site_title;
+  document.getElementById('footer-text').textContent = translations[lang].footer;
+  document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.getElementById('whatsapp-btn').style.flexDirection = lang === 'ar' ? 'row-reverse' : 'row';
+}
+document.getElementById('lang-fr').onclick = () => setLang('fr');
+document.getElementById('lang-ar').onclick = () => setLang('ar');
+
+// WhatsApp formulaire
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!name || !email || !message) {
+    alert(translations[document.body.dir === 'rtl' ? 'ar' : 'fr'].contact_error);
+    return;
+  }
+  const text = `Nom: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+  const url = `https://wa.me/212600000000?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+});
+document.getElementById('whatsapp-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const text = `Nom: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+  const url = `https://wa.me/212600000000?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+});
+
+// Animation douce (fade-in)
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('section, .glass-card').forEach(el => {
+    el.style.opacity = 0;
+    el.style.transition = 'opacity 1s';
+    setTimeout(() => { el.style.opacity = 1; }, 200);
+  });
+});
+</script>
+</body>
+</html>
