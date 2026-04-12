@@ -7,8 +7,19 @@
   <title>À propos - Laboratoire Le Colisée</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link rel="stylesheet" href="./assets/css/main.css">
 </head>
-<body class="bg-gradient-to-br from-cyan-50 to-white text-gray-800">
+<body class="bg-gradient-to-br from-cyan-50 to-white text-gray-800 content-hidden">
+
+<!-- LOGO ANIMATION OVERLAY -->
+<div id="logo-overlay" class="fixed inset-0 z-[100] bg-gradient-to-br from-cyan-600 to-cyan-800 flex items-center justify-center">
+  <div class="text-center">
+    <img src="./assets/img/logo.jpg" class="h-32 w-auto mb-8 drop-shadow-2xl rounded-lg border-4 border-white/20" alt="logo">
+    <div class="text-white text-2xl font-bold">Laboratoire Le Colisée</div>
+  </div>
+</div>
 
 <!-- HEADER -->
 <header class="sticky top-0 bg-white/70 backdrop-blur shadow z-50">
@@ -54,10 +65,10 @@
 </header>
 
 <section class="max-w-5xl mx-auto p-10">
-  <h1 class="text-4xl font-bold text-cyan-700 mb-6 text-center" data-i18n="about_title">À propos du laboratoire</h1>
-  <div class="flex flex-col md:flex-row gap-10 items-center mb-10">
-    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136" alt="Laboratoire moderne" class="rounded-2xl shadow-lg w-full md:w-1/2 max-h-80 object-cover">
-    <div>
+  <h1 class="text-4xl font-bold text-cyan-700 mb-6 text-center" data-i18n="about_title" data-aos="fade-up">À propos du laboratoire</h1>
+  <div class="flex flex-col md:flex-row gap-10 items-center mb-10" data-aos="fade-up" data-aos-delay="200">
+    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136" alt="Laboratoire moderne" class="rounded-2xl shadow-lg w-full md:w-1/2 max-h-80 object-cover" data-aos="zoom-in" data-aos-delay="300">
+    <div data-aos="fade-left" data-aos-delay="400">
       <p class="leading-8 text-lg mb-4" data-i18n="about_intro">
         Le Laboratoire Le Colisée est spécialisé dans les analyses médicales avec des équipements modernes, une équipe qualifiée et le respect des normes internationales.
       </p>
@@ -69,39 +80,39 @@
     </div>
   </div>
   <div class="grid md:grid-cols-2 gap-8 mb-10">
-    <div class="bg-white/70 rounded-2xl shadow p-6 flex flex-col items-center">
+    <div class="glass-card flex flex-col items-center" data-aos="fade-right" data-aos-delay="200">
       <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c" alt="Notre équipe" class="h-24 w-24 rounded-full mb-4 object-cover">
       <h2 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="about_team">Notre équipe</h2>
       <p class="text-center text-gray-700" data-i18n="about_team_desc">Des biologistes, techniciens et infirmiers passionnés, à votre écoute et formés aux dernières avancées scientifiques.</p>
     </div>
-    <div class="bg-white/70 rounded-2xl shadow p-6 flex flex-col items-center">
+    <div class="glass-card flex flex-col items-center" data-aos="fade-left" data-aos-delay="300">
       <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca" alt="Nos valeurs" class="h-24 w-24 rounded-full mb-4 object-cover">
       <h2 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="about_values">Nos valeurs</h2>
       <p class="text-center text-gray-700" data-i18n="about_values_desc">Éthique, rigueur, innovation et proximité guident notre engagement au quotidien.</p>
     </div>
   </div>
-  <div class="mb-10">
+  <div class="mb-10" data-aos="fade-up" data-aos-delay="400">
     <h2 class="text-xl font-bold text-cyan-700 mb-4 text-center" data-i18n="about_timeline">Notre histoire</h2>
     <ol class="relative border-l-2 border-cyan-400 pl-6 space-y-6">
-      <li>
+      <li data-aos="fade-right" data-aos-delay="500">
         <span class="absolute -left-3 top-1 w-6 h-6 bg-cyan-400 rounded-full"></span>
         <span class="font-bold" data-i18n="about_timeline1">2005 : Création du laboratoire</span>
         <p class="text-gray-700" data-i18n="about_timeline1_desc">Ouverture à Casablanca avec une vision d’excellence et d’accessibilité.</p>
       </li>
-      <li>
+      <li data-aos="fade-right" data-aos-delay="600">
         <span class="absolute -left-3 top-1 w-6 h-6 bg-cyan-400 rounded-full"></span>
         <span class="font-bold" data-i18n="about_timeline2">2015 : Certification ISO</span>
         <p class="text-gray-700" data-i18n="about_timeline2_desc">Obtention de la certification ISO 15189 pour la qualité des analyses.</p>
       </li>
-      <li>
+      <li data-aos="fade-right" data-aos-delay="700">
         <span class="absolute -left-3 top-1 w-6 h-6 bg-cyan-400 rounded-full"></span>
         <span class="font-bold" data-i18n="about_timeline3">2023 : Digitalisation</span>
         <p class="text-gray-700" data-i18n="about_timeline3_desc">Mise en place de la prise de rendez-vous en ligne et résultats numériques sécurisés.</p>
       </li>
     </ol>
   </div>
-  <div class="flex justify-center">
-    <a href="contact.html" class="bg-cyan-600 text-white px-8 py-3 rounded-full shadow text-lg" data-i18n="about_cta">Contactez-nous</a>
+  <div class="flex justify-center" data-aos="fade-up" data-aos-delay="800">
+    <a href="contact.html" class="bg-cyan-600 text-white px-8 py-3 rounded-full shadow text-lg hover:bg-cyan-700 transition-all hover:scale-105" data-i18n="about_cta">Contactez-nous</a>
   </div>
 </section>
 
@@ -152,9 +163,50 @@
   </div>
 </footer>
 
+
 <style>
-.glass-card {
-  @apply bg-white/50 backdrop-blur p-6 rounded-2xl shadow text-center font-semibold;
+/* Logo Curtain Animation */
+#logo-overlay {
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  z-index: 100;
+}
+
+#logo-overlay.closing {
+  animation: closeCurtain 0.8s ease-in-out forwards;
+}
+
+#logo-overlay.opening {
+  animation: openCurtain 0.8s ease-in-out forwards;
+}
+
+@keyframes closeCurtain {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  50% {
+    clip-path: inset(0 0 50% 0);
+  }
+  100% {
+    clip-path: inset(50% 0 50% 0);
+  }
+}
+
+@keyframes openCurtain {
+  0% {
+    clip-path: inset(50% 0 50% 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.content-hidden {
+  overflow: hidden;
+}
+
+/* Hero text shadow */
+.hero-text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 </style>
 <style>
@@ -171,128 +223,7 @@
 }
 </style>
 </style>
-<script>
-// Burger menu
-const burger = document.getElementById('burger');
-const mobileNav = document.getElementById('mobile-nav');
-const closeMobileNav = document.getElementById('close-mobile-nav');
-burger.addEventListener('click', () => {
-  mobileNav.classList.remove('hidden');
-});
-closeMobileNav.addEventListener('click', () => {
-  mobileNav.classList.add('hidden');
-});
 
-
-// Multilingue (FR/AR) enrichi
-const translations = {
-  fr: {
-    nav_accueil: 'Accueil',
-    nav_apropos: 'À propos',
-    nav_services: 'Services',
-    nav_tarifs: 'Tarifs',
-    nav_conseils: 'Conseils',
-    nav_contact: 'Contact',
-    nav_rdv: 'RDV',
-    site_title: 'Laboratoire Le Colisée',
-    footer: '© 2026 Laboratoire Le Colisée – Tous droits réservés',
-    about_title: 'À propos du laboratoire',
-    about_intro: 'Le Laboratoire Le Colisée est spécialisé dans les analyses médicales avec des équipements modernes, une équipe qualifiée et le respect des normes internationales.',
-    about_li1: "Plus de 20 ans d'expérience au service de votre santé",
-    about_li2: 'Laboratoire certifié ISO 15189',
-    about_li3: 'Confidentialité et accompagnement personnalisé',
-    about_team: 'Notre équipe',
-    about_team_desc: 'Des biologistes, techniciens et infirmiers passionnés, à votre écoute et formés aux dernières avancées scientifiques.',
-    about_values: 'Nos valeurs',
-    about_values_desc: 'Éthique, rigueur, innovation et proximité guident notre engagement au quotidien.',
-    about_timeline: 'Notre histoire',
-    about_timeline1: '2005 : Création du laboratoire',
-    about_timeline1_desc: 'Ouverture à Casablanca avec une vision d’excellence et d’accessibilité.',
-    about_timeline2: '2015 : Certification ISO',
-    about_timeline2_desc: 'Obtention de la certification ISO 15189 pour la qualité des analyses.',
-    about_timeline3: '2023 : Digitalisation',
-    about_timeline3_desc: 'Mise en place de la prise de rendez-vous en ligne et résultats numériques sécurisés.',
-    about_cta: 'Contactez-nous',
-    footer_about: 'Laboratoire Le Colisée offre des services de diagnostic fiables depuis plus de 15 ans avec des équipements modernes et une équipe expérimentée.',
-    footer_services: 'Services',
-    footer_blood: 'Analyses sanguines',
-    footer_hormones: 'Tests hormonaux',
-    footer_bacterio: 'Bactériologie',
-    footer_home: 'Prélèvements à domicile',
-    footer_links: 'Liens utiles',
-    footer_home_link: 'Accueil',
-    footer_about_link: 'À propos',
-    footer_tariffs: 'Tarifs',
-    footer_contact_link: 'Contact',
-    footer_contact_info: 'Contact Info',
-    footer_city: 'Casablanca, Maroc',
-    footer_privacy: 'Politique de confidentialité',
-    footer_terms: 'Conditions d\'utilisation',
-  },
-  ar: {
-    nav_accueil: 'الرئيسية',
-    nav_apropos: 'من نحن',
-    nav_services: 'الخدمات',
-    nav_tarifs: 'الأسعار',
-    nav_conseils: 'نصائح',
-    nav_contact: 'اتصل بنا',
-    nav_rdv: 'موعد',
-    site_title: 'مختبر الكوليسي',
-    footer: '© 2026 مختبر الكوليسي – جميع الحقوق محفوظة',
-    about_title: 'حول المختبر',
-    about_intro: 'مختبر الكوليسي متخصص في التحاليل الطبية بأحدث الأجهزة وفريق مؤهل وفق المعايير الدولية.',
-    about_li1: 'أكثر من 20 سنة خبرة في خدمتكم',
-    about_li2: 'مختبر معتمد ISO 15189',
-    about_li3: 'سرية تامة ومرافقة شخصية',
-    about_team: 'فريقنا',
-    about_team_desc: 'بيولوجيون وتقنيون وممرضون شغوفون بخدمتكم ومواكبون لأحدث التطورات العلمية.',
-    about_values: 'قيمنا',
-    about_values_desc: 'الأخلاقيات والدقة والابتكار والقرب توجه التزامنا اليومي.',
-    about_timeline: 'تاريخنا',
-    about_timeline1: '2005: تأسيس المختبر',
-    about_timeline1_desc: 'الافتتاح في الدار البيضاء برؤية للتميز وسهولة الوصول.',
-    about_timeline2: '2015: شهادة ISO',
-    about_timeline2_desc: 'الحصول على شهادة ISO 15189 لجودة التحاليل.',
-    about_timeline3: '2023: الرقمنة',
-    about_timeline3_desc: 'إطلاق حجز المواعيد والنتائج الرقمية المؤمنة.',
-    about_cta: 'اتصل بنا',
-    footer_about: 'يقدم مختبر الكوليسي خدمات تشخيصية موثوقة منذ أكثر من 15 سنة مع معدات حديثة وفريق ذو خبرة.',
-    footer_services: 'الخدمات',
-    footer_blood: 'تحاليل الدم',
-    footer_hormones: 'اختبارات الهرمونات',
-    footer_bacterio: 'البكتريولوجيا',
-    footer_home: 'أخذ العينات في المنزل',
-    footer_links: 'روابط مفيدة',
-    footer_home_link: 'الرئيسية',
-    footer_about_link: 'من نحن',
-    footer_tariffs: 'الأسعار',
-    footer_contact_link: 'اتصل بنا',
-    footer_contact_info: 'معلومات الاتصال',
-    footer_city: 'الدار البيضاء، المغرب',
-    footer_privacy: 'سياسة الخصوصية',
-    footer_terms: 'شروط الاستخدام',
-  }
-};
-function setLang(lang) {
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    el.textContent = translations[lang][key];
-  });
-  document.getElementById('site-title').textContent = translations[lang].site_title;
-  document.getElementById('footer-text').textContent = translations[lang].footer;
-  document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
-}
-document.getElementById('lang-fr').onclick = () => setLang('fr');
-document.getElementById('lang-ar').onclick = () => setLang('ar');
-
-// Animation douce (fade-in)
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('section, .glass-card').forEach(el => {
-    el.style.opacity = 0;
-    el.style.transition = 'opacity 1s';
-    setTimeout(() => { el.style.opacity = 1; }, 200);
-  });
-});
-</script>
+  <script src="./assets/js/main.js"></script>
 </body>
 </html>

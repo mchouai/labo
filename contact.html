@@ -6,8 +6,19 @@
   <title>Contact - Laboratoire Le Colisée</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link rel="stylesheet" href="./assets/css/main.css">
 </head>
-<body class="bg-gradient-to-br from-cyan-50 to-white text-gray-800">
+<body class="bg-gradient-to-br from-cyan-50 to-white text-gray-800 content-hidden">
+
+<!-- LOGO ANIMATION OVERLAY -->
+<div id="logo-overlay" class="fixed inset-0 z-[100] bg-gradient-to-br from-cyan-600 to-cyan-800 flex items-center justify-center">
+  <div class="text-center">
+    <img src="./assets/img/logo.jpg" class="h-32 w-auto mb-8 drop-shadow-2xl rounded-lg border-4 border-white/20" alt="logo">
+    <div class="text-white text-2xl font-bold">Laboratoire Le Colisée</div>
+  </div>
+</div>
 
 <!-- HEADER -->
 <header class="sticky top-0 bg-white/70 backdrop-blur shadow z-50">
@@ -53,28 +64,28 @@
 </header>
 
 <section class="max-w-4xl mx-auto p-10">
-  <h1 class="text-4xl font-bold text-cyan-700 mb-6 text-center" data-i18n="contact_title">Contactez-nous</h1>
-  <div class="grid md:grid-cols-2 gap-8 mb-10">
-    <div class="bg-white/70 rounded-2xl shadow p-6 flex flex-col gap-4 justify-center">
+  <h1 class="text-4xl font-bold text-cyan-700 mb-6 text-center" data-i18n="contact_title" data-aos="fade-up">Contactez-nous</h1>
+  <div class="grid md:grid-cols-2 gap-8 mb-10" data-aos="fade-up" data-aos-delay="200">
+    <div class="glass-card flex flex-col gap-4 justify-center" data-aos="fade-right" data-aos-delay="300">
       <h2 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="contact_info">Informations</h2>
       <div class="flex items-center gap-2"><img src="https://img.icons8.com/color/48/000000/marker.png" class="h-6"> <span data-i18n="contact_address">123 Avenue des Sciences, Casablanca</span></div>
       <div class="flex items-center gap-2"><img src="https://img.icons8.com/color/48/000000/phone.png" class="h-6"> <a href="tel:+212600000000" class="underline">+212 6 00 00 00 00</a></div>
       <div class="flex items-center gap-2"><img src="https://img.icons8.com/color/48/000000/new-post.png" class="h-6"> <a href="mailto:contact@labo-colisee.ma" class="underline">contact@labo-colisee.ma</a></div>
-      <a href="https://wa.me/212600000000" target="_blank" class="bg-green-500 text-white px-6 py-2 rounded-full shadow flex items-center gap-2 w-max" id="whatsapp-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="h-6"> WhatsApp</a>
+      <a href="https://wa.me/212600000000" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full shadow flex items-center gap-2 w-max transition-all hover:scale-105" id="whatsapp-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="h-6"> WhatsApp</a>
       <div class="mt-4">
         <iframe src="https://www.google.com/maps?q=Laboratoire+Le+Colisée,+Casablanca&output=embed" width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
-    <form class="bg-white/60 backdrop-blur p-6 rounded-2xl shadow space-y-4 flex flex-col justify-center" id="contact-form">
+    <form class="glass-card flex flex-col justify-center space-y-4" id="contact-form" data-aos="fade-left" data-aos-delay="300">
       <label class="block text-gray-700 font-semibold" for="name" data-i18n="contact_name">Nom</label>
-      <input id="name" class="w-full p-3 rounded border" placeholder="Votre nom" required>
+      <input id="name" class="w-full p-3 rounded border border-cyan-200 focus:border-cyan-600 focus:outline-none" placeholder="Votre nom" required>
       <label class="block text-gray-700 font-semibold" for="email" data-i18n="contact_email">Email</label>
-      <input id="email" type="email" class="w-full p-3 rounded border" placeholder="Votre email" required>
+      <input id="email" type="email" class="w-full p-3 rounded border border-cyan-200 focus:border-cyan-600 focus:outline-none" placeholder="Votre email" required>
       <label class="block text-gray-700 font-semibold" for="message" data-i18n="contact_message">Message</label>
-      <textarea id="message" class="w-full p-3 rounded border" placeholder="Votre message" required></textarea>
+      <textarea id="message" class="w-full p-3 rounded border border-cyan-200 focus:border-cyan-600 focus:outline-none" placeholder="Votre message" required></textarea>
       <div class="flex gap-4 flex-wrap">
-        <button type="submit" class="bg-cyan-600 text-white px-6 py-2 rounded-full" data-i18n="contact_send">Envoyer</button>
-        <a href="#" id="whatsapp-link" class="bg-green-500 text-white px-6 py-2 rounded-full flex items-center gap-2"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="h-6"> WhatsApp</a>
+        <button type="submit" class="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-full transition-all hover:scale-105" data-i18n="contact_send">Envoyer</button>
+        <a href="#" id="whatsapp-link" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full flex items-center gap-2 transition-all hover:scale-105"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="h-6"> WhatsApp</a>
       </div>
     </form>
   </div>
@@ -127,12 +138,47 @@
   </div>
 </footer>
 
+
 <style>
-.glass-card {
-  @apply bg-white/50 backdrop-blur p-6 rounded-2xl shadow text-center font-semibold;
+/* Logo Curtain Animation */
+#logo-overlay {
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  z-index: 100;
 }
-</style>
-<style>
+
+#logo-overlay.closing {
+  animation: closeCurtain 0.8s ease-in-out forwards;
+}
+
+#logo-overlay.opening {
+  animation: openCurtain 0.8s ease-in-out forwards;
+}
+
+@keyframes closeCurtain {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  50% {
+    clip-path: inset(0 0 50% 0);
+  }
+  100% {
+    clip-path: inset(50% 0 50% 0);
+  }
+}
+
+@keyframes openCurtain {
+  0% {
+    clip-path: inset(50% 0 50% 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.content-hidden {
+  overflow: hidden;
+}
+
 @media (max-width: 768px) {
   .p-10 {
     padding: 1.5rem !important;
@@ -146,143 +192,7 @@
 }
 </style>
 </style>
-<script>
-// Burger menu
-const burger = document.getElementById('burger');
-const mobileNav = document.getElementById('mobile-nav');
-const closeMobileNav = document.getElementById('close-mobile-nav');
-burger.addEventListener('click', () => {
-  mobileNav.classList.remove('hidden');
-});
-closeMobileNav.addEventListener('click', () => {
-  mobileNav.classList.add('hidden');
-});
 
-
-// Multilingue (FR/AR) enrichi
-const translations = {
-  fr: {
-    nav_accueil: 'Accueil',
-    nav_apropos: 'À propos',
-    nav_services: 'Services',
-    nav_tarifs: 'Tarifs',
-    nav_conseils: 'Conseils',
-    nav_contact: 'Contact',
-    nav_rdv: 'RDV',
-    site_title: 'Laboratoire Le Colisée',
-    footer: '© 2026 Laboratoire Le Colisée – Tous droits réservés',
-    contact_title: 'Contactez-nous',
-    contact_info: 'Informations',
-    contact_address: '123 Avenue des Sciences, Casablanca',
-    contact_name: 'Nom',
-    contact_email: 'Email',
-    contact_message: 'Message',
-    contact_send: 'Envoyer',
-    contact_whatsapp: 'WhatsApp',
-    contact_map: 'Localisation',
-    contact_success: 'Votre message a été préparé pour WhatsApp.',
-    contact_error: 'Veuillez remplir tous les champs.',
-    contact_cta: 'Envoyez-nous un message ou contactez-nous directement.',
-    footer_about: 'Laboratoire Le Colisée offre des services de diagnostic fiables depuis plus de 15 ans avec des équipements modernes et une équipe expérimentée.',
-    footer_services: 'Services',
-    footer_blood: 'Analyses sanguines',
-    footer_hormones: 'Tests hormonaux',
-    footer_bacterio: 'Bactériologie',
-    footer_home: 'Prélèvements à domicile',
-    footer_links: 'Liens utiles',
-    footer_home_link: 'Accueil',
-    footer_about_link: 'À propos',
-    footer_tariffs: 'Tarifs',
-    footer_contact_link: 'Contact',
-    footer_contact_info: 'Contact Info',
-    footer_city: 'Casablanca, Maroc',
-    footer_privacy: 'Politique de confidentialité',
-    footer_terms: 'Conditions d\'utilisation',
-  },
-  ar: {
-    nav_accueil: 'الرئيسية',
-    nav_apropos: 'من نحن',
-    nav_services: 'الخدمات',
-    nav_tarifs: 'الأسعار',
-    nav_conseils: 'نصائح',
-    nav_contact: 'اتصل بنا',
-    nav_rdv: 'موعد',
-    site_title: 'مختبر الكوليسي',
-    footer: '© 2026 مختبر الكوليسي – جميع الحقوق محفوظة',
-    contact_title: 'اتصل بنا',
-    contact_info: 'معلومات',
-    contact_address: '123 شارع العلوم، الدار البيضاء',
-    contact_name: 'الاسم',
-    contact_email: 'البريد الإلكتروني',
-    contact_message: 'رسالتك',
-    contact_send: 'إرسال',
-    contact_whatsapp: 'واتساب',
-    contact_map: 'الموقع',
-    contact_success: 'تم تجهيز رسالتك لإرسالها عبر واتساب.',
-    contact_error: 'يرجى ملء جميع الحقول.',
-    contact_cta: 'أرسل لنا رسالة أو تواصل معنا مباشرة.',
-    footer_about: 'يقدم مختبر الكوليسي خدمات تشخيصية موثوقة منذ أكثر من 15 سنة مع معدات حديثة وفريق ذو خبرة.',
-    footer_services: 'الخدمات',
-    footer_blood: 'تحاليل الدم',
-    footer_hormones: 'اختبارات الهرمونات',
-    footer_bacterio: 'البكتريولوجيا',
-    footer_home: 'أخذ العينات في المنزل',
-    footer_links: 'روابط مفيدة',
-    footer_home_link: 'الرئيسية',
-    footer_about_link: 'من نحن',
-    footer_tariffs: 'الأسعار',
-    footer_contact_link: 'اتصل بنا',
-    footer_contact_info: 'معلومات الاتصال',
-    footer_city: 'الدار البيضاء، المغرب',
-    footer_privacy: 'سياسة الخصوصية',
-    footer_terms: 'شروط الاستخدام',
-  }
-};
-function setLang(lang) {
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    el.textContent = translations[lang][key];
-  });
-  document.getElementById('site-title').textContent = translations[lang].site_title;
-  document.getElementById('footer-text').textContent = translations[lang].footer;
-  document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
-  document.getElementById('whatsapp-btn').style.flexDirection = lang === 'ar' ? 'row-reverse' : 'row';
-}
-document.getElementById('lang-fr').onclick = () => setLang('fr');
-document.getElementById('lang-ar').onclick = () => setLang('ar');
-
-// WhatsApp formulaire
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
-  if (!name || !email || !message) {
-    alert(translations[document.body.dir === 'rtl' ? 'ar' : 'fr'].contact_error);
-    return;
-  }
-  const text = `Nom: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
-  const url = `https://wa.me/212600000000?text=${encodeURIComponent(text)}`;
-  window.open(url, '_blank');
-});
-document.getElementById('whatsapp-link').addEventListener('click', function(e) {
-  e.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
-  const text = `Nom: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
-  const url = `https://wa.me/212600000000?text=${encodeURIComponent(text)}`;
-  window.open(url, '_blank');
-});
-
-// Animation douce (fade-in)
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('section, .glass-card').forEach(el => {
-    el.style.opacity = 0;
-    el.style.transition = 'opacity 1s';
-    setTimeout(() => { el.style.opacity = 1; }, 200);
-  });
-});
-</script>
+  <script src="./assets/js/main.js"></script>
 </body>
 </html>

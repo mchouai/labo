@@ -5,88 +5,142 @@
   <meta charset="UTF-8" />
   <title>Conseils - Laboratoire Le Colisée</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conseils pour vos analyses médicales au Laboratoire Le Colisée. Préparation optimale pour des résultats fiables." />
+  <link rel="icon" href="./assets/img/logo.jpg" type="image/jpg" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <style>
+    /* Custom styles for modern design */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #06b6d4, #22d3ee);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3);
+    }
+    .nav-link {
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #06b6d4;
+    }
+    .section-bg {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 249, 251, 0.9));
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-br from-cyan-50 to-white text-gray-800">
+<body class="bg-gradient-to-br from-cyan-50 to-white text-gray-800 font-sans">
 
 <!-- HEADER -->
-<header class="sticky top-0 bg-white/70 backdrop-blur shadow z-50">
-  <div class="max-w-7xl mx-auto flex items-center justify-between p-3 sm:p-4">
-    <div class="flex items-center gap-2 sm:gap-4 flex-1">
-      <img src="./assets/img/logo.jpg" class="h-12 sm:h-16 w-auto drop-shadow-lg rounded-lg border-2 border-cyan-200" alt="logo">
-      <span class="font-bold text-lg sm:text-2xl text-cyan-700 truncate" id="site-title">Laboratoire Le Colisée</span>
+<header class="sticky top-0 bg-white/80 backdrop-blur-lg shadow-lg z-50 border-b border-cyan-100">
+  <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+    <div class="flex items-center gap-4">
+      <img src="./assets/img/logo.jpg" class="h-16 w-auto drop-shadow-lg rounded-lg border-2 border-cyan-200 transition-transform hover:scale-105" alt="logo">
+      <span class="font-bold text-2xl text-cyan-700" id="site-title">Laboratoire Le Colisée</span>
     </div>
     <!-- Lang Switcher -->
-    <div class="flex items-center gap-2 sm:gap-4">
-      <button id="lang-fr" class="lang-btn font-bold text-cyan-700 text-sm sm:text-base">FR</button>
-      <span class="text-sm sm:text-base">|</span>
-      <button id="lang-ar" class="lang-btn text-sm sm:text-base">AR</button>
+    <div class="flex items-center gap-4">
+      <button id="lang-fr" class="lang-btn font-bold text-cyan-700 hover:text-cyan-800 transition">FR</button>
+      <span>|</span>
+      <button id="lang-ar" class="lang-btn hover:text-cyan-700 transition">AR</button>
     </div>
     <!-- Desktop Nav -->
-    <nav class="hidden md:flex gap-3 lg:gap-6 font-medium" id="main-nav">
-      <a href="index.html" data-i18n="nav_accueil">Accueil</a>
-      <a href="about.html" data-i18n="nav_apropos">À propos</a>
-      <a href="services.html" data-i18n="nav_services">Services</a>
-      <a href="tarifs.html" data-i18n="nav_tarifs">Tarifs</a>
-      <a href="conseils.html" data-i18n="nav_conseils">Conseils</a>
-      <a href="contact.html" data-i18n="nav_contact">Contact</a>
-      <a href="rdv.html" class="bg-cyan-600 text-white px-4 py-2 rounded-full hover:bg-cyan-700 transition" data-i18n="nav_rdv">RDV</a>
+    <nav class="hidden md:flex gap-6 font-medium" id="main-nav">
+      <a href="index.html" class="nav-link text-gray-700" data-i18n="nav_accueil">Accueil</a>
+      <a href="about.html" class="nav-link text-gray-700" data-i18n="nav_apropos">À propos</a>
+      <a href="services.html" class="nav-link text-gray-700" data-i18n="nav_services">Services</a>
+      <a href="tarifs.html" class="nav-link text-gray-700" data-i18n="nav_tarifs">Tarifs</a>
+      <a href="conseils.html" class="nav-link text-gray-700" data-i18n="nav_conseils">Conseils</a>
+      <a href="contact.html" class="nav-link text-gray-700" data-i18n="nav_contact">Contact</a>
+      <a href="rdv.html" class="btn-primary text-white px-4 py-2 rounded-full shadow-lg" data-i18n="nav_rdv">RDV</a>
     </nav>
     <!-- Burger -->
-    <button id="burger" class="md:hidden flex flex-col gap-1" aria-label="Menu mobile">
-      <span class="w-6 h-1 bg-cyan-700 rounded transition-all"></span>
-      <span class="w-6 h-1 bg-cyan-700 rounded transition-all"></span>
-      <span class="w-6 h-1 bg-cyan-700 rounded transition-all"></span>
+    <button id="burger" class="md:hidden flex flex-col gap-1 ml-4" aria-label="Menu mobile">
+      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
+      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
+      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
     </button>
   </div>
   <!-- Mobile Nav -->
-  <nav id="mobile-nav" class="fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex-col items-center justify-center gap-6 sm:gap-8 font-medium text-xl sm:text-2xl hidden transition-all">
-    <div class="flex flex-col items-center justify-center h-full w-full gap-6 sm:gap-8">
-      <a href="index.html" data-i18n="nav_accueil" class="mobile-link">Accueil</a>
-      <a href="about.html" data-i18n="nav_apropos" class="mobile-link">À propos</a>
-      <a href="services.html" data-i18n="nav_services" class="mobile-link">Services</a>
-      <a href="tarifs.html" data-i18n="nav_tarifs" class="mobile-link">Tarifs</a>
-      <a href="conseils.html" data-i18n="nav_conseils" class="mobile-link">Conseils</a>
-      <a href="contact.html" data-i18n="nav_contact" class="mobile-link">Contact</a>
-      <a href="rdv.html" class="bg-cyan-600 text-white px-6 py-2 rounded-full mobile-link hover:bg-cyan-700 transition" data-i18n="nav_rdv">RDV</a>
-      <button id="close-mobile-nav" class="mt-6 sm:mt-10 text-cyan-700 text-3xl sm:text-4xl" aria-label="Fermer le menu">✕</button>
+  <nav id="mobile-nav" class="fixed top-0 left-0 w-full h-full bg-white/95 backdrop-blur-lg z-50 flex-col items-center justify-center gap-8 font-medium text-2xl hidden transition-all">
+    <div class="flex flex-col items-center justify-center h-full w-full gap-8">
+      <a href="index.html" data-i18n="nav_accueil" class="mobile-link text-gray-700 hover:text-cyan-700 transition">Accueil</a>
+      <a href="about.html" data-i18n="nav_apropos" class="mobile-link text-gray-700 hover:text-cyan-700 transition">À propos</a>
+      <a href="services.html" data-i18n="nav_services" class="mobile-link text-gray-700 hover:text-cyan-700 transition">Services</a>
+      <a href="tarifs.html" data-i18n="nav_tarifs" class="mobile-link text-gray-700 hover:text-cyan-700 transition">Tarifs</a>
+      <a href="conseils.html" data-i18n="nav_conseils" class="mobile-link text-gray-700 hover:text-cyan-700 transition">Conseils</a>
+      <a href="contact.html" data-i18n="nav_contact" class="mobile-link text-gray-700 hover:text-cyan-700 transition">Contact</a>
+      <a href="rdv.html" class="btn-primary text-white px-4 py-2 rounded-full shadow-lg mobile-link" data-i18n="nav_rdv">RDV</a>
+      <button id="close-mobile-nav" class="mt-10 text-cyan-700 text-4xl hover:text-cyan-800 transition" aria-label="Fermer le menu">✕</button>
     </div>
   </nav>
 </header>
 
-<section class="max-w-5xl mx-auto p-4 sm:p-10">
-  <h1 class="text-2xl sm:text-4xl font-bold text-cyan-700 mb-4 sm:mb-6 text-center" data-i18n="conseils_title">Conseils pour vos analyses</h1>
-  <p class="mb-6 sm:mb-8 text-center text-sm sm:text-lg text-gray-700" data-i18n="conseils_intro">
-    Suivez ces recommandations pour garantir la fiabilité de vos résultats et votre confort lors du prélèvement.
-  </p>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
-    <div class="flex gap-3 sm:gap-4 items-start bg-white/70 rounded-2xl shadow p-4 sm:p-6 mb-2 sm:mb-4">
-      <img src="https://img.icons8.com/color/48/000000/no-eating.png" class="h-10 sm:h-12 mt-1 flex-shrink-0" alt="À jeun">
-      <div>
-        <h2 class="font-bold text-cyan-700 mb-1 text-sm sm:text-base" data-i18n="conseil1">Être à jeun</h2>
-        <p class="text-gray-700 text-xs sm:text-sm" data-i18n="conseil1_desc">Pour certaines analyses (glycémie, bilan lipidique…), il est nécessaire d'être à jeun 8 à 12h avant le prélèvement.</p>
+<section class="max-w-6xl mx-auto p-6 sm:p-12" data-aos="fade-up">
+  <div class="text-center mb-16" data-aos="zoom-in">
+    <h1 class="text-4xl sm:text-5xl font-bold text-cyan-700 mb-6" data-i18n="conseils_title">Conseils pour vos analyses</h1>
+    <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="conseils_intro">
+      Suivez ces recommandations pour garantir la fiabilité de vos résultats et votre confort lors du prélèvement.
+    </p>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="glass-card p-8 rounded-3xl hover:scale-105 transition-all duration-300" data-aos="fade-right" data-aos-delay="100">
+      <div class="flex items-start gap-6">
+        <img src="https://img.icons8.com/color/64/000000/no-eating.png" class="h-16 w-16 mt-1 flex-shrink-0" alt="À jeun">
+        <div>
+          <h2 class="font-bold text-2xl text-cyan-700 mb-4" data-i18n="conseil1">Être à jeun</h2>
+          <p class="text-gray-600 text-lg leading-relaxed" data-i18n="conseil1_desc">Pour certaines analyses (glycémie, bilan lipidique…), il est nécessaire d'être à jeun 8 à 12h avant le prélèvement.</p>
+        </div>
       </div>
     </div>
-    <div class="flex gap-3 sm:gap-4 items-start bg-white/70 rounded-2xl shadow p-4 sm:p-6 mb-2 sm:mb-4">
-      <img src="https://img.icons8.com/color/48/000000/water-bottle.png" class="h-10 sm:h-12 mt-1 flex-shrink-0" alt="Hydratation">
-      <div>
-        <h2 class="font-bold text-cyan-700 mb-1 text-sm sm:text-base" data-i18n="conseil2">Bien s'hydrater</h2>
-        <p class="text-gray-700 text-xs sm:text-sm" data-i18n="conseil2_desc">Buvez de l'eau avant la prise de sang pour faciliter le prélèvement.</p>
+    
+    <div class="glass-card p-8 rounded-3xl hover:scale-105 transition-all duration-300" data-aos="fade-left" data-aos-delay="200">
+      <div class="flex items-start gap-6">
+        <img src="https://img.icons8.com/color/64/000000/water-bottle.png" class="h-16 w-16 mt-1 flex-shrink-0" alt="Hydratation">
+        <div>
+          <h2 class="font-bold text-2xl text-cyan-700 mb-4" data-i18n="conseil2">Bien s'hydrater</h2>
+          <p class="text-gray-600 text-lg leading-relaxed" data-i18n="conseil2_desc">Buvez de l'eau avant la prise de sang pour faciliter le prélèvement.</p>
+        </div>
       </div>
     </div>
-    <div class="flex gap-3 sm:gap-4 items-start bg-white/70 rounded-2xl shadow p-4 sm:p-6 mb-2 sm:mb-4">
-      <img src="https://img.icons8.com/color/48/000000/clock--v1.png" class="h-10 sm:h-12 mt-1 flex-shrink-0" alt="Ponctualité">
-      <div>
-        <h2 class="font-bold text-cyan-700 mb-1 text-sm sm:text-base" data-i18n="conseil3">Respecter l'horaire</h2>
-        <p class="text-gray-700 text-xs sm:text-sm" data-i18n="conseil3_desc">Arrivez à l'heure convenue pour garantir la qualité de l'accueil et la rapidité du service.</p>
+    
+    <div class="glass-card p-8 rounded-3xl hover:scale-105 transition-all duration-300" data-aos="fade-right" data-aos-delay="300">
+      <div class="flex items-start gap-6">
+        <img src="https://img.icons8.com/color/64/000000/clock--v1.png" class="h-16 w-16 mt-1 flex-shrink-0" alt="Ponctualité">
+        <div>
+          <h2 class="font-bold text-2xl text-cyan-700 mb-4" data-i18n="conseil3">Respecter l'horaire</h2>
+          <p class="text-gray-600 text-lg leading-relaxed" data-i18n="conseil3_desc">Arrivez à l'heure convenue pour garantir la qualité de l'accueil et la rapidité du service.</p>
+        </div>
       </div>
     </div>
-    <div class="flex gap-3 sm:gap-4 items-start bg-white/70 rounded-2xl shadow p-4 sm:p-6 mb-2 sm:mb-4">
-      <img src="https://img.icons8.com/color/48/000000/medicine.png" class="h-10 sm:h-12 mt-1 flex-shrink-0" alt="Traitement">
-      <div>
-        <h2 class="font-bold text-cyan-700 mb-1 text-sm sm:text-base" data-i18n="conseil4">Informer sur vos traitements</h2>
-        <p class="text-gray-700" data-i18n="conseil4_desc">Signalez au laboratoire tout traitement en cours ou pathologie particulière.</p>
+    
+    <div class="glass-card p-8 rounded-3xl hover:scale-105 transition-all duration-300" data-aos="fade-left" data-aos-delay="400">
+      <div class="flex items-start gap-6">
+        <img src="https://img.icons8.com/color/64/000000/medicine.png" class="h-16 w-16 mt-1 flex-shrink-0" alt="Traitement">
+        <div>
+          <h2 class="font-bold text-2xl text-cyan-700 mb-4" data-i18n="conseil4">Informer sur vos traitements</h2>
+          <p class="text-gray-600 text-lg leading-relaxed" data-i18n="conseil4_desc">Signalez au laboratoire tout traitement en cours ou pathologie particulière.</p>
+        </div>
       </div>
+    </div>
+  </div>
+  
+  <!-- Call to action -->
+  <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="500">
+    <div class="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white p-8 rounded-3xl shadow-2xl">
+      <h3 class="text-2xl font-bold mb-4">Prêt pour votre analyse ?</h3>
+      <p class="text-lg mb-6 opacity-90">Réservez votre rendez-vous en ligne pour un service rapide et personnalisé.</p>
+      <a href="rdv.html" class="btn-primary text-white px-8 py-4 rounded-full shadow-lg text-lg font-semibold">Prendre rendez-vous</a>
     </div>
   </div>
 </section>
@@ -148,11 +202,7 @@
   </div>
 </footer>
 
-<style>
-.glass-card {
-  @apply bg-white/50 backdrop-blur p-6 rounded-2xl shadow text-center font-semibold;
-}
-</style>
+
 <style>
 @media (max-width: 768px) {
   .p-10 {
@@ -167,84 +217,6 @@
 }
 </style>
 </style>
-<script>
-// Burger menu
-const burger = document.getElementById('burger');
-const mobileNav = document.getElementById('mobile-nav');
-const closeMobileNav = document.getElementById('close-mobile-nav');
-burger.addEventListener('click', () => {
-  mobileNav.classList.remove('hidden');
-});
-closeMobileNav.addEventListener('click', () => {
-  mobileNav.classList.add('hidden');
-});
-
-
-// Multilingue (FR/AR) enrichi
-const translations = {
-  fr: {
-    nav_accueil: 'Accueil',
-    nav_apropos: 'À propos',
-    nav_services: 'Services',
-    nav_tarifs: 'Tarifs',
-    nav_conseils: 'Conseils',
-    nav_contact: 'Contact',
-    nav_rdv: 'RDV',
-    site_title: 'Laboratoire Le Colisée',
-    footer: '© 2026 Laboratoire Le Colisée – Tous droits réservés',
-    conseils_title: 'Conseils pour vos analyses',
-    conseils_intro: 'Suivez ces recommandations pour garantir la fiabilité de vos résultats et votre confort lors du prélèvement.',
-    conseil1: 'Être à jeun',
-    conseil1_desc: 'Pour certaines analyses (glycémie, bilan lipidique…), il est nécessaire d’être à jeun 8 à 12h avant le prélèvement.',
-    conseil2: 'Bien s’hydrater',
-    conseil2_desc: 'Buvez de l’eau avant la prise de sang pour faciliter le prélèvement.',
-    conseil3: 'Respecter l’horaire',
-    conseil3_desc: 'Arrivez à l’heure convenue pour garantir la qualité de l’accueil et la rapidité du service.',
-    conseil4: 'Informer sur vos traitements',
-    conseil4_desc: 'Signalez au laboratoire tout traitement en cours ou pathologie particulière.',
-  },
-  ar: {
-    nav_accueil: 'الرئيسية',
-    nav_apropos: 'من نحن',
-    nav_services: 'الخدمات',
-    nav_tarifs: 'الأسعار',
-    nav_conseils: 'نصائح',
-    nav_contact: 'اتصل بنا',
-    nav_rdv: 'موعد',
-    site_title: 'مختبر الكوليسي',
-    footer: '© 2026 مختبر الكوليسي – جميع الحقوق محفوظة',
-    conseils_title: 'نصائح قبل التحاليل',
-    conseils_intro: 'اتبعوا هذه التوصيات لضمان دقة النتائج وراحتكم أثناء أخذ العينة.',
-    conseil1: 'الصيام',
-    conseil1_desc: 'لبعض التحاليل (السكر، الدهون...) يجب الصيام 8 إلى 12 ساعة قبل أخذ العينة.',
-    conseil2: 'شرب الماء',
-    conseil2_desc: 'اشربوا الماء قبل التحليل لتسهيل أخذ العينة.',
-    conseil3: 'احترام الموعد',
-    conseil3_desc: 'احضروا في الوقت المحدد لضمان جودة الاستقبال وسرعة الخدمة.',
-    conseil4: 'إبلاغنا بالعلاجات',
-    conseil4_desc: 'يرجى إبلاغ المختبر بأي علاج أو حالة صحية خاصة.',
-  }
-};
-function setLang(lang) {
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    el.textContent = translations[lang][key];
-  });
-  document.getElementById('site-title').textContent = translations[lang].site_title;
-  document.getElementById('footer-text').textContent = translations[lang].footer;
-  document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
-}
-document.getElementById('lang-fr').onclick = () => setLang('fr');
-document.getElementById('lang-ar').onclick = () => setLang('ar');
-
-// Animation douce (fade-in)
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('section, .glass-card').forEach(el => {
-    el.style.opacity = 0;
-    el.style.transition = 'opacity 1s';
-    setTimeout(() => { el.style.opacity = 1; }, 200);
-  });
-});
-</script>
+  <script src="./assets/js/main.js"></script>
 </body>
 </html>
