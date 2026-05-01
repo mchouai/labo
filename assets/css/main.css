@@ -14,7 +14,29 @@
 
 /* Intro overlay rideau (curtain) animation */
 @media (prefers-reduced-motion: reduce) {
-  #intro-logo, .curtain { animation: none !important; transition: none !important; }
+  #intro-overlay,
+  #logo-overlay,
+  #intro-logo,
+  .curtain {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+.content-hidden {
+  overflow: hidden;
 }
 
 /* Keep overlays visible during intro: support both intro-overlay and logo-overlay */
@@ -38,52 +60,180 @@ section {
 /* Floating WhatsApp button styles if injected by JS */
 #floating-whatsapp {
   backdrop-filter: blur(6px);
+  overflow: hidden;
 }
 
-#intro-overlay {
+#floating-whatsapp img {
+  width: 3.25rem;
+  height: 3.25rem;
+  display: block;
+}
+
+#intro-overlay,
+#logo-overlay {
   position: fixed;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg,#ffffff,#e6f9fb);
+  background: linear-gradient(135deg, #ecfeff 0%, #06b6d4 48%, #0f766e 100%);
   z-index: 9999;
   overflow: hidden;
+  transform: translateY(-100%);
+  will-change: transform, opacity;
+}
+
+#intro-overlay > *,
+#logo-overlay > * {
+  display: none !important;
+}
+
+#intro-overlay::before,
+#logo-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.36), transparent 28%),
+    linear-gradient(115deg, transparent 0 38%, rgba(255, 255, 255, 0.34) 45%, transparent 54% 100%);
+  transform: translateX(-28%);
+  animation: introSheen 680ms ease-out forwards;
 }
 
 .curtain {
+  display: none;
+}
+
+#intro-overlay.closing,
+#logo-overlay.closing {
+  animation: curtainDropIn 260ms cubic-bezier(.22, .9, .28, 1) forwards;
+}
+
+#intro-overlay.opening,
+#logo-overlay.opening {
+  animation: curtainDropOut 340ms cubic-bezier(.65, 0, .35, 1) forwards;
+}
+
+@keyframes curtainDropIn {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes curtainDropOut {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(100%); opacity: 1; }
+}
+
+@keyframes introSheen {
+  from { transform: translateX(-34%); opacity: 0.75; }
+  to { transform: translateX(34%); opacity: 0.35; }
+}
+
+/* Shared transparent header and mobile sidebar */
+.site-header {
   position: absolute;
+  top: 0;
   left: 0;
-  right: 0;
-  height: 50%;
-  background: linear-gradient(180deg, #22d3ee, #06b6d4);
-  z-index: 10000;
+  width: 100%;
+  background: transparent;
+  z-index: 50;
 }
 
-#curtain-top { top: 0; transform: translateY(-100%); }
-#curtain-bottom { bottom: 0; transform: translateY(100%); }
-
-/* Closing (top -> center, bottom -> center) */
-.closing #curtain-top { animation: curtainCloseTop 700ms cubic-bezier(.2,.9,.3,1) forwards; }
-.closing #curtain-bottom { animation: curtainCloseBottom 700ms cubic-bezier(.2,.9,.3,1) forwards; }
-/* Opening (center -> top, center -> bottom) */
-.opening #curtain-top { animation: curtainOpenTop 700ms cubic-bezier(.2,.9,.3,1) forwards; }
-.opening #curtain-bottom { animation: curtainOpenBottom 700ms cubic-bezier(.2,.9,.3,1) forwards; }
-
-@keyframes curtainCloseTop { to { transform: translateY(0%); } }
-@keyframes curtainCloseBottom { to { transform: translateY(0%); } }
-@keyframes curtainOpenTop { to { transform: translateY(-100%); } }
-@keyframes curtainOpenBottom { to { transform: translateY(100%); } }
-
-#intro-logo {
-  width: 160px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-  z-index: 10001;
-  transition: transform 300ms ease, opacity 300ms ease;
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 6.5rem;
+  background: linear-gradient(180deg, rgba(15, 118, 110, 0.36), rgba(15, 118, 110, 0));
+  pointer-events: none;
 }
-.closing #intro-logo { transform: scale(1.05); }
+
+.site-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+.site-header-inner {
+  padding: 0.75rem 1rem;
+}
+
+.site-title,
+.site-header #main-nav a {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(15, 23, 42, 0.28);
+}
+
+.site-logo {
+  filter: drop-shadow(0 8px 16px rgba(8, 47, 73, 0.34)) drop-shadow(0 1px 2px rgba(255, 255, 255, 0.55));
+  transform-origin: left center;
+}
+
+#mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(18rem, 86vw);
+  max-width: 100%;
+  background: rgba(17, 94, 89, 0.98);
+  color: #fff;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 240ms ease, opacity 240ms ease, visibility 240ms ease;
+  box-shadow: 24px 0 48px rgba(15, 23, 42, 0.22);
+}
+
+#mobile-nav.show {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+#mobile-nav a,
+#mobile-nav button {
+  color: inherit;
+}
+
+#mobile-nav > div:first-child {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+#mobile-nav > div:first-child span {
+  color: #fff;
+}
+
+#mobile-nav a {
+  border-radius: 0.75rem;
+  margin: 0 0.75rem;
+}
+
+#mobile-nav a:hover,
+#mobile-nav button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+#mobile-nav .border-t {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+#close-mobile-nav {
+  font-size: 2rem;
+  color: #a5f3fc;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+body > .site-header + section {
+  padding-top: 7rem;
+}
 
 /* Custom styles for modern design */
 .glass-card {
@@ -94,7 +244,11 @@ section {
 }
 
 .hero-text-shadow {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 4px 18px rgba(8, 47, 73, 0.72);
+}
+
+.hero-copy-shadow {
+  text-shadow: 0 2px 12px rgba(8, 47, 73, 0.68);
 }
 
 .btn-primary {
@@ -113,6 +267,10 @@ section {
 
 .nav-link:hover {
   color: var(--primary-cyan);
+}
+
+.site-header #main-nav a:hover {
+  color: #a5f3fc;
 }
 
 .section-bg {
@@ -145,8 +303,34 @@ section {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .site-header-inner {
+    padding: 0.65rem 1rem;
+  }
+
+  .site-title {
+    max-width: 13rem;
+    font-size: 1.15rem;
+    line-height: 1.2;
+  }
+
+  .site-logo {
+    height: 4.25rem;
+  }
+
+  body > .site-header + section {
+    padding-top: 7.25rem !important;
+  }
+
+  .p-10 {
+    padding: 1.25rem !important;
+  }
+
+  h1 {
+    line-height: 1.15;
+  }
+
   .glass-card {
-    margin: 0.5rem;
+    margin: 0;
   }
 
   .btn-primary {
@@ -164,6 +348,15 @@ section {
 }
 
 @media (max-width: 640px) {
+  .site-title {
+    max-width: 11rem;
+    font-size: 1.05rem;
+  }
+
+  #mobile-nav {
+    width: min(17rem, 88vw);
+  }
+
   .hero-text-shadow {
     font-size: 1.5rem;
   }
