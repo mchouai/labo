@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,7 +6,7 @@
   <title>Conseils - Laboratoire Le Colisée</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Conseils pour vos analyses médicales au Laboratoire Le Colisée. Préparation optimale pour des résultats fiables." />
-  <link rel="icon" href="./assets/img/logo.jpg" type="image/jpg" />
+  <link rel="icon" href="./assets/img/logo-transparent.png" type="image/png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -38,49 +38,59 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-cyan-50 to-white text-gray-800 font-sans">
+<body class="bg-gradient-to-br from-cyan-50 to-white text-gray-800 content-hidden font-sans">
+
+<!-- LOGO ANIMATION OVERLAY -->
+<div id="logo-overlay" aria-hidden="true"></div>
 
 <!-- HEADER -->
-<header class="sticky top-0 bg-white/80 backdrop-blur-lg shadow-lg z-50 border-b border-cyan-100">
-  <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+<header class="site-header">
+  <div class="max-w-7xl mx-auto flex items-center justify-between site-header-inner">
     <div class="flex items-center gap-4">
-      <img src="./assets/img/logo.jpg" class="h-16 w-auto drop-shadow-lg rounded-lg border-2 border-cyan-200 transition-transform hover:scale-105" alt="logo">
-      <span class="font-bold text-2xl text-cyan-700" id="site-title">Laboratoire Le Colisée</span>
+      <img src="./assets/img/logo-transparent.png" class="site-logo h-16 sm:h-20 w-auto transition-transform hover:scale-105" alt="logo">
+      <!-- <span class="site-title font-bold text-2xl sm:text-3xl" id="site-title">Laboratoire Le Colisée</span> -->
     </div>
-    <!-- Lang Switcher -->
     <div class="flex items-center gap-4">
-      <button id="lang-fr" class="lang-btn font-bold text-cyan-700 hover:text-cyan-800 transition">FR</button>
-      <span>|</span>
-      <button id="lang-ar" class="lang-btn hover:text-cyan-700 transition">AR</button>
+      <nav class="hidden md:flex gap-6 font-medium" id="main-nav">
+        <a href="index.html" class="nav-link" data-i18n="nav_accueil">Accueil</a>
+        <a href="about.html" class="nav-link" data-i18n="nav_apropos">À propos</a>
+        <a href="services.html" class="nav-link" data-i18n="nav_services">Services</a>
+        <a href="tarifs.html" class="nav-link" data-i18n="nav_tarifs">Tarifs</a>
+        <a href="conseils.html" class="nav-link" data-i18n="nav_conseils">Conseils</a>
+        <a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a>
+      </nav>
+      <a href="rdv.html" class="hidden md:inline-flex btn-primary text-white px-4 py-2 rounded-full shadow-lg" data-i18n="nav_rdv">RDV</a>
+      <div class="relative hidden md:block">
+        <button id="lang-toggle" class="flex items-center justify-center w-11 h-11 rounded-full bg-cyan-600 text-white hover:bg-cyan-700 transition shadow-lg" title="Changer de langue">
+          <span class="text-lg">🌐</span>
+        </button>
+        <div id="lang-menu" class="hidden absolute right-0 mt-2 w-40 rounded-xl bg-white shadow-xl ring-1 ring-black ring-opacity-5">
+          <button id="lang-fr" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">🇫🇷 FR</button>
+          <button id="lang-ar" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">🇸🇦 AR</button>
+        </div>
+      </div>
+      <button id="burger" class="md:hidden flex flex-col gap-1 ml-2" aria-label="Menu mobile">
+        <span class="w-7 h-1 bg-white rounded transition-all shadow"></span>
+        <span class="w-7 h-1 bg-white rounded transition-all shadow"></span>
+        <span class="w-7 h-1 bg-white rounded transition-all shadow"></span>
+      </button>
     </div>
-    <!-- Desktop Nav -->
-    <nav class="hidden md:flex gap-6 font-medium" id="main-nav">
-      <a href="index.html" class="nav-link text-gray-700" data-i18n="nav_accueil">Accueil</a>
-      <a href="about.html" class="nav-link text-gray-700" data-i18n="nav_apropos">À propos</a>
-      <a href="services.html" class="nav-link text-gray-700" data-i18n="nav_services">Services</a>
-      <a href="tarifs.html" class="nav-link text-gray-700" data-i18n="nav_tarifs">Tarifs</a>
-      <a href="conseils.html" class="nav-link text-gray-700" data-i18n="nav_conseils">Conseils</a>
-      <a href="contact.html" class="nav-link text-gray-700" data-i18n="nav_contact">Contact</a>
-      <a href="rdv.html" class="btn-primary text-white px-4 py-2 rounded-full shadow-lg" data-i18n="nav_rdv">RDV</a>
-    </nav>
-    <!-- Burger -->
-    <button id="burger" class="md:hidden flex flex-col gap-1 ml-4" aria-label="Menu mobile">
-      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
-      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
-      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
-    </button>
   </div>
-  <!-- Mobile Nav -->
-  <nav id="mobile-nav" class="fixed top-0 left-0 w-full h-full bg-white/95 backdrop-blur-lg z-50 flex-col items-center justify-center gap-8 font-medium text-2xl hidden transition-all">
-    <div class="flex flex-col items-center justify-center h-full w-full gap-8">
-      <a href="index.html" data-i18n="nav_accueil" class="mobile-link text-gray-700 hover:text-cyan-700 transition">Accueil</a>
-      <a href="about.html" data-i18n="nav_apropos" class="mobile-link text-gray-700 hover:text-cyan-700 transition">À propos</a>
-      <a href="services.html" data-i18n="nav_services" class="mobile-link text-gray-700 hover:text-cyan-700 transition">Services</a>
-      <a href="tarifs.html" data-i18n="nav_tarifs" class="mobile-link text-gray-700 hover:text-cyan-700 transition">Tarifs</a>
-      <a href="conseils.html" data-i18n="nav_conseils" class="mobile-link text-gray-700 hover:text-cyan-700 transition">Conseils</a>
-      <a href="contact.html" data-i18n="nav_contact" class="mobile-link text-gray-700 hover:text-cyan-700 transition">Contact</a>
-      <a href="rdv.html" class="btn-primary text-white px-4 py-2 rounded-full shadow-lg mobile-link" data-i18n="nav_rdv">RDV</a>
-      <button id="close-mobile-nav" class="mt-10 text-cyan-700 text-4xl hover:text-cyan-800 transition" aria-label="Fermer le menu">✕</button>
+  <nav id="mobile-nav" class="fixed top-0 left-0 bottom-0 w-72 max-w-full bg-white/95 backdrop-blur-lg z-50 flex-col justify-start gap-6 font-medium text-xl hidden transition-all overflow-y-auto">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+      <span class="font-bold text-cyan-700 text-lg">Menu</span>
+      <button id="close-mobile-nav" class="text-cyan-700 text-3xl" aria-label="Fermer le menu">✕</button>
+    </div>
+    <a href="index.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_accueil">Accueil</a>
+    <a href="about.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_apropos">À propos</a>
+    <a href="services.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_services">Services</a>
+    <a href="tarifs.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_tarifs">Tarifs</a>
+    <a href="conseils.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_conseils">Conseils</a>
+    <a href="contact.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_contact">Contact</a>
+    <a href="rdv.html" class="bg-cyan-600 text-white px-6 py-3 rounded-full mx-6 text-center hover:bg-cyan-700 transition" data-i18n="nav_rdv">RDV</a>
+    <div class="px-6 pb-6 border-t border-gray-200">
+      <button id="lang-fr-mobile" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">🇫🇷 FR</button>
+      <button id="lang-ar-mobile" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">🇸🇦 AR</button>
     </div>
   </nav>
 </header>
@@ -215,7 +225,6 @@
     grid-template-columns: 1fr !important;
   }
 }
-</style>
 </style>
   <script src="./assets/js/main.js"></script>
 </body>

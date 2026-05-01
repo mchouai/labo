@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,53 +13,57 @@
 <body class="bg-gradient-to-br from-cyan-50 to-white text-gray-800 content-hidden">
 
 <!-- LOGO ANIMATION OVERLAY -->
-<div id="logo-overlay" class="fixed inset-0 z-[100] bg-gradient-to-br from-cyan-600 to-cyan-800 flex items-center justify-center">
-  <div class="text-center">
-    <img src="./assets/img/logo.jpg" class="h-32 w-auto mb-8 drop-shadow-2xl rounded-lg border-4 border-white/20" alt="logo">
-    <div class="text-white text-2xl font-bold">Laboratoire Le Colisée</div>
-  </div>
-</div>
+<div id="logo-overlay" aria-hidden="true"></div>
 
 <!-- HEADER -->
-<header class="sticky top-0 bg-white/70 backdrop-blur shadow z-50">
-  <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+<header class="site-header">
+  <div class="max-w-7xl mx-auto flex items-center justify-between site-header-inner">
     <div class="flex items-center gap-4">
-      <img src="./assets/img/logo.jpg" class="h-16 w-auto drop-shadow-lg rounded-lg border-2 border-cyan-200" alt="logo">
-      <span class="font-bold text-2xl text-cyan-700" id="site-title">Laboratoire Le Colisée</span>
+      <img src="./assets/img/logo-transparent.png" class="site-logo h-16 sm:h-20 w-auto transition-transform hover:scale-105" alt="logo">
+      <!-- <span class="site-title font-bold text-2xl sm:text-3xl" id="site-title">Laboratoire Le Colisée</span> -->
     </div>
-    <!-- Lang Switcher -->
     <div class="flex items-center gap-4">
-      <button id="lang-fr" class="lang-btn font-bold text-cyan-700">FR</button>
-      <span>|</span>
-      <button id="lang-ar" class="lang-btn">AR</button>
+      <nav class="hidden md:flex gap-6 font-medium" id="main-nav">
+        <a href="index.html" class="nav-link" data-i18n="nav_accueil">Accueil</a>
+        <a href="about.html" class="nav-link" data-i18n="nav_apropos">À propos</a>
+        <a href="services.html" class="nav-link" data-i18n="nav_services">Services</a>
+        <a href="tarifs.html" class="nav-link" data-i18n="nav_tarifs">Tarifs</a>
+        <a href="conseils.html" class="nav-link" data-i18n="nav_conseils">Conseils</a>
+        <a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a>
+      </nav>
+      <a href="rdv.html" class="hidden md:inline-flex btn-primary text-white px-4 py-2 rounded-full shadow-lg" data-i18n="nav_rdv">RDV</a>
+      <div class="relative hidden md:block">
+        <button id="lang-toggle" class="flex items-center justify-center w-11 h-11 rounded-full bg-cyan-600 text-white hover:bg-cyan-700 transition shadow-lg" title="Changer de langue">
+          <span class="text-lg">🌐</span>
+        </button>
+        <div id="lang-menu" class="hidden absolute right-0 mt-2 w-40 rounded-xl bg-white shadow-xl ring-1 ring-black ring-opacity-5">
+          <button id="lang-fr" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">🇫🇷 FR</button>
+          <button id="lang-ar" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">🇸🇦 AR</button>
+        </div>
+      </div>
+      <button id="burger" class="md:hidden flex flex-col gap-1 ml-2" aria-label="Menu mobile">
+        <span class="w-7 h-1 bg-white rounded transition-all shadow"></span>
+        <span class="w-7 h-1 bg-white rounded transition-all shadow"></span>
+        <span class="w-7 h-1 bg-white rounded transition-all shadow"></span>
+      </button>
     </div>
-    <!-- Desktop Nav -->
-    <nav class="hidden md:flex gap-6 font-medium" id="main-nav">
-      <a href="index.html" data-i18n="nav_accueil">Accueil</a>
-      <a href="about.html" data-i18n="nav_apropos">À propos</a>
-      <a href="services.html" data-i18n="nav_services">Services</a>
-      <a href="tarifs.html" data-i18n="nav_tarifs">Tarifs</a>
-      <a href="conseils.html" data-i18n="nav_conseils">Conseils</a>
-      <a href="contact.html" data-i18n="nav_contact">Contact</a>
-      <a href="rdv.html" class="bg-cyan-600 text-white px-4 py-2 rounded-full" data-i18n="nav_rdv">RDV</a>
-    </nav>
-    <!-- Burger -->
-    <button id="burger" class="md:hidden flex flex-col gap-1 ml-4" aria-label="Menu mobile">
-      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
-      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
-      <span class="w-7 h-1 bg-cyan-700 rounded transition-all"></span>
-    </button>
   </div>
-  <!-- Mobile Nav -->
-  <nav id="mobile-nav" class="fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex-col items-center justify-center gap-8 font-medium text-2xl hidden transition-all">
-    <a href="index.html" data-i18n="nav_accueil">Accueil</a>
-    <a href="about.html" data-i18n="nav_apropos">À propos</a>
-    <a href="services.html" data-i18n="nav_services">Services</a>
-    <a href="tarifs.html" data-i18n="nav_tarifs">Tarifs</a>
-    <a href="conseils.html" data-i18n="nav_conseils">Conseils</a>
-    <a href="contact.html" data-i18n="nav_contact">Contact</a>
-    <a href="rdv.html" class="bg-cyan-600 text-white px-4 py-2 rounded-full" data-i18n="nav_rdv">RDV</a>
-    <button id="close-mobile-nav" class="mt-10 text-cyan-700">✕</button>
+  <nav id="mobile-nav" class="fixed top-0 left-0 bottom-0 w-72 max-w-full bg-white/95 backdrop-blur-lg z-50 flex-col justify-start gap-6 font-medium text-xl hidden transition-all overflow-y-auto">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+      <span class="font-bold text-cyan-700 text-lg">Menu</span>
+      <button id="close-mobile-nav" class="text-cyan-700 text-3xl" aria-label="Fermer le menu">✕</button>
+    </div>
+    <a href="index.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_accueil">Accueil</a>
+    <a href="about.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_apropos">À propos</a>
+    <a href="services.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_services">Services</a>
+    <a href="tarifs.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_tarifs">Tarifs</a>
+    <a href="conseils.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_conseils">Conseils</a>
+    <a href="contact.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_contact">Contact</a>
+    <a href="rdv.html" class="bg-cyan-600 text-white px-6 py-3 rounded-full mx-6 text-center hover:bg-cyan-700 transition" data-i18n="nav_rdv">RDV</a>
+    <div class="px-6 pb-6 border-t border-gray-200">
+      <button id="lang-fr-mobile" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">🇫🇷 FR</button>
+      <button id="lang-ar-mobile" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">🇸🇦 AR</button>
+    </div>
   </nav>
 </header>
 
@@ -160,46 +164,6 @@
 
 
 <style>
-/* Logo Curtain Animation */
-#logo-overlay {
-  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
-  z-index: 100;
-}
-
-#logo-overlay.closing {
-  animation: closeCurtain 0.8s ease-in-out forwards;
-}
-
-#logo-overlay.opening {
-  animation: openCurtain 0.8s ease-in-out forwards;
-}
-
-@keyframes closeCurtain {
-  0% {
-    clip-path: inset(0 0 0 0);
-  }
-  50% {
-    clip-path: inset(0 0 50% 0);
-  }
-  100% {
-    clip-path: inset(50% 0 50% 0);
-  }
-}
-
-@keyframes openCurtain {
-  0% {
-    clip-path: inset(50% 0 50% 0);
-  }
-  100% {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-.content-hidden {
-  overflow: hidden;
-}
-</style>
-<style>
 @media (max-width: 768px) {
   table th, table td {
     padding: 0.5rem !important;
@@ -213,7 +177,6 @@
   }
 }
 </style>
-
   <script src="./assets/js/main.js"></script>
 </body>
 </html>
