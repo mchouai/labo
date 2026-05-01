@@ -29,8 +29,8 @@ class LaboApp {
     btn.target = '_blank';
     btn.rel = 'noopener noreferrer';
     btn.setAttribute('aria-label', 'WhatsApp');
-    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M20.52 3.48A11.79 11.79 0 0012 0C5.373 0 .013 4.85 0 11.1a11.47 11.47 0 001.69 5.6L0 24l7.62-1.98A11.78 11.78 0 0012 22c6.627 0 11.99-4.85 12-11.1 0-1.85-.5-3.6-1.48-5.42zM12 20.4c-1.17 0-2.33-.27-3.36-.78l-.24-.12-4.5 1.17 1.2-4.4-.15-.26A8.9 8.9 0 013.6 11.1c0-4.91 4.08-8.9 9.05-8.9 2.42 0 4.69.92 6.4 2.6a9.9 9.9 0 012.66 6.32c-.02 4.91-4.07 8.96-9.71 8.96zM17.1 14.1c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.44-1.34-1.68-.14-.24-.02-.36.1-.48.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.03-.3-.02-.42-.06-.12-.54-1.28-.74-1.74-.2-.46-.4-.4-.54-.4l-.46.01c-.14 0-.36.05-.55.26-.18.2-.7.68-.7 1.66s.72 1.92.82 2.06c.1.14 1.42 2.28 3.44 3.2 2.02.92 2.02.62 2.38.58.36-.04 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>';
-    btn.className = 'fixed z-50 right-4 bottom-4 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-105';
+    btn.innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="" aria-hidden="true">';
+    btn.className = 'fixed z-50 right-4 bottom-4 bg-transparent text-white p-0 rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-110';
 
     // Accessible label for small screens
     const sr = document.createElement('span');
@@ -41,16 +41,16 @@ class LaboApp {
     document.body.appendChild(btn);
   }
 
-  // Logo curtain animation
+  // Quick intro wipe animation
   setupLogoAnimation() {
     // Support both intro-overlay (index) and logo-overlay (other pages)
     const overlay = document.getElementById('intro-overlay') || document.getElementById('logo-overlay');
     if (!overlay) return;
 
-    // Shorter, professional sequence (ms)
-    const closeDur = 400;
-    const pauseDur = 300;
-    const openDur = 400;
+    // Fast top-to-bottom wipe sequence (ms)
+    const closeDur = 260;
+    const pauseDur = 110;
+    const openDur = 340;
 
     // Start closing animation
     overlay.classList.add('closing');
@@ -69,7 +69,7 @@ class LaboApp {
         if (overlay && overlay.parentNode) {
           overlay.parentNode.removeChild(overlay);
         }
-      }, 400);
+      }, 120);
     }, closeDur + pauseDur + openDur + 60);
   }
 
@@ -77,7 +77,7 @@ class LaboApp {
   setupAOS() {
     if (typeof AOS !== 'undefined') {
       AOS.init({
-        duration: 800,
+        duration: 500,
         once: true,
         offset: 100,
         easing: 'ease-out-cubic'
@@ -89,10 +89,10 @@ class LaboApp {
   setupFadeIn() {
     document.querySelectorAll('section, .glass-card').forEach((el, index) => {
       el.style.opacity = '0';
-      el.style.transition = 'opacity 1s ease-out';
+      el.style.transition = 'opacity 0.35s ease-out';
       setTimeout(() => {
         el.style.opacity = '1';
-      }, 200 + (index * 100));
+      }, 80);
     });
   }
 
@@ -167,21 +167,34 @@ class LaboApp {
 
     if (!burger || !mobileNav) return;
 
+    const closeMenu = () => {
+      mobileNav.classList.remove('show');
+      document.body.classList.remove('overflow-hidden');
+    };
+
     burger.addEventListener('click', () => {
       mobileNav.classList.remove('hidden');
+      requestAnimationFrame(() => mobileNav.classList.add('show'));
+      document.body.classList.add('overflow-hidden');
     });
 
     if (closeMobileNav) {
-      closeMobileNav.addEventListener('click', () => {
-        mobileNav.classList.add('hidden');
-      });
+      closeMobileNav.addEventListener('click', closeMenu);
     }
 
     // Close on outside click
     mobileNav.addEventListener('click', (e) => {
       if (e.target === mobileNav) {
-        mobileNav.classList.add('hidden');
+        closeMenu();
       }
+    });
+
+    mobileNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
     });
   }
 
@@ -218,8 +231,51 @@ class LaboApp {
       localStorage.setItem('preferred-language', lang);
     };
 
-    langFr.addEventListener('click', () => setLang('fr'));
-    langAr.addEventListener('click', () => setLang('ar'));
+    const langToggle = document.getElementById('lang-toggle');
+    const langMenu = document.getElementById('lang-menu');
+    const langFrMobile = document.getElementById('lang-fr-mobile');
+    const langArMobile = document.getElementById('lang-ar-mobile');
+
+    langFr.addEventListener('click', () => {
+      setLang('fr');
+      if (langMenu) langMenu.classList.add('hidden');
+    });
+    langAr.addEventListener('click', () => {
+      setLang('ar');
+      if (langMenu) langMenu.classList.add('hidden');
+    });
+
+    if (langFrMobile) {
+      langFrMobile.addEventListener('click', () => {
+        setLang('fr');
+        document.getElementById('mobile-nav')?.classList.remove('show');
+        document.body.classList.remove('overflow-hidden');
+      });
+    }
+    if (langArMobile) {
+      langArMobile.addEventListener('click', () => {
+        setLang('ar');
+        document.getElementById('mobile-nav')?.classList.remove('show');
+        document.body.classList.remove('overflow-hidden');
+      });
+    }
+
+    if (langToggle && langMenu) {
+      langToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langMenu.classList.toggle('hidden');
+      });
+
+      langMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+
+      document.addEventListener('click', () => {
+        if (langMenu && !langMenu.classList.contains('hidden')) {
+          langMenu.classList.add('hidden');
+        }
+      });
+    }
 
     // Load saved language preference
     const savedLang = localStorage.getItem('preferred-language') || 'fr';
@@ -310,12 +366,12 @@ class LaboApp {
         nav_rdv: 'RDV',
         site_title: 'Laboratoire Le Colisée',
         footer: '© 2026 Laboratoire Le Colisée – Tous droits réservés',
-        hero_title: 'Analyses médicales fiables et rapides',
-        hero_desc: 'Votre santé est notre priorité. Résultats précis, confidentialité totale et service professionnel.',
+        hero_title: 'Laboratoire Le Colisée d\'analyses médicales',
+        hero_desc: 'Laboratoire des analyses medicales à Marrakech',
         hero_li1: 'Laboratoire certifié ISO, résultats rapides',
         hero_li2: 'Personnel expérimenté et accueil chaleureux',
         hero_li3: 'Prélèvements à domicile disponibles',
-        btn_rdv: 'Prendre un rendez-vous',
+        btn_rdv: 'Préparer votre visite',
         services_title: 'Nos services',
         services_intro: 'Nous proposons une large gamme d\'analyses médicales, réalisées avec précision et confidentialité.',
         service1: 'Hématologie',
@@ -398,12 +454,12 @@ class LaboApp {
         nav_rdv: 'موعد',
         site_title: 'مختبر الكوليسي',
         footer: '© 2026 مختبر الكوليسي – جميع الحقوق محفوظة',
-        hero_title: 'تحاليل طبية موثوقة وسريعة',
-        hero_desc: 'صحتكم أولويتنا. نتائج دقيقة وسرية تامة وخدمة مهنية.',
+        hero_title: 'مختبر كوليزي للتحاليل الطبية',
+        hero_desc: 'مختبر كوليزي للتحاليل الطبية في مراكش',
         hero_li1: 'مختبر معتمد ISO ونتائج سريعة',
         hero_li2: 'طاقم ذو خبرة واستقبال دافئ',
         hero_li3: 'أخذ العينات متاح في المنزل',
-        btn_rdv: 'حجز موعد',
+        btn_rdv: 'تحضير زيارتك',
         services_title: 'خدماتنا',
         services_intro: 'نقدم مجموعة واسعة من التحاليل الطبية، منجزة بدقة وسرية.',
         service1: 'الدم',
