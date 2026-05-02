@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,17 +16,27 @@
 <div id="logo-overlay" aria-hidden="true"></div>
 
 <!-- HEADER -->
-<header class="site-header">
+<header class="site-header inner-header">
   <div class="max-w-7xl mx-auto flex items-center justify-between site-header-inner">
     <div class="flex items-center gap-4">
-      <img src="./assets/img/logo-transparent.png" class="site-logo h-16 sm:h-20 w-auto transition-transform hover:scale-105" alt="logo">
+      <img src="./assets/img/logovector.png" class="site-logo h-16 sm:h-20 w-auto transition-transform hover:scale-105" alt="logo">
       <!-- <span class="site-title font-bold text-2xl sm:text-3xl" id="site-title">Laboratoire Le Colisée</span> -->
     </div>
     <div class="flex items-center gap-4">
       <nav class="hidden md:flex gap-6 font-medium" id="main-nav">
         <a href="index.html" class="nav-link" data-i18n="nav_accueil">Accueil</a>
         <a href="about.html" class="nav-link" data-i18n="nav_apropos">À propos</a>
-        <a href="services.html" class="nav-link" data-i18n="nav_services">Services</a>
+                <div class="service-dropdown">
+          <a href="services.html" class="nav-link service-dropdown-trigger"><span data-i18n="nav_services">Services</span><span class="service-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="service-dropdown-menu">
+            <a href="services.html#analyses-routine" data-i18n="service_routine_title">Analyses de Routine</a>
+            <a href="services.html#bilan-sante" data-i18n="service_bilan_title">Bilan de Santé</a>
+            <a href="services.html#maladies-chroniques" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a>
+            <a href="services.html#depistage-prevention" data-i18n="service_prevention_title">Dépistages et Prévention</a>
+            <a href="services.html#sante-reproductive" data-i18n="service_reproductive_title">Santé Reproductive</a>
+            <a href="services.html#sante-sportive" data-i18n="service_sport_title">Santé Sportive</a>
+          </div>
+        </div>
         <a href="tarifs.html" class="nav-link" data-i18n="nav_tarifs">Tarifs</a>
         <a href="conseils.html" class="nav-link" data-i18n="nav_conseils">Conseils</a>
         <a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a>
@@ -37,8 +47,8 @@
           <span class="text-lg">🌐</span>
         </button>
         <div id="lang-menu" class="hidden absolute right-0 mt-2 w-40 rounded-xl bg-white shadow-xl ring-1 ring-black ring-opacity-5">
-          <button id="lang-fr" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">🇫🇷 FR</button>
-          <button id="lang-ar" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">🇸🇦 AR</button>
+          <button id="lang-fr" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">FR</button>
+          <button id="lang-ar" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">AR</button>
         </div>
       </div>
       <button id="burger" class="md:hidden flex flex-col gap-1 ml-2" aria-label="Menu mobile">
@@ -55,43 +65,141 @@
     </div>
     <a href="index.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_accueil">Accueil</a>
     <a href="about.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_apropos">À propos</a>
-    <a href="services.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_services">Services</a>
+    <button type="button" class="mobile-dropdown-toggle" aria-expanded="false"><span data-i18n="nav_services">Services</span><span class="mobile-dropdown-arrow" aria-hidden="true"></span></button>
+    <div class="mobile-dropdown-panel hidden">
+      <a href="services.html#analyses-routine" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_routine_title">Analyses de Routine</a>
+      <a href="services.html#bilan-sante" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_bilan_title">Bilan de Santé</a>
+      <a href="services.html#maladies-chroniques" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a>
+      <a href="services.html#depistage-prevention" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_prevention_title">Dépistages et Prévention</a>
+      <a href="services.html#sante-reproductive" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_reproductive_title">Santé Reproductive</a>
+      <a href="services.html#sante-sportive" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_sport_title">Santé Sportive</a>
+    
+    </div>
     <a href="tarifs.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_tarifs">Tarifs</a>
     <a href="conseils.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_conseils">Conseils</a>
     <a href="contact.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_contact">Contact</a>
     <a href="rdv.html" class="bg-cyan-600 text-white px-6 py-3 rounded-full mx-6 text-center hover:bg-cyan-700 transition" data-i18n="nav_rdv">RDV</a>
-    <div class="px-6 pb-6 border-t border-gray-200">
-      <button id="lang-fr-mobile" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">🇫🇷 FR</button>
-      <button id="lang-ar-mobile" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">🇸🇦 AR</button>
+    <div class="mobile-language-group">
+      <button type="button" class="mobile-dropdown-toggle" aria-expanded="false"><span data-i18n="nav_language">Langue</span><span class="mobile-dropdown-arrow" aria-hidden="true"></span></button>
+      <div class="mobile-dropdown-panel mobile-language-panel hidden">
+        <button id="lang-fr-mobile" type="button">FR</button>
+        <button id="lang-ar-mobile" type="button">AR</button>
+      </div>
     </div>
   </nav>
 </header>
 
-<section class="max-w-4xl mx-auto p-10">
-  <h1 class="text-4xl font-bold text-cyan-700 mb-6 text-center" data-i18n="contact_title" data-aos="fade-up">Contactez-nous</h1>
-  <div class="grid md:grid-cols-2 gap-8 mb-10" data-aos="fade-up" data-aos-delay="200">
-    <div class="glass-card flex flex-col gap-4 justify-center" data-aos="fade-right" data-aos-delay="300">
-      <h2 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="contact_info">Informations</h2>
-      <div class="flex items-center gap-2"><img src="https://img.icons8.com/color/48/000000/marker.png" class="h-6"> <span data-i18n="contact_address">123 Avenue des Sciences, Casablanca</span></div>
-      <div class="flex items-center gap-2"><img src="https://img.icons8.com/color/48/000000/phone.png" class="h-6"> <a href="tel:+212600000000" class="underline">+212 6 00 00 00 00</a></div>
-      <div class="flex items-center gap-2"><img src="https://img.icons8.com/color/48/000000/new-post.png" class="h-6"> <a href="mailto:contact@labo-colisee.ma" class="underline">contact@labo-colisee.ma</a></div>
-      <a href="https://wa.me/212600000000" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full shadow flex items-center gap-2 w-max transition-all hover:scale-105" id="whatsapp-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="h-6"> WhatsApp</a>
-      <div class="mt-4">
-        <iframe src="https://www.google.com/maps?q=Laboratoire+Le+Colisée,+Casablanca&output=embed" width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+  <div class="text-center mb-8 sm:mb-10" data-aos="fade-up">
+    <span class="inline-flex px-4 py-2 rounded-full bg-cyan-50 text-cyan-700 text-sm font-semibold mb-4" data-i18n="contact_kicker">Contact & accompagnement</span>
+    <h1 class="text-3xl sm:text-5xl font-bold text-cyan-700 mb-4" data-i18n="contact_title">Contactez-nous</h1>
+    <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed" data-i18n="contact_intro">Notre équipe vous répond pour vos rendez-vous, résultats, demandes administratives et informations pratiques.</p>
+  </div>
+
+  <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-6 sm:gap-8 items-start mb-8 sm:mb-10">
+    <div class="grid gap-5 sm:gap-6" data-aos="fade-right">
+      <article class="info-card bg-white rounded-2xl p-5 sm:p-7">
+        <h2 class="text-2xl font-bold text-cyan-700 mb-3" data-i18n="contact_info">Informations</h2>
+        <p class="text-gray-600 leading-relaxed mb-5" data-i18n="contact_info_desc">Pour une réponse efficace, indiquez votre nom, votre téléphone et l’objet de votre demande.</p>
+
+        <div class="grid gap-4">
+          <div class="flex gap-3 border-t border-cyan-100 pt-4">
+            <span class="feature-icon flex-shrink-0">📍</span>
+            <div>
+              <p class="font-semibold text-gray-900" data-i18n="address_label">Adresse:</p>
+              <p class="text-gray-600" data-i18n="contact_address">numéro 1A, Magasin rez-de-chaussée, Immeuble Koutoubia, Bd Mohamed Zerktouni, Marrakech 40000</p>
+            </div>
+          </div>
+          <div class="flex gap-3 border-t border-cyan-100 pt-4">
+            <span class="feature-icon flex-shrink-0">📞</span>
+            <div>
+              <p class="font-semibold text-gray-900" data-i18n="phone_label">Téléphone:</p>
+              <a href="tel:0524430071" class="text-cyan-700 font-semibold hover:text-cyan-900 transition">05 24 43 00 71</a>
+            </div>
+          </div>
+          <div class="flex gap-3 border-t border-cyan-100 pt-4">
+            <span class="feature-icon flex-shrink-0">✉</span>
+            <div>
+              <p class="font-semibold text-gray-900" data-i18n="email_label">Email:</p>
+              <a href="mailto:labocolisee@gmail.com" class="text-cyan-700 font-semibold hover:text-cyan-900 transition">labocolisee@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 mt-6">
+          <a href="tel:0524430071" class="btn-primary text-white px-5 py-3 rounded-full shadow-lg font-semibold text-center" data-i18n="contact_call_button">Appeler le laboratoire</a>
+          <a href="#" class="px-5 py-3 rounded-full border border-cyan-200 text-cyan-700 font-semibold text-center hover:bg-cyan-50 transition" data-i18n="contact_feedback_button">Avis & réclamation</a>
+        </div>
+      </article>
+
+      <article class="info-card bg-cyan-700 text-white rounded-2xl p-5 sm:p-7">
+        <h2 class="text-2xl font-bold mb-3" data-i18n="contact_visit_title">Avant votre visite</h2>
+        <div class="grid gap-3 text-cyan-50">
+          <p data-i18n="contact_visit_1">Apportez votre ordonnance, votre pièce d’identité et vos anciens résultats si utiles.</p>
+          <p data-i18n="contact_visit_2">Pour les analyses à jeun, privilégiez un passage le matin avant le petit-déjeuner.</p>
+          <p data-i18n="contact_visit_3">En cas de doute sur la préparation, contactez-nous avant votre déplacement.</p>
+        </div>
+      </article>
     </div>
-    <form class="glass-card flex flex-col justify-center space-y-4" id="contact-form" data-aos="fade-left" data-aos-delay="300">
-      <label class="block text-gray-700 font-semibold" for="name" data-i18n="contact_name">Nom</label>
-      <input id="name" class="w-full p-3 rounded border border-cyan-200 focus:border-cyan-600 focus:outline-none" placeholder="Votre nom" required>
-      <label class="block text-gray-700 font-semibold" for="email" data-i18n="contact_email">Email</label>
-      <input id="email" type="email" class="w-full p-3 rounded border border-cyan-200 focus:border-cyan-600 focus:outline-none" placeholder="Votre email" required>
-      <label class="block text-gray-700 font-semibold" for="message" data-i18n="contact_message">Message</label>
-      <textarea id="message" class="w-full p-3 rounded border border-cyan-200 focus:border-cyan-600 focus:outline-none" placeholder="Votre message" required></textarea>
-      <div class="flex gap-4 flex-wrap">
-        <button type="submit" class="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-full transition-all hover:scale-105" data-i18n="contact_send">Envoyer</button>
-        <a href="#" id="whatsapp-link" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full flex items-center gap-2 transition-all hover:scale-105"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="h-6"> WhatsApp</a>
+
+    <form class="info-card bg-white rounded-2xl p-5 sm:p-7 lg:p-8" id="contact-form" data-aos="fade-left">
+      <h2 class="text-2xl font-bold text-cyan-700 mb-3" data-i18n="contact_form_title">Envoyer une demande</h2>
+      <p class="text-gray-600 leading-relaxed mb-6" data-i18n="contact_form_desc">Décrivez votre besoin en quelques lignes. Le message sera préparé pour un envoi rapide.</p>
+
+      <div class="grid gap-4">
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2" for="name" data-i18n="contact_name">Nom</label>
+          <input id="name" class="w-full p-3 rounded-xl border border-cyan-100 bg-cyan-50/40 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100 focus:outline-none" placeholder="Votre nom" required>
+        </div>
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2" for="email" data-i18n="contact_email">Email</label>
+          <input id="email" type="email" class="w-full p-3 rounded-xl border border-cyan-100 bg-cyan-50/40 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100 focus:outline-none" placeholder="Votre email" required>
+        </div>
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2" for="message" data-i18n="contact_message">Message</label>
+          <textarea id="message" rows="6" class="w-full p-3 rounded-xl border border-cyan-100 bg-cyan-50/40 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100 focus:outline-none resize-none" placeholder="Votre message" required></textarea>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 mt-6">
+        <button type="submit" class="btn-primary text-white px-6 py-3 rounded-full shadow-lg font-semibold" data-i18n="contact_send">Envoyer</button>
+        <a href="rdv.html" class="px-6 py-3 rounded-full border border-cyan-200 text-cyan-700 font-semibold text-center hover:bg-cyan-50 transition" data-i18n="nav_rdv">RDV</a>
       </div>
     </form>
+  </div>
+
+  <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 sm:gap-8 items-stretch" data-aos="fade-up">
+    <div class="info-card bg-white rounded-2xl overflow-hidden min-h-[320px]">
+      <iframe src="https://www.google.com/maps?q=num%C3%A9ro%201A%2C%20Magasin%20rez-de-chauss%C3%A9e%2C%20Immeuble%20Koutoubia%2C%20Bd%20Mohamed%20Zerktouni%2C%20Marrakech%2040000&output=embed" width="100%" height="100%" class="min-h-[320px]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Carte Laboratoire Le Colisée"></iframe>
+    </div>
+    <article class="info-card bg-white rounded-2xl p-5 sm:p-7 flex flex-col justify-center">
+      <h2 class="text-2xl font-bold text-cyan-700 mb-4" data-i18n="map_heading">Nous trouver</h2>
+      <p class="text-gray-600 leading-relaxed mb-5" data-i18n="contact_map_desc">Le laboratoire est accessible pour les patients, familles et professionnels de santé. Vérifiez l’itinéraire avant votre départ.</p>
+      <a href="https://maps.app.goo.gl/TUfGFXnVSmP3Y5Mc8" target="_blank" rel="noopener noreferrer" class="inline-flex w-max mb-5 px-5 py-3 rounded-full border border-cyan-200 text-cyan-700 font-semibold hover:bg-cyan-50 transition" data-i18n="contact_maps_button">Ouvrir Google Maps</a>
+      <div class="grid gap-3">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 rounded-2xl border border-cyan-100 bg-cyan-50/80 p-4">
+          <div>
+            <p class="font-bold text-cyan-800" data-i18n="day_lun">Lundi - Vendredi:</p>
+            <p class="text-sm text-gray-600" data-i18n="contact_hours_week">Accueil, prélèvements et renseignements</p>
+          </div>
+          <span class="inline-flex w-max rounded-full bg-white px-4 py-2 text-sm font-bold text-cyan-700 shadow-sm">07:30 - 18:30</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 rounded-2xl border border-teal-100 bg-teal-50/80 p-4">
+          <div>
+            <p class="font-bold text-teal-800" data-i18n="day_sam">Samedi:</p>
+            <p class="text-sm text-gray-600" data-i18n="contact_hours_sat">Service du matin</p>
+          </div>
+          <span class="inline-flex w-max rounded-full bg-white px-4 py-2 text-sm font-bold text-teal-700 shadow-sm">08:00 - 13:00</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 rounded-2xl border border-slate-100 bg-slate-50 p-4">
+          <div>
+            <p class="font-bold text-slate-800" data-i18n="day_dim">Dimanche:</p>
+            <p class="text-sm text-gray-600" data-i18n="contact_hours_sun">Repos hebdomadaire</p>
+          </div>
+          <span class="inline-flex w-max rounded-full bg-white px-4 py-2 text-sm font-bold text-slate-600 shadow-sm" data-i18n="closed">Fermé</span>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -106,10 +214,12 @@
       <div>
         <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_services">Services</h4>
         <ul class="text-sm text-gray-300 space-y-2">
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_blood">Analyses sanguines</a></li>
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_hormones">Tests hormonaux</a></li>
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_bacterio">Bactériologie</a></li>
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_home">Prélèvements à domicile</a></li>
+          <li><a href="services.html#analyses-routine" class="hover:text-cyan-400 transition" data-i18n="service_routine_title">Analyses de Routine</a></li>
+          <li><a href="services.html#bilan-sante" class="hover:text-cyan-400 transition" data-i18n="service_bilan_title">Bilan de Santé</a></li>
+          <li><a href="services.html#maladies-chroniques" class="hover:text-cyan-400 transition" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a></li>
+          <li><a href="services.html#depistage-prevention" class="hover:text-cyan-400 transition" data-i18n="service_prevention_title">Dépistages et Prévention</a></li>
+          <li><a href="services.html#sante-reproductive" class="hover:text-cyan-400 transition" data-i18n="service_reproductive_title">Santé Reproductive</a></li>
+          <li><a href="services.html#sante-sportive" class="hover:text-cyan-400 transition" data-i18n="service_sport_title">Santé Sportive</a></li>
         </ul>
       </div>
       <div>
@@ -124,10 +234,10 @@
       <div>
         <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_contact_info">Contact Info</h4>
         <ul class="text-sm text-gray-300 space-y-2">
-          <li>📞 +212 5 22 00 00 00</li>
-          <li>📧 contact@labcolisee.ma</li>
-          <li>📍 123 Bd Mohamed V</li>
-          <li data-i18n="footer_city">Casablanca, Maroc</li>
+          <li>📞 05 24 43 00 71</li>
+          <li>📧 labocolisee@gmail.com</li>
+          <li>📍 numéro 1A, Magasin rez-de-chaussée, Immeuble Koutoubia, Bd Mohamed Zerktouni, Marrakech 40000</li>
+          <li data-i18n="footer_city">Marrakech 40000, Maroc</li>
         </ul>
       </div>
     </div>

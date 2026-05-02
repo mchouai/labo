@@ -1,9 +1,9 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Services - Laboratoire Le Colisée</title>
+  <title>Services - Laboratoire Le Colisee</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -16,17 +16,27 @@
 <div id="logo-overlay" aria-hidden="true"></div>
 
 <!-- HEADER -->
-<header class="site-header">
+<header class="site-header inner-header">
   <div class="max-w-7xl mx-auto flex items-center justify-between site-header-inner">
     <div class="flex items-center gap-4">
-      <img src="./assets/img/logo-transparent.png" class="site-logo h-16 sm:h-20 w-auto transition-transform hover:scale-105" alt="logo">
-      <!-- <span class="site-title font-bold text-2xl sm:text-3xl" id="site-title">Laboratoire Le Colisée</span> -->
+      <img src="./assets/img/logovector.png" class="site-logo h-16 sm:h-20 w-auto transition-transform hover:scale-105" alt="logo">
+      <!-- <span class="site-title font-bold text-2xl sm:text-3xl" id="site-title">Laboratoire Le Colisee</span> -->
     </div>
     <div class="flex items-center gap-4">
       <nav class="hidden md:flex gap-6 font-medium" id="main-nav">
         <a href="index.html" class="nav-link" data-i18n="nav_accueil">Accueil</a>
-        <a href="about.html" class="nav-link" data-i18n="nav_apropos">À propos</a>
-        <a href="services.html" class="nav-link" data-i18n="nav_services">Services</a>
+        <a href="about.html" class="nav-link" data-i18n="nav_apropos">A propos</a>
+                <div class="service-dropdown">
+          <a href="services.html" class="nav-link service-dropdown-trigger"><span data-i18n="nav_services">Services</span><span class="service-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="service-dropdown-menu">
+            <a href="services.html#analyses-routine" data-i18n="service_routine_title">Analyses de Routine</a>
+            <a href="services.html#bilan-sante" data-i18n="service_bilan_title">Bilan de Sante</a>
+            <a href="services.html#maladies-chroniques" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a>
+            <a href="services.html#depistage-prevention" data-i18n="service_prevention_title">Depistages et Prevention</a>
+            <a href="services.html#sante-reproductive" data-i18n="service_reproductive_title">Sante Reproductive</a>
+            <a href="services.html#sante-sportive" data-i18n="service_sport_title">Sante Sportive</a>
+          </div>
+        </div>
         <a href="tarifs.html" class="nav-link" data-i18n="nav_tarifs">Tarifs</a>
         <a href="conseils.html" class="nav-link" data-i18n="nav_conseils">Conseils</a>
         <a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a>
@@ -34,11 +44,11 @@
       <a href="rdv.html" class="hidden md:inline-flex btn-primary text-white px-4 py-2 rounded-full shadow-lg" data-i18n="nav_rdv">RDV</a>
       <div class="relative hidden md:block">
         <button id="lang-toggle" class="flex items-center justify-center w-11 h-11 rounded-full bg-cyan-600 text-white hover:bg-cyan-700 transition shadow-lg" title="Changer de langue">
-          <span class="text-lg">🌐</span>
+          <span class="text-lg">&#127760;</span>
         </button>
         <div id="lang-menu" class="hidden absolute right-0 mt-2 w-40 rounded-xl bg-white shadow-xl ring-1 ring-black ring-opacity-5">
-          <button id="lang-fr" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">🇫🇷 FR</button>
-          <button id="lang-ar" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">🇸🇦 AR</button>
+          <button id="lang-fr" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">FR</button>
+          <button id="lang-ar" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">AR</button>
         </div>
       </div>
       <button id="burger" class="md:hidden flex flex-col gap-1 ml-2" aria-label="Menu mobile">
@@ -51,58 +61,263 @@
   <nav id="mobile-nav" class="fixed top-0 left-0 bottom-0 w-72 max-w-full bg-white/95 backdrop-blur-lg z-50 flex-col justify-start gap-6 font-medium text-xl hidden transition-all overflow-y-auto">
     <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
       <span class="font-bold text-cyan-700 text-lg">Menu</span>
-      <button id="close-mobile-nav" class="text-cyan-700 text-3xl" aria-label="Fermer le menu">✕</button>
+      <button id="close-mobile-nav" class="text-cyan-700 text-3xl" aria-label="Fermer le menu">?</button>
     </div>
     <a href="index.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_accueil">Accueil</a>
-    <a href="about.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_apropos">À propos</a>
-    <a href="services.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_services">Services</a>
+    <a href="about.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_apropos">A propos</a>
+    <button type="button" class="mobile-dropdown-toggle" aria-expanded="false"><span data-i18n="nav_services">Services</span><span class="mobile-dropdown-arrow" aria-hidden="true"></span></button>
+    <div class="mobile-dropdown-panel hidden">
+      <a href="services.html#analyses-routine" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_routine_title">Analyses de Routine</a>
+      <a href="services.html#bilan-sante" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_bilan_title">Bilan de Sante</a>
+      <a href="services.html#maladies-chroniques" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a>
+      <a href="services.html#depistage-prevention" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_prevention_title">Depistages et Prevention</a>
+      <a href="services.html#sante-reproductive" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_reproductive_title">Sante Reproductive</a>
+      <a href="services.html#sante-sportive" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_sport_title">Sante Sportive</a>
+    
+    </div>
     <a href="tarifs.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_tarifs">Tarifs</a>
     <a href="conseils.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_conseils">Conseils</a>
     <a href="contact.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_contact">Contact</a>
     <a href="rdv.html" class="bg-cyan-600 text-white px-6 py-3 rounded-full mx-6 text-center hover:bg-cyan-700 transition" data-i18n="nav_rdv">RDV</a>
-    <div class="px-6 pb-6 border-t border-gray-200">
-      <button id="lang-fr-mobile" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">🇫🇷 FR</button>
-      <button id="lang-ar-mobile" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">🇸🇦 AR</button>
+    <div class="mobile-language-group">
+      <button type="button" class="mobile-dropdown-toggle" aria-expanded="false"><span data-i18n="nav_language">Langue</span><span class="mobile-dropdown-arrow" aria-hidden="true"></span></button>
+      <div class="mobile-dropdown-panel mobile-language-panel hidden">
+        <button id="lang-fr-mobile" type="button">FR</button>
+        <button id="lang-ar-mobile" type="button">AR</button>
+      </div>
     </div>
   </nav>
 </header>
 
-<section class="max-w-7xl mx-auto p-10">
-  <h1 class="text-4xl font-bold text-cyan-700 mb-10 text-center" data-i18n="services_title" data-aos="fade-up">Nos services</h1>
-  <p class="mb-8 text-center text-lg text-gray-700" data-i18n="services_intro" data-aos="fade-up" data-aos-delay="200">
-    Nous proposons une large gamme d’analyses médicales, réalisées avec précision et confidentialité.
-  </p>
-  <div class="grid md:grid-cols-3 gap-6">
-    <div class="glass-card flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
-      <img src="https://img.icons8.com/color/48/000000/blood-test.png" class="h-14 mb-2" alt="Hématologie">
-      <span class="font-bold" data-i18n="service1">Hématologie</span>
-      <p class="text-sm mt-2" data-i18n="service1_desc">Numération sanguine, anémies, hémostase, etc.</p>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+  <div class="text-center mb-8 sm:mb-10" data-aos="fade-up">
+    <span class="inline-flex px-4 py-2 rounded-full bg-cyan-50 text-cyan-700 text-sm font-semibold mb-4" data-i18n="services_page_kicker">Biologie medicale complete</span>
+    <h1 class="text-3xl sm:text-5xl font-bold text-cyan-700 mb-4" data-i18n="services_title">Nos services</h1>
+    <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed" data-i18n="services_page_intro">Des analyses pensees pour le diagnostic, la prevention et le suivi medical, avec un accompagnement clair e chaque etape.</p>
+  </div>
+
+  <nav class="service-preview-card bg-white rounded-2xl p-4 sm:p-5 mb-8 sm:mb-10" aria-label="Services" data-aos="fade-up" data-aos-delay="80">
+    <p class="text-sm font-semibold text-cyan-700 mb-3" data-i18n="services_nav_label">Acces rapide aux services</p>
+    <div class="flex flex-wrap gap-2">
+      <a href="#analyses-routine" class="px-3 py-2 rounded-full bg-cyan-50 text-cyan-700 text-sm font-semibold hover:bg-cyan-100 transition" data-i18n="service_routine_title">Analyses de Routine</a>
+      <a href="#bilan-sante" class="px-3 py-2 rounded-full bg-teal-50 text-teal-700 text-sm font-semibold hover:bg-teal-100 transition" data-i18n="service_bilan_title">Bilan de Sante</a>
+      <a href="#maladies-chroniques" class="px-3 py-2 rounded-full bg-sky-50 text-sky-700 text-sm font-semibold hover:bg-sky-100 transition" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a>
+      <a href="#depistage-prevention" class="px-3 py-2 rounded-full bg-emerald-50 text-emerald-700 text-sm font-semibold hover:bg-emerald-100 transition" data-i18n="service_prevention_title">Depistages et Prevention</a>
+      <a href="#sante-reproductive" class="px-3 py-2 rounded-full bg-rose-50 text-rose-700 text-sm font-semibold hover:bg-rose-100 transition" data-i18n="service_reproductive_title">Sante Reproductive</a>
+      <a href="#sante-sportive" class="px-3 py-2 rounded-full bg-amber-50 text-amber-700 text-sm font-semibold hover:bg-amber-100 transition" data-i18n="service_sport_title">Sante Sportive</a>
     </div>
-    <div class="glass-card flex flex-col items-center" data-aos="fade-up" data-aos-delay="400">
-      <img src="https://img.icons8.com/color/48/000000/chemical-test.png" class="h-14 mb-2" alt="Biochimie">
-      <span class="font-bold" data-i18n="service2">Biochimie</span>
-      <p class="text-sm mt-2" data-i18n="service2_desc">Fonction rénale, hépatique, ionogramme, etc.</p>
-    </div>
-    <div class="glass-card flex flex-col items-center" data-aos="fade-up" data-aos-delay="500">
-      <img src="https://img.icons8.com/color/48/000000/antibody.png" class="h-14 mb-2" alt="Immunologie">
-      <span class="font-bold" data-i18n="service3">Immunologie</span>
-      <p class="text-sm mt-2" data-i18n="service3_desc">Sérologies, allergies, auto-immunité.</p>
-    </div>
-    <div class="glass-card flex flex-col items-center" data-aos="fade-up" data-aos-delay="600">
-      <img src="https://img.icons8.com/color/48/000000/bacteria.png" class="h-14 mb-2" alt="Microbiologie">
-      <span class="font-bold" data-i18n="service4">Microbiologie</span>
-      <p class="text-sm mt-2" data-i18n="service4_desc">Bactériologie, mycologie, parasitologie.</p>
-    </div>
-    <div class="glass-card flex flex-col items-center" data-aos="fade-up" data-aos-delay="700">
-      <img src="https://img.icons8.com/color/48/000000/dna-helix.png" class="h-14 mb-2" alt="Tests PCR">
-      <span class="font-bold" data-i18n="service5">Tests PCR</span>
-      <p class="text-sm mt-2" data-i18n="service5_desc">COVID-19, grippes, IST, etc.</p>
-    </div>
-    <div class="glass-card flex flex-col items-center" data-aos="fade-up" data-aos-delay="800">
-      <img src="https://img.icons8.com/color/48/000000/heart-with-pulse.png" class="h-14 mb-2" alt="Bilans complets">
-      <span class="font-bold" data-i18n="service6">Bilans complets</span>
-      <p class="text-sm mt-2" data-i18n="service6_desc">Bilans préopératoires, check-up, suivi chronique.</p>
-    </div>
+  </nav>
+
+  <div class="grid gap-8 sm:gap-10">
+    <section id="analyses-routine" class="service-preview-card bg-white rounded-2xl overflow-hidden scroll-mt-32" data-aos="fade-up">
+      <div class="grid lg:grid-cols-[0.9fr_1.1fr]">
+        <div class="relative min-h-[240px] sm:min-h-[320px] bg-cyan-50">
+          <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1000&q=85" alt="Analyses de routine" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-cyan-950/70 via-cyan-900/15 to-transparent"></div>
+          <span class="absolute left-5 bottom-5 service-icon bg-white/95">&#128300;</span>
+        </div>
+        <div class="p-5 sm:p-8 lg:p-10">
+          <h2 class="text-2xl sm:text-3xl font-bold text-cyan-700 mb-4" data-i18n="service_routine_title">Analyses de Routine</h2>
+          <p class="text-gray-600 leading-relaxed mb-4" data-i18n="service_routine_detail">Hematologie, biochimie, ionogramme, fonction renale et hepatique: des examens courants pour suivre les parametres essentiels et orienter rapidement votre medecin.</p>
+          <p class="text-gray-700 leading-relaxed mb-6" data-i18n="service_routine_context">Ce service convient aux contreles prescrits par votre medecin, aux symptemes recents ou au suivi simple de votre etat general.</p>
+          <div class="grid md:grid-cols-3 gap-3 sm:gap-4 mb-6">
+            <article class="border-t-4 border-cyan-200 pt-4">
+              <h3 class="font-bold text-cyan-800 mb-3" data-i18n="service_included_label">Examens inclus</h3>
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li data-i18n="service_routine_item1">Numeration formule sanguine</li>
+                <li data-i18n="service_routine_item2">Glycemie et bilan lipidique</li>
+                <li data-i18n="service_routine_item3">Fonctions renale et hepatique</li>
+                <li data-i18n="service_routine_item4">Analyses urinaires courantes</li>
+              </ul>
+            </article>
+            <article class="border-t-4 border-slate-200 pt-4">
+              <h3 class="font-bold text-slate-800 mb-3" data-i18n="service_indications_label">Indications</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service_routine_indications">Fatigue, infection, contrele annuel, suivi de traitement ou exploration deun desequilibre biologique.</p>
+            </article>
+            <article class="border-t-4 border-teal-200 pt-4">
+              <h3 class="font-bold text-teal-800 mb-3" data-i18n="service_preparation_label">Preparation</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service_routine_preparation">Certaines analyses demandent le jeene. Apportez votre ordonnance et vos derniers resultats si disponibles.</p>
+            </article>
+          </div>
+          <a href="rdv.html" class="inline-flex btn-primary text-white px-5 py-3 rounded-full shadow-lg font-semibold" data-i18n="service_cta">Prendre rendez-vous</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="bilan-sante" class="service-preview-card bg-white rounded-2xl overflow-hidden scroll-mt-32" data-aos="fade-up">
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="p-5 sm:p-8 lg:p-10 order-2 lg:order-1">
+          <h2 class="text-2xl sm:text-3xl font-bold text-teal-700 mb-4" data-i18n="service_bilan_title">Bilan de Sante</h2>
+          <p class="text-gray-600 leading-relaxed mb-4" data-i18n="service_bilan_detail">Des bilans personnalises selon leege, les antecedents et les objectifs de prevention pour evaluer leetat general et reperer les desequilibres precocement.</p>
+          <p class="text-gray-700 leading-relaxed mb-6" data-i18n="service_bilan_context">Le bilan est construit pour donner une vision globale: metabolisme, carences, inflammation, organes cles et facteurs de risque.</p>
+          <div class="grid md:grid-cols-3 gap-3 sm:gap-4 mb-6">
+            <article class="border-t-4 border-teal-200 pt-4">
+              <h3 class="font-bold text-teal-800 mb-3" data-i18n="service_included_label">Examens inclus</h3>
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li data-i18n="service_bilan_item1">Check-up general</li>
+                <li data-i18n="service_bilan_item2">Bilan fatigue et carences</li>
+                <li data-i18n="service_bilan_item3">Bilan preoperatoire</li>
+                <li data-i18n="service_bilan_item4">Suivi annuel de prevention</li>
+              </ul>
+            </article>
+            <article class="border-t-4 border-slate-200 pt-4">
+              <h3 class="font-bold text-slate-800 mb-3" data-i18n="service_indications_label">Indications</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service_bilan_indications">Prevention annuelle, fatigue persistante, antecedents familiaux, changement de mode de vie ou preparation medicale.</p>
+            </article>
+            <article class="border-t-4 border-cyan-200 pt-4">
+              <h3 class="font-bold text-cyan-800 mb-3" data-i18n="service_preparation_label">Preparation</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service_bilan_preparation">Venez idealement le matin. Le jeene peut etre demande selon le bilan lipidique ou glycemique.</p>
+            </article>
+          </div>
+          <a href="rdv.html" class="inline-flex btn-primary text-white px-5 py-3 rounded-full shadow-lg font-semibold" data-i18n="service_cta">Prendre rendez-vous</a>
+        </div>
+        <div class="relative min-h-[240px] sm:min-h-[320px] bg-teal-50 order-1 lg:order-2">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=85" alt="Bilan de sante" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-teal-950/70 via-teal-900/15 to-transparent"></div>
+          <span class="absolute left-5 bottom-5 service-icon bg-white/95">&#128300;</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="maladies-chroniques" class="service-preview-card bg-white rounded-2xl overflow-hidden scroll-mt-32" data-aos="fade-up">
+      <div class="grid lg:grid-cols-[0.9fr_1.1fr]">
+        <div class="relative min-h-[240px] sm:min-h-[320px] bg-sky-50">
+          <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1000&q=85" alt="Suivi des maladies chroniques" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-sky-950/70 via-sky-900/15 to-transparent"></div>
+          <span class="absolute left-5 bottom-5 service-icon bg-white/95">&#128300;</span>
+        </div>
+        <div class="p-5 sm:p-8 lg:p-10">
+          <h2 class="text-2xl sm:text-3xl font-bold text-sky-700 mb-4" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</h2>
+          <p class="text-gray-600 leading-relaxed mb-4" data-i18n="service_chronic_detail">Des analyses regulieres pour surveiller leevolution des maladies chroniques, adapter les traitements et prevenir les complications avec votre medecin.</p>
+          <p class="text-gray-700 leading-relaxed mb-6" data-i18n="service_chronic_context">Nous facilitons un suivi regulier, comparable dans le temps, avec des resultats lisibles pour le patient et le medecin traitant.</p>
+          <div class="grid md:grid-cols-3 gap-3 sm:gap-4 mb-6">
+            <article class="border-t-4 border-sky-200 pt-4">
+              <h3 class="font-bold text-sky-800 mb-3" data-i18n="service_included_label">Examens inclus</h3>
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li data-i18n="service_chronic_item1">Diabete et HbA1c</li>
+                <li data-i18n="service_chronic_item2">Thyroede et hormones</li>
+                <li data-i18n="service_chronic_item3">Fonction renale</li>
+                <li data-i18n="service_chronic_item4">Suivi therapeutique biologique</li>
+              </ul>
+            </article>
+            <article class="border-t-4 border-slate-200 pt-4">
+              <h3 class="font-bold text-slate-800 mb-3" data-i18n="service_indications_label">Indications</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service_chronic_indications">Diabete, hypertension, troubles thyroediens, insuffisance renale, traitements prolonges ou adaptation posologique.</p>
+            </article>
+            <article class="border-t-4 border-cyan-200 pt-4">
+              <h3 class="font-bold text-cyan-800 mb-3" data-i18n="service_preparation_label">Preparation</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service_chronic_preparation">Respectez les horaires de prise indiques par votre medecin, surtout pour les dosages de traitement.</p>
+            </article>
+          </div>
+          <a href="rdv.html" class="inline-flex btn-primary text-white px-5 py-3 rounded-full shadow-lg font-semibold" data-i18n="service_cta">Prendre rendez-vous</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="depistage-prevention" class="service-preview-card bg-white rounded-2xl overflow-hidden scroll-mt-32" data-aos="fade-up">
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="p-5 sm:p-8 lg:p-10 order-2 lg:order-1">
+          <h2 class="text-2xl sm:text-3xl font-bold text-emerald-700 mb-4" data-i18n="service_prevention_title">Depistages et Prevention</h2>
+          <p class="text-gray-600 leading-relaxed mb-4" data-i18n="service_prevention_detail">Depistages cibles pour identifier precocement les risques infectieux, metaboliques ou hormonaux et favoriser une prise en charge rapide.</p>
+          <p class="text-gray-700 leading-relaxed mb-6" data-i18n="service_prevention_context">La prevention permet deagir avant les complications, avec des examens adaptes e leege, au contexte et aux facteurs de risque.</p>
+          <div class="grid md:grid-cols-3 gap-3 sm:gap-4 mb-6">
+            <article class="border-t-4 border-emerald-200 pt-4">
+              <h3 class="font-bold text-emerald-800 mb-3" data-i18n="service_included_label">Examens inclus</h3>
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li data-i18n="service_prevention_item1">Serologies et infections</li>
+                <li data-i18n="service_prevention_item2">Depistage metabolique</li>
+                <li data-i18n="service_prevention_item3">Bilan cardiovasculaire</li>
+                <li data-i18n="service_prevention_item4">Prevention personnalisee</li>
+              </ul>
+            </article>
+            <article class="border-t-4 border-slate-200 pt-4">
+              <h3 class="font-bold text-slate-800 mb-3" data-i18n="service_indications_label">Indications</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service_prevention_indications">Exposition infectieuse, antecedents familiaux, suivi vaccinal, bilan cardiovasculaire ou contrele avant projet personnel.</p>
+            </article>
+            <article class="border-t-4 border-teal-200 pt-4">
+              <h3 class="font-bold text-teal-800 mb-3" data-i18n="service_preparation_label">Preparation</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service_prevention_preparation">Signalez vos vaccins recents, traitements et dates deexposition eventuelle pour interpreter correctement les resultats.</p>
+            </article>
+          </div>
+          <a href="rdv.html" class="inline-flex btn-primary text-white px-5 py-3 rounded-full shadow-lg font-semibold" data-i18n="service_cta">Prendre rendez-vous</a>
+        </div>
+        <div class="relative min-h-[240px] sm:min-h-[320px] bg-emerald-50 order-1 lg:order-2">
+          <img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?auto=format&fit=crop&w=1000&q=85" alt="Depistage et prevention" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/70 via-emerald-900/15 to-transparent"></div>
+          <span class="absolute left-5 bottom-5 service-icon bg-white/95">&#128300;</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="sante-reproductive" class="service-preview-card bg-white rounded-2xl overflow-hidden scroll-mt-32" data-aos="fade-up">
+      <div class="grid lg:grid-cols-[0.9fr_1.1fr]">
+        <div class="relative min-h-[240px] sm:min-h-[320px] bg-rose-50">
+          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=85" alt="Sante reproductive" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-rose-950/70 via-rose-900/15 to-transparent"></div>
+          <span class="absolute left-5 bottom-5 service-icon bg-white/95">&#128300;</span>
+        </div>
+        <div class="p-5 sm:p-8 lg:p-10">
+          <h2 class="text-2xl sm:text-3xl font-bold text-rose-700 mb-4" data-i18n="service_reproductive_title">Sante Reproductive</h2>
+          <p class="text-gray-600 leading-relaxed mb-4" data-i18n="service_reproductive_detail">Bilans biologiques pour fertilite, grossesse, hormones et suivi gynecologique, avec discretion et accompagnement adapte.</p>
+          <p class="text-gray-700 leading-relaxed mb-6" data-i18n="service_reproductive_context">Nous accompagnons les etapes sensibles avec confidentialite: projet de grossesse, suivi hormonal, fertilite et surveillance prenatale.</p>
+          <div class="grid md:grid-cols-3 gap-3 sm:gap-4 mb-6">
+            <article class="border-t-4 border-rose-200 pt-4">
+              <h3 class="font-bold text-rose-800 mb-3" data-i18n="service_included_label">Examens inclus</h3>
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li data-i18n="service_reproductive_item1">Bilans hormonaux</li>
+                <li data-i18n="service_reproductive_item2">Suivi de grossesse</li>
+                <li data-i18n="service_reproductive_item3">Fertilite et reserve ovarienne</li>
+                <li data-i18n="service_reproductive_item4">Analyses prenatales</li>
+              </ul>
+            </article>
+            <article class="border-t-4 border-slate-200 pt-4">
+              <h3 class="font-bold text-slate-800 mb-3" data-i18n="service_indications_label">Indications</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service_reproductive_indications">Troubles du cycle, bilan de fertilite, confirmation ou suivi de grossesse, contrele hormonal ou parcours AMP.</p>
+            </article>
+            <article class="border-t-4 border-cyan-200 pt-4">
+              <h3 class="font-bold text-cyan-800 mb-3" data-i18n="service_preparation_label">Preparation</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service_reproductive_preparation">Certains dosages dependent du jour du cycle. Notez la date des dernieres regles et les traitements en cours.</p>
+            </article>
+          </div>
+          <a href="rdv.html" class="inline-flex btn-primary text-white px-5 py-3 rounded-full shadow-lg font-semibold" data-i18n="service_cta">Prendre rendez-vous</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="sante-sportive" class="service-preview-card bg-white rounded-2xl overflow-hidden scroll-mt-32" data-aos="fade-up">
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="p-5 sm:p-8 lg:p-10 order-2 lg:order-1">
+          <h2 class="text-2xl sm:text-3xl font-bold text-amber-700 mb-4" data-i18n="service_sport_title">Sante Sportive</h2>
+          <p class="text-gray-600 leading-relaxed mb-4" data-i18n="service_sport_detail">Bilans adaptes aux sportifs pour surveiller recuperation, inflammation, carences, hydratation et reprise apres arret ou blessure.</p>
+          <p class="text-gray-700 leading-relaxed mb-6" data-i18n="service_sport_context">Le bilan sportif aide e ajuster leentraenement, prevenir les carences et securiser une reprise avec des reperes biologiques fiables.</p>
+          <div class="grid md:grid-cols-3 gap-3 sm:gap-4 mb-6">
+            <article class="border-t-4 border-amber-200 pt-4">
+              <h3 class="font-bold text-amber-800 mb-3" data-i18n="service_included_label">Examens inclus</h3>
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li data-i18n="service_sport_item1">Bilan carences et vitamines</li>
+                <li data-i18n="service_sport_item2">Inflammation et recuperation</li>
+                <li data-i18n="service_sport_item3">Metabolisme et energie</li>
+                <li data-i18n="service_sport_item4">Suivi reprise sportive</li>
+              </ul>
+            </article>
+            <article class="border-t-4 border-slate-200 pt-4">
+              <h3 class="font-bold text-slate-800 mb-3" data-i18n="service_indications_label">Indications</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service_sport_indications">Fatigue e leeffort, baisse de performance, reprise apres blessure, preparation de competition ou surveillance nutritionnelle.</p>
+            </article>
+            <article class="border-t-4 border-teal-200 pt-4">
+              <h3 class="font-bold text-teal-800 mb-3" data-i18n="service_preparation_label">Preparation</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service_sport_preparation">evitez leeffort intense la veille si votre medecin souhaite mesurer leetat de recuperation basal.</p>
+            </article>
+          </div>
+          <a href="rdv.html" class="inline-flex btn-primary text-white px-5 py-3 rounded-full shadow-lg font-semibold" data-i18n="service_cta">Prendre rendez-vous</a>
+        </div>
+        <div class="relative min-h-[240px] sm:min-h-[320px] bg-amber-50 order-1 lg:order-2">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1000&q=85" alt="Sante sportive" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-amber-950/70 via-amber-900/15 to-transparent"></div>
+          <span class="absolute left-5 bottom-5 service-icon bg-white/95">&#128300;</span>
+        </div>
+      </div>
+    </section>
   </div>
 </section>
 
@@ -111,23 +326,25 @@
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid md:grid-cols-4 gap-8 mb-8">
       <div>
-        <h4 class="font-bold text-lg mb-4 text-cyan-300">À Propos</h4>
-        <p class="text-sm text-gray-300" data-i18n="footer_about">Laboratoire Le Colisée offre des services de diagnostic fiables depuis plus de 15 ans avec des équipements modernes et une équipe expérimentée.</p>
+        <h4 class="font-bold text-lg mb-4 text-cyan-300">A Propos</h4>
+        <p class="text-sm text-gray-300" data-i18n="footer_about">Laboratoire Le Colisee offre des services de diagnostic fiables depuis plus de 15 ans avec des equipements modernes et une equipe experimentee.</p>
       </div>
       <div>
         <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_services">Services</h4>
         <ul class="text-sm text-gray-300 space-y-2">
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_blood">Analyses sanguines</a></li>
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_hormones">Tests hormonaux</a></li>
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_bacterio">Bactériologie</a></li>
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_home">Prélèvements à domicile</a></li>
+          <li><a href="services.html#analyses-routine" class="hover:text-cyan-400 transition" data-i18n="service_routine_title">Analyses de Routine</a></li>
+          <li><a href="services.html#bilan-sante" class="hover:text-cyan-400 transition" data-i18n="service_bilan_title">Bilan de Sante</a></li>
+          <li><a href="services.html#maladies-chroniques" class="hover:text-cyan-400 transition" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a></li>
+          <li><a href="services.html#depistage-prevention" class="hover:text-cyan-400 transition" data-i18n="service_prevention_title">Depistages et Prevention</a></li>
+          <li><a href="services.html#sante-reproductive" class="hover:text-cyan-400 transition" data-i18n="service_reproductive_title">Sante Reproductive</a></li>
+          <li><a href="services.html#sante-sportive" class="hover:text-cyan-400 transition" data-i18n="service_sport_title">Sante Sportive</a></li>
         </ul>
       </div>
       <div>
         <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_links">Liens utiles</h4>
         <ul class="text-sm text-gray-300 space-y-2">
           <li><a href="index.html" class="hover:text-cyan-400 transition" data-i18n="footer_home_link">Accueil</a></li>
-          <li><a href="about.html" class="hover:text-cyan-400 transition" data-i18n="footer_about_link">À propos</a></li>
+          <li><a href="about.html" class="hover:text-cyan-400 transition" data-i18n="footer_about_link">A propos</a></li>
           <li><a href="tarifs.html" class="hover:text-cyan-400 transition" data-i18n="footer_tariffs">Tarifs</a></li>
           <li><a href="contact.html" class="hover:text-cyan-400 transition" data-i18n="footer_contact_link">Contact</a></li>
         </ul>
@@ -135,18 +352,18 @@
       <div>
         <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_contact_info">Contact Info</h4>
         <ul class="text-sm text-gray-300 space-y-2">
-          <li>📞 +212 5 22 00 00 00</li>
-          <li>📧 contact@labcolisee.ma</li>
-          <li>📍 123 Bd Mohamed V</li>
-          <li data-i18n="footer_city">Casablanca, Maroc</li>
+          <li>&#128222; 05 24 43 00 71</li>
+          <li>&#9993; labocolisee@gmail.com</li>
+          <li>&#128205; numéro 1A, Magasin rez-de-chaussée, Immeuble Koutoubia, Bd Mohamed Zerktouni, Marrakech 40000</li>
+          <li data-i18n="footer_city">Marrakech 40000, Maroc</li>
         </ul>
       </div>
     </div>
     <hr class="border-cyan-700 my-8">
     <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-      <span id="footer-text">© 2026 Laboratoire Le Colisée – Tous droits réservés</span>
+      <span id="footer-text">© 2026 Laboratoire Le Colisee - Tous droits reserves</span>
       <div class="flex gap-6 mt-4 md:mt-0">
-        <a href="#" class="hover:text-cyan-400 transition" data-i18n="footer_privacy">Politique de confidentialité</a>
+        <a href="#" class="hover:text-cyan-400 transition" data-i18n="footer_privacy">Politique de confidentialite</a>
         <a href="#" class="hover:text-cyan-400 transition" data-i18n="footer_terms">Conditions d'utilisation</a>
       </div>
     </div>

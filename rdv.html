@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,17 +16,27 @@
 <div id="logo-overlay" aria-hidden="true"></div>
 
 <!-- HEADER -->
-<header class="site-header">
+<header class="site-header inner-header">
   <div class="max-w-7xl mx-auto flex items-center justify-between site-header-inner">
     <div class="flex items-center gap-4">
-      <img src="./assets/img/logo-transparent.png" class="site-logo h-16 sm:h-20 w-auto transition-transform hover:scale-105" alt="logo">
+      <img src="./assets/img/logovector.png" class="site-logo h-16 sm:h-20 w-auto transition-transform hover:scale-105" alt="logo">
       <!-- <span class="site-title font-bold text-2xl sm:text-3xl" id="site-title">Laboratoire Le Colisée</span> -->
     </div>
     <div class="flex items-center gap-4">
       <nav class="hidden md:flex gap-6 font-medium" id="main-nav">
         <a href="index.html" class="nav-link" data-i18n="nav_accueil">Accueil</a>
         <a href="about.html" class="nav-link" data-i18n="nav_apropos">À propos</a>
-        <a href="services.html" class="nav-link" data-i18n="nav_services">Services</a>
+                <div class="service-dropdown">
+          <a href="services.html" class="nav-link service-dropdown-trigger"><span data-i18n="nav_services">Services</span><span class="service-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="service-dropdown-menu">
+            <a href="services.html#analyses-routine" data-i18n="service_routine_title">Analyses de Routine</a>
+            <a href="services.html#bilan-sante" data-i18n="service_bilan_title">Bilan de Santé</a>
+            <a href="services.html#maladies-chroniques" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a>
+            <a href="services.html#depistage-prevention" data-i18n="service_prevention_title">Dépistages et Prévention</a>
+            <a href="services.html#sante-reproductive" data-i18n="service_reproductive_title">Santé Reproductive</a>
+            <a href="services.html#sante-sportive" data-i18n="service_sport_title">Santé Sportive</a>
+          </div>
+        </div>
         <a href="tarifs.html" class="nav-link" data-i18n="nav_tarifs">Tarifs</a>
         <a href="conseils.html" class="nav-link" data-i18n="nav_conseils">Conseils</a>
         <a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a>
@@ -37,8 +47,8 @@
           <span class="text-lg">🌐</span>
         </button>
         <div id="lang-menu" class="hidden absolute right-0 mt-2 w-40 rounded-xl bg-white shadow-xl ring-1 ring-black ring-opacity-5">
-          <button id="lang-fr" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">🇫🇷 FR</button>
-          <button id="lang-ar" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">🇸🇦 AR</button>
+          <button id="lang-fr" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">FR</button>
+          <button id="lang-ar" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">AR</button>
         </div>
       </div>
       <button id="burger" class="md:hidden flex flex-col gap-1 ml-2" aria-label="Menu mobile">
@@ -55,14 +65,26 @@
     </div>
     <a href="index.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_accueil">Accueil</a>
     <a href="about.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_apropos">À propos</a>
-    <a href="services.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_services">Services</a>
+    <button type="button" class="mobile-dropdown-toggle" aria-expanded="false"><span data-i18n="nav_services">Services</span><span class="mobile-dropdown-arrow" aria-hidden="true"></span></button>
+    <div class="mobile-dropdown-panel hidden">
+      <a href="services.html#analyses-routine" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_routine_title">Analyses de Routine</a>
+      <a href="services.html#bilan-sante" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_bilan_title">Bilan de Santé</a>
+      <a href="services.html#maladies-chroniques" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a>
+      <a href="services.html#depistage-prevention" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_prevention_title">Dépistages et Prévention</a>
+      <a href="services.html#sante-reproductive" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_reproductive_title">Santé Reproductive</a>
+      <a href="services.html#sante-sportive" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_sport_title">Santé Sportive</a>
+    
+    </div>
     <a href="tarifs.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_tarifs">Tarifs</a>
     <a href="conseils.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_conseils">Conseils</a>
     <a href="contact.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_contact">Contact</a>
     <a href="rdv.html" class="bg-cyan-600 text-white px-6 py-3 rounded-full mx-6 text-center hover:bg-cyan-700 transition" data-i18n="nav_rdv">RDV</a>
-    <div class="px-6 pb-6 border-t border-gray-200">
-      <button id="lang-fr-mobile" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">🇫🇷 FR</button>
-      <button id="lang-ar-mobile" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">🇸🇦 AR</button>
+    <div class="mobile-language-group">
+      <button type="button" class="mobile-dropdown-toggle" aria-expanded="false"><span data-i18n="nav_language">Langue</span><span class="mobile-dropdown-arrow" aria-hidden="true"></span></button>
+      <div class="mobile-dropdown-panel mobile-language-panel hidden">
+        <button id="lang-fr-mobile" type="button">FR</button>
+        <button id="lang-ar-mobile" type="button">AR</button>
+      </div>
     </div>
   </nav>
 </header>
@@ -75,7 +97,7 @@
   <!-- Calendly -->
   <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
     <iframe
-      src="https://calendly.com/your-calendly-link"
+      src="https://calendly.com/labolecolisee/30min"
       class="w-full h-[700px] rounded-xl"
       frameborder="0">
     </iframe>
@@ -93,10 +115,12 @@
       <div>
         <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_services">Services</h4>
         <ul class="text-sm text-gray-300 space-y-2">
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_blood">Analyses sanguines</a></li>
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_hormones">Tests hormonaux</a></li>
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_bacterio">Bactériologie</a></li>
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_home">Prélèvements à domicile</a></li>
+          <li><a href="services.html#analyses-routine" class="hover:text-cyan-400 transition" data-i18n="service_routine_title">Analyses de Routine</a></li>
+          <li><a href="services.html#bilan-sante" class="hover:text-cyan-400 transition" data-i18n="service_bilan_title">Bilan de Santé</a></li>
+          <li><a href="services.html#maladies-chroniques" class="hover:text-cyan-400 transition" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a></li>
+          <li><a href="services.html#depistage-prevention" class="hover:text-cyan-400 transition" data-i18n="service_prevention_title">Dépistages et Prévention</a></li>
+          <li><a href="services.html#sante-reproductive" class="hover:text-cyan-400 transition" data-i18n="service_reproductive_title">Santé Reproductive</a></li>
+          <li><a href="services.html#sante-sportive" class="hover:text-cyan-400 transition" data-i18n="service_sport_title">Santé Sportive</a></li>
         </ul>
       </div>
       <div>
@@ -111,10 +135,10 @@
       <div>
         <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_contact_info">Contact Info</h4>
         <ul class="text-sm text-gray-300 space-y-2">
-          <li>📞 +212 5 22 00 00 00</li>
-          <li>📧 contact@labcolisee.ma</li>
-          <li>📍 123 Bd Mohamed V</li>
-          <li data-i18n="footer_city">Casablanca, Maroc</li>
+          <li>📞 05 24 43 00 71</li>
+          <li>📧 labocolisee@gmail.com</li>
+          <li>📍 numéro 1A, Magasin rez-de-chaussée, Immeuble Koutoubia, Bd Mohamed Zerktouni, Marrakech 40000</li>
+          <li data-i18n="footer_city">Marrakech 40000, Maroc</li>
         </ul>
       </div>
     </div>

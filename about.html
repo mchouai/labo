@@ -1,4 +1,4 @@
-﻿
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,17 +17,27 @@
 <div id="logo-overlay" aria-hidden="true"></div>
 
 <!-- HEADER -->
-<header class="site-header">
+<header class="site-header inner-header">
   <div class="max-w-7xl mx-auto flex items-center justify-between site-header-inner">
     <div class="flex items-center gap-4">
-      <img src="./assets/img/logo-transparent.png" class="site-logo h-16 sm:h-20 w-auto transition-transform hover:scale-105" alt="logo">
+      <img src="./assets/img/logovector.png" class="site-logo h-16 sm:h-20 w-auto transition-transform hover:scale-105" alt="logo">
       <!-- <span class="site-title font-bold text-2xl sm:text-3xl" id="site-title">Laboratoire Le Colisée</span> -->
     </div>
     <div class="flex items-center gap-4">
       <nav class="hidden md:flex gap-6 font-medium" id="main-nav">
         <a href="index.html" class="nav-link" data-i18n="nav_accueil">Accueil</a>
         <a href="about.html" class="nav-link" data-i18n="nav_apropos">À propos</a>
-        <a href="services.html" class="nav-link" data-i18n="nav_services">Services</a>
+                <div class="service-dropdown">
+          <a href="services.html" class="nav-link service-dropdown-trigger"><span data-i18n="nav_services">Services</span><span class="service-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="service-dropdown-menu">
+            <a href="services.html#analyses-routine" data-i18n="service_routine_title">Analyses de Routine</a>
+            <a href="services.html#bilan-sante" data-i18n="service_bilan_title">Bilan de Santé</a>
+            <a href="services.html#maladies-chroniques" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a>
+            <a href="services.html#depistage-prevention" data-i18n="service_prevention_title">Dépistages et Prévention</a>
+            <a href="services.html#sante-reproductive" data-i18n="service_reproductive_title">Santé Reproductive</a>
+            <a href="services.html#sante-sportive" data-i18n="service_sport_title">Santé Sportive</a>
+          </div>
+        </div>
         <a href="tarifs.html" class="nav-link" data-i18n="nav_tarifs">Tarifs</a>
         <a href="conseils.html" class="nav-link" data-i18n="nav_conseils">Conseils</a>
         <a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a>
@@ -38,8 +48,8 @@
           <span class="text-lg">🌐</span>
         </button>
         <div id="lang-menu" class="hidden absolute right-0 mt-2 w-40 rounded-xl bg-white shadow-xl ring-1 ring-black ring-opacity-5">
-          <button id="lang-fr" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">🇫🇷 FR</button>
-          <button id="lang-ar" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">🇸🇦 AR</button>
+          <button id="lang-fr" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">FR</button>
+          <button id="lang-ar" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">AR</button>
         </div>
       </div>
       <button id="burger" class="md:hidden flex flex-col gap-1 ml-2" aria-label="Menu mobile">
@@ -56,67 +66,118 @@
     </div>
     <a href="index.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_accueil">Accueil</a>
     <a href="about.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_apropos">À propos</a>
-    <a href="services.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_services">Services</a>
+    <button type="button" class="mobile-dropdown-toggle" aria-expanded="false"><span data-i18n="nav_services">Services</span><span class="mobile-dropdown-arrow" aria-hidden="true"></span></button>
+    <div class="mobile-dropdown-panel hidden">
+      <a href="services.html#analyses-routine" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_routine_title">Analyses de Routine</a>
+      <a href="services.html#bilan-sante" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_bilan_title">Bilan de Santé</a>
+      <a href="services.html#maladies-chroniques" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a>
+      <a href="services.html#depistage-prevention" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_prevention_title">Dépistages et Prévention</a>
+      <a href="services.html#sante-reproductive" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_reproductive_title">Santé Reproductive</a>
+      <a href="services.html#sante-sportive" class="px-3 py-2 hover:bg-cyan-50 transition" data-i18n="service_sport_title">Santé Sportive</a>
+    
+    </div>
     <a href="tarifs.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_tarifs">Tarifs</a>
     <a href="conseils.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_conseils">Conseils</a>
     <a href="contact.html" class="px-6 py-3 hover:bg-cyan-50 transition" data-i18n="nav_contact">Contact</a>
     <a href="rdv.html" class="bg-cyan-600 text-white px-6 py-3 rounded-full mx-6 text-center hover:bg-cyan-700 transition" data-i18n="nav_rdv">RDV</a>
-    <div class="px-6 pb-6 border-t border-gray-200">
-      <button id="lang-fr-mobile" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition">🇫🇷 FR</button>
-      <button id="lang-ar-mobile" class="w-full text-left px-4 py-3 hover:bg-cyan-50 transition border-t">🇸🇦 AR</button>
+    <div class="mobile-language-group">
+      <button type="button" class="mobile-dropdown-toggle" aria-expanded="false"><span data-i18n="nav_language">Langue</span><span class="mobile-dropdown-arrow" aria-hidden="true"></span></button>
+      <div class="mobile-dropdown-panel mobile-language-panel hidden">
+        <button id="lang-fr-mobile" type="button">FR</button>
+        <button id="lang-ar-mobile" type="button">AR</button>
+      </div>
     </div>
   </nav>
 </header>
 
-<section class="max-w-5xl mx-auto p-10">
-  <h1 class="text-4xl font-bold text-cyan-700 mb-6 text-center" data-i18n="about_title" data-aos="fade-up">À propos du laboratoire</h1>
-  <div class="flex flex-col md:flex-row gap-10 items-center mb-10" data-aos="fade-up" data-aos-delay="80">
-    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136" alt="Laboratoire moderne" class="rounded-2xl shadow-lg w-full md:w-1/2 max-h-80 object-cover" data-aos="zoom-in" data-aos-delay="120">
-    <div data-aos="fade-left" data-aos-delay="140">
-      <p class="leading-8 text-lg mb-4" data-i18n="about_intro">
-        Le Laboratoire Le Colisée est spécialisé dans les analyses médicales avec des équipements modernes, une équipe qualifiée et le respect des normes internationales.
-      </p>
-      <ul class="list-disc pl-5 space-y-2 text-base text-gray-700">
-        <li data-i18n="about_li1">Plus de 20 ans d'expérience au service de votre santé</li>
-        <li data-i18n="about_li2">Laboratoire certifié ISO 15189</li>
-        <li data-i18n="about_li3">Confidentialité et accompagnement personnalisé</li>
-      </ul>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+  <div class="text-center mb-10 sm:mb-12" data-aos="fade-up">
+    <span class="inline-flex px-4 py-2 rounded-full bg-cyan-50 text-cyan-700 text-sm font-semibold mb-4" data-i18n="about_kicker">Excellence en biologie médicale</span>
+    <h1 class="text-3xl sm:text-5xl font-bold text-cyan-700 mb-4" data-i18n="about_title">À propos du laboratoire</h1>
+    <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed" data-i18n="about_intro">Le Laboratoire Le Colisée associe expertise médicale, équipement moderne et accompagnement humain pour des analyses fiables, rapides et confidentielles.</p>
+  </div>
+
+  <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-6 sm:gap-8 items-stretch mb-12 sm:mb-16" data-aos="fade-up">
+    <div class="relative overflow-hidden rounded-2xl shadow-xl min-h-[360px] bg-cyan-50">
+      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=85" alt="Dr Hind BENNANI" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-cyan-950/85 to-transparent text-white">
+        <p class="font-bold text-2xl" data-i18n="doctor_name">Dr Hind BENNANI</p>
+        <p class="text-cyan-100" data-i18n="doctor_role">Médecin Biologiste</p>
+      </div>
+    </div>
+    <article class="feature-card bg-white rounded-2xl p-6 sm:p-8 flex flex-col justify-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-cyan-700 mb-4" data-i18n="doctor_bio_title">Biographie du médecin biologiste</h2>
+      <p class="text-gray-600 leading-relaxed mb-5" data-i18n="doctor_bio_intro">Dr Hind BENNANI dirige le laboratoire avec une approche fondée sur la précision biologique, la sécurité du patient et l’écoute clinique.</p>
+      <div class="grid gap-3">
+        <div class="flex gap-3"><span class="feature-icon flex-shrink-0">🎓</span><p class="text-gray-700" data-i18n="doctor_bio_1">Médecin biologiste diplômée de la Faculté de Médecine et Pharmacie de Marrakech.</p></div>
+        <div class="flex gap-3"><span class="feature-icon flex-shrink-0">🏥</span><p class="text-gray-700" data-i18n="doctor_bio_2">Ancienne médecin au CHU Mohamed VI.</p></div>
+        <div class="flex gap-3"><span class="feature-icon flex-shrink-0">⚕</span><p class="text-gray-700" data-i18n="doctor_bio_3">Ancienne médecin à l'hôpital militaire Avicenne.</p></div>
+        <div class="flex gap-3"><span class="feature-icon flex-shrink-0">🌸</span><p class="text-gray-700" data-i18n="doctor_bio_4">Diplôme Universitaire : Assistance Médicale de Procréation – Université de Montpellier.</p></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="mb-12 sm:mb-16" data-aos="fade-up">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-cyan-700" data-i18n="values_title">Charte des valeurs</h2>
+      <p class="text-gray-600 mt-3 max-w-2xl mx-auto" data-i18n="values_intro">Nos engagements guident chaque prélèvement, chaque analyse et chaque échange avec les patients.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+      <article class="feature-card bg-white rounded-2xl p-5 sm:p-6" data-aos="fade-up" data-aos-delay="80">
+        <span class="feature-icon mb-4">🔬</span>
+        <h3 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="value_quality_title">Rigueur scientifique</h3>
+        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="value_quality_desc">Protocoles maîtrisés, contrôles qualité et interprétation biologique fiable pour soutenir les décisions médicales.</p>
+      </article>
+      <article class="feature-card bg-white rounded-2xl p-5 sm:p-6" data-aos="fade-up" data-aos-delay="120">
+        <span class="feature-icon mb-4">🤝</span>
+        <h3 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="value_human_title">Accueil humain</h3>
+        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="value_human_desc">Écoute, pédagogie et respect du rythme de chaque patient, du premier contact au rendu des résultats.</p>
+      </article>
+      <article class="feature-card bg-white rounded-2xl p-5 sm:p-6" data-aos="fade-up" data-aos-delay="160">
+        <span class="feature-icon mb-4">🔒</span>
+        <h3 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="value_privacy_title">Confidentialité</h3>
+        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="value_privacy_desc">Protection stricte des données personnelles, des résultats et des échanges médicaux sensibles.</p>
+      </article>
+      <article class="feature-card bg-white rounded-2xl p-5 sm:p-6" data-aos="fade-up" data-aos-delay="200">
+        <span class="feature-icon mb-4">⚙</span>
+        <h3 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="value_innovation_title">Innovation utile</h3>
+        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="value_innovation_desc">Technologies modernes et organisation fluide pour gagner en précision, rapidité et confort.</p>
+      </article>
     </div>
   </div>
-  <div class="grid md:grid-cols-2 gap-8 mb-10">
-    <div class="glass-card flex flex-col items-center" data-aos="fade-right" data-aos-delay="80">
-      <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c" alt="Notre équipe" class="h-24 w-24 rounded-full mb-4 object-cover">
-      <h2 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="about_team">Notre équipe</h2>
-      <p class="text-center text-gray-700" data-i18n="about_team_desc">Des biologistes, techniciens et infirmiers passionnés, à votre écoute et formés aux dernières avancées scientifiques.</p>
+
+  <div data-aos="fade-up">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-cyan-700" data-i18n="specialties_title">Nos Spécialités</h2>
+      <p class="text-gray-600 mt-3 max-w-2xl mx-auto" data-i18n="specialties_intro">Une expertise biologique organisée autour des besoins essentiels des patients, médecins et familles.</p>
     </div>
-    <div class="glass-card flex flex-col items-center" data-aos="fade-left" data-aos-delay="120">
-      <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca" alt="Nos valeurs" class="h-24 w-24 rounded-full mb-4 object-cover">
-      <h2 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="about_values">Nos valeurs</h2>
-      <p class="text-center text-gray-700" data-i18n="about_values_desc">Éthique, rigueur, innovation et proximité guident notre engagement au quotidien.</p>
+    <div class="grid md:grid-cols-3 gap-5 sm:gap-6">
+      <article class="service-preview-card bg-white rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="80">
+        <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=900&q=80" alt="Biologie clinique" class="w-full h-44 object-cover">
+        <div class="p-5 sm:p-6">
+          <h3 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="specialty_clinical_title">Biologie clinique</h3>
+          <p class="text-sm text-gray-600 leading-relaxed" data-i18n="specialty_clinical_desc">Bilans sanguins, biochimie, hématologie et suivi biologique des pathologies courantes ou complexes.</p>
+        </div>
+      </article>
+      <article class="service-preview-card bg-white rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="120">
+        <img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?auto=format&fit=crop&w=900&q=80" alt="Microbiologie" class="w-full h-44 object-cover">
+        <div class="p-5 sm:p-6">
+          <h3 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="specialty_micro_title">Microbiologie et infections</h3>
+          <p class="text-sm text-gray-600 leading-relaxed" data-i18n="specialty_micro_desc">Recherche d’infections, cultures, antibiogrammes et orientation thérapeutique en lien avec le médecin.</p>
+        </div>
+      </article>
+      <article class="service-preview-card bg-white rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="160">
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80" alt="Santé reproductive" class="w-full h-44 object-cover">
+        <div class="p-5 sm:p-6">
+          <h3 class="text-xl font-bold text-cyan-700 mb-2" data-i18n="specialty_repro_title">Santé reproductive</h3>
+          <p class="text-sm text-gray-600 leading-relaxed" data-i18n="specialty_repro_desc">Bilans hormonaux, fertilité, grossesse et assistance médicale de procréation avec discrétion et précision.</p>
+        </div>
+      </article>
     </div>
   </div>
-  <div class="mb-10" data-aos="fade-up" data-aos-delay="140">
-    <h2 class="text-xl font-bold text-cyan-700 mb-4 text-center" data-i18n="about_timeline">Notre histoire</h2>
-    <ol class="relative border-l-2 border-cyan-400 pl-6 space-y-6">
-      <li data-aos="fade-right" data-aos-delay="160">
-        <span class="absolute -left-3 top-1 w-6 h-6 bg-cyan-400 rounded-full"></span>
-        <span class="font-bold" data-i18n="about_timeline1">2005 : Création du laboratoire</span>
-        <p class="text-gray-700" data-i18n="about_timeline1_desc">Ouverture à Casablanca avec une vision d’excellence et d’accessibilité.</p>
-      </li>
-      <li data-aos="fade-right" data-aos-delay="180">
-        <span class="absolute -left-3 top-1 w-6 h-6 bg-cyan-400 rounded-full"></span>
-        <span class="font-bold" data-i18n="about_timeline2">2015 : Certification ISO</span>
-        <p class="text-gray-700" data-i18n="about_timeline2_desc">Obtention de la certification ISO 15189 pour la qualité des analyses.</p>
-      </li>
-      <li data-aos="fade-right" data-aos-delay="200">
-        <span class="absolute -left-3 top-1 w-6 h-6 bg-cyan-400 rounded-full"></span>
-        <span class="font-bold" data-i18n="about_timeline3">2023 : Digitalisation</span>
-        <p class="text-gray-700" data-i18n="about_timeline3_desc">Mise en place de la prise de rendez-vous en ligne et résultats numériques sécurisés.</p>
-      </li>
-    </ol>
-  </div>
-  <div class="flex justify-center" data-aos="fade-up" data-aos-delay="220">
-    <a href="contact.html" class="bg-cyan-600 text-white px-8 py-3 rounded-full shadow text-lg hover:bg-cyan-700 transition-all hover:scale-105" data-i18n="about_cta">Contactez-nous</a>
+
+  <div class="mt-10 sm:mt-12 flex justify-center" data-aos="fade-up" data-aos-delay="180">
+    <a href="contact.html" class="btn-primary text-white px-7 py-3 rounded-full shadow-lg font-semibold" data-i18n="about_cta">Contactez-nous</a>
   </div>
 </section>
 
@@ -131,10 +192,12 @@
       <div>
         <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_services">Services</h4>
         <ul class="text-sm text-gray-300 space-y-2">
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_blood">Analyses sanguines</a></li>
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_hormones">Tests hormonaux</a></li>
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_bacterio">Bactériologie</a></li>
-          <li><a href="services.html" class="hover:text-cyan-400 transition" data-i18n="footer_home">Prélèvements à domicile</a></li>
+          <li><a href="services.html#analyses-routine" class="hover:text-cyan-400 transition" data-i18n="service_routine_title">Analyses de Routine</a></li>
+          <li><a href="services.html#bilan-sante" class="hover:text-cyan-400 transition" data-i18n="service_bilan_title">Bilan de Santé</a></li>
+          <li><a href="services.html#maladies-chroniques" class="hover:text-cyan-400 transition" data-i18n="service_chronic_title">Suivi des Maladies Chroniques</a></li>
+          <li><a href="services.html#depistage-prevention" class="hover:text-cyan-400 transition" data-i18n="service_prevention_title">Dépistages et Prévention</a></li>
+          <li><a href="services.html#sante-reproductive" class="hover:text-cyan-400 transition" data-i18n="service_reproductive_title">Santé Reproductive</a></li>
+          <li><a href="services.html#sante-sportive" class="hover:text-cyan-400 transition" data-i18n="service_sport_title">Santé Sportive</a></li>
         </ul>
       </div>
       <div>
@@ -149,10 +212,10 @@
       <div>
         <h4 class="font-bold text-lg mb-4 text-cyan-300" data-i18n="footer_contact_info">Contact Info</h4>
         <ul class="text-sm text-gray-300 space-y-2">
-          <li>📞 +212 5 22 00 00 00</li>
-          <li>📧 contact@labcolisee.ma</li>
-          <li>📍 123 Bd Mohamed V</li>
-          <li data-i18n="footer_city">Casablanca, Maroc</li>
+          <li>📞 05 24 43 00 71</li>
+          <li>📧 labocolisee@gmail.com</li>
+          <li>📍 numéro 1A, Magasin rez-de-chaussée, Immeuble Koutoubia, Bd Mohamed Zerktouni, Marrakech 40000</li>
+          <li data-i18n="footer_city">Marrakech 40000, Maroc</li>
         </ul>
       </div>
     </div>
@@ -173,7 +236,7 @@
   section {
     padding: 7.25rem 1.5rem 1.5rem !important;
   }
-  h1, h2 {
+  h1 {
     font-size: 1.5rem !important;
   }
   .timeline {
