@@ -25,7 +25,7 @@ class LaboApp {
 
     const btn = document.createElement('a');
     btn.id = 'floating-whatsapp';
-    btn.href = 'https://wa.me/212617304703';
+    btn.href = 'https://wa.me/212666235683';
     btn.target = '_blank';
     btn.rel = 'noopener noreferrer';
     btn.setAttribute('aria-label', 'WhatsApp');
@@ -220,39 +220,63 @@ class LaboApp {
   setupLanguageSwitcher() {
     const langFr = document.getElementById('lang-fr');
     const langAr = document.getElementById('lang-ar');
+    const langEn = document.getElementById('lang-en');
 
-    if (!langFr || !langAr) return;
+    if (!langFr || !langAr || !langEn) return;
 
     const translations = this.getTranslations();
 
     const setLang = (lang) => {
+      const activeLang = translations[lang] ? lang : 'fr';
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-          el.textContent = translations[lang][key];
+        if (translations[activeLang] && translations[activeLang][key]) {
+          el.textContent = translations[activeLang][key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[activeLang] && translations[activeLang][key]) {
+          el.setAttribute('placeholder', translations[activeLang][key]);
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-title]').forEach(el => {
+        const key = el.getAttribute('data-i18n-title');
+        if (translations[activeLang] && translations[activeLang][key]) {
+          el.setAttribute('title', translations[activeLang][key]);
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria-label');
+        if (translations[activeLang] && translations[activeLang][key]) {
+          el.setAttribute('aria-label', translations[activeLang][key]);
         }
       });
 
       const siteTitle = document.getElementById('site-title');
-      if (siteTitle && translations[lang] && translations[lang].site_title) {
-        siteTitle.textContent = translations[lang].site_title;
+      if (siteTitle && translations[activeLang] && translations[activeLang].site_title) {
+        siteTitle.textContent = translations[activeLang].site_title;
       }
 
       const footerText = document.getElementById('footer-text');
-      if (footerText && translations[lang] && translations[lang].footer) {
-        footerText.textContent = translations[lang].footer;
+      if (footerText && translations[activeLang] && translations[activeLang].footer) {
+        footerText.textContent = translations[activeLang].footer;
       }
 
-      document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.body.dir = activeLang === 'ar' ? 'rtl' : 'ltr';
 
       // Store language preference
-      localStorage.setItem('preferred-language', lang);
+      localStorage.setItem('preferred-language', activeLang);
     };
 
     const langToggle = document.getElementById('lang-toggle');
     const langMenu = document.getElementById('lang-menu');
     const langFrMobile = document.getElementById('lang-fr-mobile');
     const langArMobile = document.getElementById('lang-ar-mobile');
+    const langEnMobile = document.getElementById('lang-en-mobile');
     const closeMobileLanguageMenu = () => {
       const mobileNav = document.getElementById('mobile-nav');
       if (!mobileNav) return;
@@ -274,6 +298,10 @@ class LaboApp {
       setLang('ar');
       if (langMenu) langMenu.classList.add('hidden');
     });
+    langEn.addEventListener('click', () => {
+      setLang('en');
+      if (langMenu) langMenu.classList.add('hidden');
+    });
 
     if (langFrMobile) {
       langFrMobile.addEventListener('click', () => {
@@ -284,6 +312,12 @@ class LaboApp {
     if (langArMobile) {
       langArMobile.addEventListener('click', () => {
         setLang('ar');
+        closeMobileLanguageMenu();
+      });
+    }
+    if (langEnMobile) {
+      langEnMobile.addEventListener('click', () => {
+        setLang('en');
         closeMobileLanguageMenu();
       });
     }
@@ -318,6 +352,12 @@ class LaboApp {
 
     if (!contactForm) return;
 
+    const getTranslation = (key) => {
+      const translations = this.getTranslations();
+      const lang = localStorage.getItem('preferred-language') || 'fr';
+      return translations[lang]?.[key] || translations.fr[key] || '';
+    };
+
     const handleSubmit = (e) => {
       e.preventDefault();
 
@@ -326,16 +366,16 @@ class LaboApp {
       const message = document.getElementById('message')?.value.trim();
 
       if (!name || !email || !message) {
-        this.showNotification('Veuillez remplir tous les champs.', 'error');
+        this.showNotification(getTranslation('contact_error'), 'error');
         return;
       }
 
       // Prepare WhatsApp message
       const whatsappMessage = `Nom: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
-      const whatsappUrl = `https://wa.me/212617304703?text=${encodeURIComponent(whatsappMessage)}`;
+      const whatsappUrl = `https://wa.me/212666235683?text=${encodeURIComponent(whatsappMessage)}`;
 
       window.open(whatsappUrl, '_blank');
-      this.showNotification('Votre message a été préparé pour WhatsApp.', 'success');
+      this.showNotification(getTranslation('contact_success'), 'success');
 
       // Reset form
       contactForm.reset();
@@ -349,7 +389,7 @@ class LaboApp {
       const message = document.getElementById('message')?.value.trim();
 
       const whatsappMessage = `Nom: ${name || 'Non spécifié'}%0AEmail: ${email || 'Non spécifié'}%0AMessage: ${message || 'Non spécifié'}`;
-      const whatsappUrl = `https://wa.me/212617304703?text=${encodeURIComponent(whatsappMessage)}`;
+      const whatsappUrl = `https://wa.me/212666235683?text=${encodeURIComponent(whatsappMessage)}`;
 
       window.open(whatsappUrl, '_blank');
     };
@@ -393,14 +433,16 @@ class LaboApp {
         nav_contact: 'Contact',
         nav_rdv: 'RDV',
         nav_language: 'Langue',
+        nav_language_title: 'Changer de langue',
+        close_menu_label: 'Fermer le menu',
         site_title: 'Laboratoire Le Colisée',
         footer: '© 2026 Laboratoire Le Colisée – Tous droits réservés',
         hero_title: 'Laboratoire Le Colisée d\'analyses médicales',
-        hero_desc: 'Laboratoire des analyses medicales à Marrakech',
+        hero_desc: 'Laboratoire d’analyses médicales à Marrakech',
         hero_li1: 'Laboratoire certifié ISO, résultats rapides',
         hero_li2: 'Personnel expérimenté et accueil chaleureux',
         hero_li3: 'Prélèvements à domicile disponibles',
-        btn_rdv: 'Préparer votre visite',
+        btn_rdv: 'Préparez votre visite',
         services_title: 'Nos services',
         services_intro: 'Nous proposons une large gamme d\'analyses médicales, réalisées avec précision et confidentialité.',
         services_page_kicker: 'Biologie médicale complète',
@@ -467,7 +509,7 @@ class LaboApp {
         about_timeline3_desc: 'Mise en place de la prise de rendez-vous en ligne et résultats numériques sécurisés.',
         about_cta: 'Contactez-nous',
         tarifs_title: 'Nos tarifs',
-        tarifs_intro: 'Découvrez nos prix transparents pour les analyses les plus courantes. Pour un devis personnalisé, contactez-nous !',
+        tarifs_intro: 'Découvrez nos tarifs transparents pour les analyses les plus courantes. Pour un devis personnalisé, contactez-nous.',
         tarif_type: 'Type d\'analyse',
         tarif_desc: 'Description',
         tarif_prix: 'Prix',
@@ -483,14 +525,17 @@ class LaboApp {
         tarif_pcr_desc: 'Dépistage COVID-19, grippes, etc.',
         tarifs_cta: 'Demander un devis personnalisé',
         contact_title: 'Contactez-nous',
-        contact_kicker: 'Contact & accompagnement',
+        contact_kicker: 'Contact et accompagnement',
         contact_intro: 'Notre équipe vous répond pour vos rendez-vous, résultats, demandes administratives et informations pratiques.',
         contact_info: 'Informations',
         contact_info_desc: 'Pour une réponse efficace, indiquez votre nom, votre téléphone et l’objet de votre demande.',
-        contact_address: 'numéro 1A, Magasin rez-de-chaussée, Immeuble Koutoubia, Bd Mohamed Zerktouni, Marrakech 40000',
+        contact_address: 'Numéro 1A, magasin rez-de-chaussée, Immeuble Koutoubia, Bd Mohamed Zerktouni, Marrakech 40000',
         contact_name: 'Nom',
         contact_email: 'Email',
         contact_message: 'Message',
+        contact_name_placeholder: 'Votre nom',
+        contact_email_placeholder: 'Votre email',
+        contact_message_placeholder: 'Votre message',
         contact_send: 'Envoyer',
         contact_call_button: 'Appeler le laboratoire',
         contact_feedback_button: 'Avis & réclamation',
@@ -508,7 +553,7 @@ class LaboApp {
         contact_success: 'Votre message a été préparé pour WhatsApp.',
         contact_error: 'Veuillez remplir tous les champs.',
         testimonials_title: 'Témoignages de nos clients',
-        test1_text: '"Accueil chaleureux, résultats rapides et précis. Je recommande vivement!"',
+        test1_text: '"Accueil chaleureux, résultats rapides et précis. Je recommande vivement !"',
         test1_name: 'Fatima B.',
         test1_date: 'Marrakech',
         test2_text: '"Personnel très professionnel. Les prélèvements à domicile sont très pratiques."',
@@ -517,13 +562,14 @@ class LaboApp {
         test3_text: '"Meilleur laboratoire en ville. Équipement moderne et résultats fiables."',
         test3_name: 'Mariam L.',
         test3_date: 'Fès',
-        why_title: 'Pourquoi nous choisir?',
+        why_title: 'Pourquoi nous choisir ?',
+        why_intro: 'Une prise en charge claire, rapide et confidentielle, avec des analyses réalisées dans un cadre professionnel.',
         why_1: 'Satisfaction clients',
         why_2: 'Années d’expérience',
         why_3: 'Patients servis',
         why_4: 'Résultats rapides',
         why_expertise_title: 'Expertise médicale',
-        why_expertise_desc: 'Analyses supervisées par Dr. BENNANI Hind avec rigueur, écoute et interprétation biologique fiable.',
+        why_expertise_desc: 'Analyses encadrées avec rigueur, écoute et interprétation biologique fiable pour orienter chaque patient avec précision.',
         why_equipment_title: 'Matériel moderne',
         why_equipment_desc: 'Équipements récents et procédures contrôlées pour des résultats rapides, précis et reproductibles.',
         why_privacy_title: 'Confidentialité',
@@ -531,9 +577,9 @@ class LaboApp {
         details_about_link: 'Voir les détails',
         details_services_link: 'Tous les services',
         details_advice_link: 'Plus de conseils',
-        details_contact_link: 'Détails contact',
+        details_contact_link: 'Détails du contact',
         services_home_intro: 'Des prestations pensées pour le diagnostic, le suivi et la prévention, avec accompagnement personnalisé.',
-        service_routine_title: 'Analyses de Routine',
+        service_routine_title: 'Analyses de routine',
         service_routine_short: 'Bilans courants pour contrôler les paramètres essentiels et orienter rapidement le diagnostic médical.',
         service_routine_detail: 'Hématologie, biochimie, ionogramme, fonction rénale et hépatique: des examens courants pour suivre les paramètres essentiels et orienter rapidement votre médecin.',
         service_routine_item1: 'Numération formule sanguine',
@@ -543,7 +589,7 @@ class LaboApp {
         service_routine_context: 'Ce service convient aux contrôles prescrits par votre médecin, aux symptômes récents ou au suivi simple de votre état général.',
         service_routine_indications: 'Fatigue, infection, contrôle annuel, suivi de traitement ou exploration d’un déséquilibre biologique.',
         service_routine_preparation: 'Certaines analyses demandent le jeûne. Apportez votre ordonnance et vos derniers résultats si disponibles.',
-        service_bilan_title: 'Bilan de Santé',
+        service_bilan_title: 'Bilan de santé',
         service_bilan_short: 'Check-up complet pour évaluer votre état général et détecter les déséquilibres précocement.',
         service_bilan_detail: 'Des bilans personnalisés selon l’âge, les antécédents et les objectifs de prévention pour évaluer l’état général et repérer les déséquilibres précocement.',
         service_bilan_item1: 'Check-up général',
@@ -553,7 +599,7 @@ class LaboApp {
         service_bilan_context: 'Le bilan est construit pour donner une vision globale: métabolisme, carences, inflammation, organes clés et facteurs de risque.',
         service_bilan_indications: 'Prévention annuelle, fatigue persistante, antécédents familiaux, changement de mode de vie ou préparation médicale.',
         service_bilan_preparation: 'Venez idéalement le matin. Le jeûne peut être demandé selon le bilan lipidique ou glycémique.',
-        service_chronic_title: 'Suivi des Maladies Chroniques',
+        service_chronic_title: 'Suivi des maladies chroniques',
         service_chronic_short: 'Contrôles réguliers pour diabète, reins, foie, thyroïde et traitements au long cours.',
         service_chronic_detail: 'Des analyses régulières pour surveiller l’évolution des maladies chroniques, adapter les traitements et prévenir les complications avec votre médecin.',
         service_chronic_item1: 'Diabète et HbA1c',
@@ -563,7 +609,7 @@ class LaboApp {
         service_chronic_context: 'Nous facilitons un suivi régulier, comparable dans le temps, avec des résultats lisibles pour le patient et le médecin traitant.',
         service_chronic_indications: 'Diabète, hypertension, troubles thyroïdiens, insuffisance rénale, traitements prolongés ou adaptation posologique.',
         service_chronic_preparation: 'Respectez les horaires de prise indiqués par votre médecin, surtout pour les dosages de traitement.',
-        service_prevention_title: 'Dépistages et Prévention',
+        service_prevention_title: 'Dépistages et prévention',
         service_prevention_short: 'Examens ciblés pour repérer les risques infectieux, métaboliques ou hormonaux avant complications.',
         service_prevention_detail: 'Dépistages ciblés pour identifier précocement les risques infectieux, métaboliques ou hormonaux et favoriser une prise en charge rapide.',
         service_prevention_item1: 'Sérologies et infections',
@@ -573,7 +619,7 @@ class LaboApp {
         service_prevention_context: 'La prévention permet d’agir avant les complications, avec des examens adaptés à l’âge, au contexte et aux facteurs de risque.',
         service_prevention_indications: 'Exposition infectieuse, antécédents familiaux, suivi vaccinal, bilan cardiovasculaire ou contrôle avant projet personnel.',
         service_prevention_preparation: 'Signalez vos vaccins récents, traitements et dates d’exposition éventuelle pour interpréter correctement les résultats.',
-        service_reproductive_title: 'Santé Reproductive',
+        service_reproductive_title: 'Santé reproductive',
         service_reproductive_short: 'Bilans hormonaux, fertilité, grossesse et suivi biologique adapté à chaque étape.',
         service_reproductive_detail: 'Bilans biologiques pour fertilité, grossesse, hormones et suivi gynécologique, avec discrétion et accompagnement adapté.',
         service_reproductive_item1: 'Bilans hormonaux',
@@ -583,7 +629,7 @@ class LaboApp {
         service_reproductive_context: 'Nous accompagnons les étapes sensibles avec confidentialité: projet de grossesse, suivi hormonal, fertilité et surveillance prénatale.',
         service_reproductive_indications: 'Troubles du cycle, bilan de fertilité, confirmation ou suivi de grossesse, contrôle hormonal ou parcours AMP.',
         service_reproductive_preparation: 'Certains dosages dépendent du jour du cycle. Notez la date des dernières règles et les traitements en cours.',
-        service_sport_title: 'Santé Sportive',
+        service_sport_title: 'Santé sportive',
         service_sport_short: 'Bilans biologiques pour performance, récupération, carences et reprise sportive sécurisée.',
         service_sport_detail: 'Bilans adaptés aux sportifs pour surveiller récupération, inflammation, carences, hydratation et reprise après arrêt ou blessure.',
         service_sport_item1: 'Bilan carences et vitamines',
@@ -615,7 +661,7 @@ class LaboApp {
         advice_cta_button: 'Prendre rendez-vous',
         conseils_title: 'Conseils pour vos analyses',
         conseils_intro: 'Suivez ces recommandations pour garantir la fiabilité de vos résultats et votre confort lors du prélèvement.',
-        hours_title: 'Horaires et Localisation',
+        hours_title: 'Horaires et localisation',
         hours_heading: 'Horaires d’ouverture',
         day_lun: 'Lundi - Vendredi:',
         day_sam: 'Samedi:',
@@ -638,10 +684,275 @@ class LaboApp {
         footer_about_link: 'À propos',
         footer_tariffs: 'Tarifs',
         footer_contact_link: 'Contact',
-        footer_contact_info: 'Contact Info',
+        footer_contact_info: 'Coordonnées',
         footer_city: 'Marrakech 40000, Maroc',
         footer_privacy: 'Politique de confidentialité',
         footer_terms: 'Conditions d\'utilisation',
+      },
+      en: {
+        nav_accueil: 'Home',
+        nav_apropos: 'About',
+        nav_services: 'Services',
+        nav_tarifs: 'Prices',
+        nav_conseils: 'Advice',
+        nav_contact: 'Contact',
+        nav_rdv: 'Appointment',
+        nav_language: 'Language',
+        nav_language_title: 'Change language',
+        close_menu_label: 'Close menu',
+        site_title: 'Laboratoire Le Colisée',
+        footer: '© 2026 Laboratoire Le Colisée – All rights reserved',
+        hero_title: 'Laboratoire Le Colisée Medical Analysis Laboratory',
+        hero_desc: 'Medical analysis laboratory in Marrakech',
+        hero_li1: 'ISO-certified laboratory, fast results',
+        hero_li2: 'Experienced staff and a warm welcome',
+        hero_li3: 'Home sampling available',
+        btn_rdv: 'Prepare your visit',
+        services_title: 'Our services',
+        services_intro: 'We provide a wide range of medical tests performed with precision and confidentiality.',
+        services_page_kicker: 'Complete medical biology',
+        services_page_intro: 'Tests designed for diagnosis, prevention, and medical follow-up, with clear guidance at every step.',
+        services_nav_label: 'Quick access to services',
+        service_included_label: 'Included tests',
+        service_indications_label: 'Indications',
+        service_preparation_label: 'Preparation',
+        service_cta: 'Book an appointment',
+        service1: 'Hematology',
+        service1_desc: 'Blood count, anemia, hemostasis, and more.',
+        service2: 'Biochemistry',
+        service2_desc: 'Kidney function, liver function, electrolytes, and more.',
+        service3: 'Immunology',
+        service3_desc: 'Serology, allergies, autoimmunity.',
+        service4: 'Microbiology',
+        service4_desc: 'Bacteriology, mycology, parasitology.',
+        service5: 'PCR tests',
+        service5_desc: 'COVID-19, flu, STIs, and more.',
+        service6: 'Complete check-ups',
+        service6_desc: 'Preoperative assessments, check-ups, chronic follow-up.',
+        about_kicker: 'Excellence in medical biology',
+        about_title: 'About the laboratory',
+        about_intro: 'Laboratoire Le Colisée combines medical expertise, modern equipment, and human support for reliable, fast, and confidential testing.',
+        doctor_name: 'Dr Hind BENNANI',
+        doctor_role: 'Medical Biologist',
+        doctor_bio_title: 'Medical biologist profile',
+        doctor_bio_intro: 'Dr Hind BENNANI leads the laboratory with an approach based on biological precision, patient safety, and clinical listening.',
+        doctor_bio_1: 'Medical biologist graduated from the Faculty of Medicine and Pharmacy of Marrakech.',
+        doctor_bio_2: 'Former physician at Mohammed VI University Hospital.',
+        doctor_bio_3: 'Former physician at Avicenne Military Hospital.',
+        doctor_bio_4: 'University diploma: Assisted Reproductive Medicine – University of Montpellier.',
+        values_title: 'Our values charter',
+        values_intro: 'Our commitments guide every sample, every analysis, and every exchange with patients.',
+        value_quality_title: 'Scientific rigor',
+        value_quality_desc: 'Controlled protocols, quality checks, and reliable biological interpretation to support medical decisions.',
+        value_human_title: 'Human-centered welcome',
+        value_human_desc: 'Listening, guidance, and respect for each patient’s pace, from first contact to results delivery.',
+        value_privacy_title: 'Confidentiality',
+        value_privacy_desc: 'Strict protection of personal data, results, and sensitive medical exchanges.',
+        value_innovation_title: 'Useful innovation',
+        value_innovation_desc: 'Modern technologies and smooth organization to improve accuracy, speed, and comfort.',
+        specialties_title: 'Our specialties',
+        specialties_intro: 'Biological expertise organized around the essential needs of patients, doctors, and families.',
+        specialty_clinical_title: 'Clinical biology',
+        specialty_clinical_desc: 'Blood tests, biochemistry, hematology, and biological follow-up for common or complex conditions.',
+        specialty_micro_title: 'Microbiology and infections',
+        specialty_micro_desc: 'Infection screening, cultures, antibiograms, and therapeutic guidance in coordination with the physician.',
+        specialty_repro_title: 'Reproductive health',
+        specialty_repro_desc: 'Hormonal tests, fertility, pregnancy, and assisted reproductive medicine with discretion and precision.',
+        about_li1: 'More than 20 years of experience serving your health',
+        about_li2: 'ISO 15189 certified laboratory',
+        about_li3: 'Confidentiality and personalized support',
+        about_team: 'Our team',
+        about_team_desc: 'Dedicated biologists, technicians, and nurses who listen to you and stay trained in the latest scientific advances.',
+        about_values: 'Our values',
+        about_values_desc: 'Ethics, rigor, innovation, and proximity guide our daily commitment.',
+        about_timeline: 'Our history',
+        about_timeline1: '2005: Laboratory creation',
+        about_timeline1_desc: 'Opening in Marrakech with a vision of excellence and accessibility.',
+        about_timeline2: '2015: ISO certification',
+        about_timeline2_desc: 'ISO 15189 certification obtained for analysis quality.',
+        about_timeline3: '2023: Digitalization',
+        about_timeline3_desc: 'Online appointment booking and secure digital results introduced.',
+        about_cta: 'Contact us',
+        tarifs_title: 'Our prices',
+        tarifs_intro: 'Discover our transparent prices for the most common tests. For a personalized quote, contact us.',
+        tarif_type: 'Test type',
+        tarif_desc: 'Description',
+        tarif_prix: 'Price',
+        tarif_sang: 'Blood test',
+        tarif_sang_desc: 'Complete check-up, screening, diabetes follow-up',
+        tarif_gly: 'Blood glucose test',
+        tarif_gly_desc: 'Measurement of blood sugar level',
+        tarif_lipid: 'Lipid profile',
+        tarif_lipid_desc: 'Cholesterol, triglycerides, HDL/LDL',
+        tarif_urine: 'Urine analysis',
+        tarif_urine_desc: 'Infection screening, kidney assessment',
+        tarif_pcr: 'PCR test',
+        tarif_pcr_desc: 'COVID-19, flu, and other screening',
+        tarifs_cta: 'Request a personalized quote',
+        contact_title: 'Contact us',
+        contact_kicker: 'Contact and support',
+        contact_intro: 'Our team answers your questions about appointments, results, administrative requests, and practical information.',
+        contact_info: 'Information',
+        contact_info_desc: 'For an efficient response, please include your name, phone number, and the subject of your request.',
+        contact_address: 'Number 1A, ground-floor shop, Immeuble Koutoubia, Bd Mohamed Zerktouni, Marrakech 40000',
+        contact_name: 'Name',
+        contact_email: 'Email',
+        contact_message: 'Message',
+        contact_name_placeholder: 'Your name',
+        contact_email_placeholder: 'Your email',
+        contact_message_placeholder: 'Your message',
+        contact_send: 'Send',
+        contact_call_button: 'Call the laboratory',
+        contact_feedback_button: 'Feedback & complaint',
+        contact_visit_title: 'Before your visit',
+        contact_visit_1: 'Bring your prescription, ID card, and previous results if useful.',
+        contact_visit_2: 'For fasting tests, we recommend coming in the morning before breakfast.',
+        contact_visit_3: 'If you are unsure about preparation, contact us before coming.',
+        contact_form_title: 'Send a request',
+        contact_form_desc: 'Describe your need in a few lines. The message will be prepared for quick sending.',
+        contact_map_desc: 'The laboratory is accessible to patients, families, and healthcare professionals. Check your route before leaving.',
+        contact_maps_button: 'Open Google Maps',
+        contact_hours_week: 'Reception, sampling, and information',
+        contact_hours_sat: 'Morning service',
+        contact_hours_sun: 'Weekly rest day',
+        contact_success: 'Your message has been prepared for WhatsApp.',
+        contact_error: 'Please fill in all fields.',
+        testimonials_title: 'Client testimonials',
+        test1_text: '"Warm welcome, fast and accurate results. Highly recommended!"',
+        test1_name: 'Fatima B.',
+        test1_date: 'Marrakech',
+        test2_text: '"Very professional staff. Home sampling is very convenient."',
+        test2_name: 'Ahmed M.',
+        test2_date: 'Rabat',
+        test3_text: '"Best laboratory in town. Modern equipment and reliable results."',
+        test3_name: 'Mariam L.',
+        test3_date: 'Fez',
+        why_title: 'Why choose us?',
+        why_intro: 'Clear, fast, and confidential care, with tests carried out in a professional setting.',
+        why_1: 'Client satisfaction',
+        why_2: 'Years of experience',
+        why_3: 'Patients served',
+        why_4: 'Fast results',
+        why_expertise_title: 'Medical expertise',
+        why_expertise_desc: 'Tests handled with rigor, listening, and reliable biological interpretation to guide each patient with precision.',
+        why_equipment_title: 'Modern equipment',
+        why_equipment_desc: 'Recent equipment and controlled procedures for fast, accurate, and reproducible results.',
+        why_privacy_title: 'Confidentiality',
+        why_privacy_desc: 'Personal data and results protected with discretion, secure access, and strict respect for medical confidentiality.',
+        details_about_link: 'View details',
+        details_services_link: 'All services',
+        details_advice_link: 'More advice',
+        details_contact_link: 'Contact details',
+        services_home_intro: 'Services designed for diagnosis, follow-up, and prevention, with personalized support.',
+        service_routine_title: 'Routine tests',
+        service_routine_short: 'Common tests to monitor key parameters and quickly guide medical diagnosis.',
+        service_routine_detail: 'Hematology, biochemistry, electrolytes, kidney and liver function: common tests to monitor essential parameters and quickly guide your doctor.',
+        service_routine_item1: 'Complete blood count',
+        service_routine_item2: 'Blood glucose and lipid profile',
+        service_routine_item3: 'Kidney and liver function',
+        service_routine_item4: 'Common urine tests',
+        service_routine_context: 'This service is suitable for tests prescribed by your doctor, recent symptoms, or simple follow-up of your general health.',
+        service_routine_indications: 'Fatigue, infection, annual check-up, treatment follow-up, or investigation of a biological imbalance.',
+        service_routine_preparation: 'Some tests require fasting. Bring your prescription and recent results if available.',
+        service_bilan_title: 'Health check-up',
+        service_bilan_short: 'A complete check-up to assess your general health and detect imbalances early.',
+        service_bilan_detail: 'Personalized assessments based on age, history, and prevention goals to evaluate overall health and identify imbalances early.',
+        service_bilan_item1: 'General check-up',
+        service_bilan_item2: 'Fatigue and deficiency assessment',
+        service_bilan_item3: 'Preoperative assessment',
+        service_bilan_item4: 'Annual preventive follow-up',
+        service_bilan_context: 'The check-up is designed to provide an overall view: metabolism, deficiencies, inflammation, key organs, and risk factors.',
+        service_bilan_indications: 'Annual prevention, persistent fatigue, family history, lifestyle change, or medical preparation.',
+        service_bilan_preparation: 'Ideally, come in the morning. Fasting may be required depending on the lipid or glucose assessment.',
+        service_chronic_title: 'Chronic disease follow-up',
+        service_chronic_short: 'Regular monitoring for diabetes, kidneys, liver, thyroid, and long-term treatments.',
+        service_chronic_detail: 'Regular tests to monitor chronic diseases, adjust treatments, and prevent complications with your doctor.',
+        service_chronic_item1: 'Diabetes and HbA1c',
+        service_chronic_item2: 'Thyroid and hormones',
+        service_chronic_item3: 'Kidney function',
+        service_chronic_item4: 'Biological therapeutic monitoring',
+        service_chronic_context: 'We make regular follow-up easier, comparable over time, with clear results for patients and physicians.',
+        service_chronic_indications: 'Diabetes, hypertension, thyroid disorders, kidney failure, long-term treatments, or dosage adjustment.',
+        service_chronic_preparation: 'Follow the medication timing indicated by your doctor, especially for treatment level measurements.',
+        service_prevention_title: 'Screening and prevention',
+        service_prevention_short: 'Targeted tests to detect infectious, metabolic, or hormonal risks before complications occur.',
+        service_prevention_detail: 'Targeted screening to identify infectious, metabolic, or hormonal risks early and support fast care.',
+        service_prevention_item1: 'Serology and infections',
+        service_prevention_item2: 'Metabolic screening',
+        service_prevention_item3: 'Cardiovascular assessment',
+        service_prevention_item4: 'Personalized prevention',
+        service_prevention_context: 'Prevention helps act before complications, with tests adapted to age, context, and risk factors.',
+        service_prevention_indications: 'Infectious exposure, family history, vaccine follow-up, cardiovascular assessment, or check-up before a personal project.',
+        service_prevention_preparation: 'Mention recent vaccines, treatments, and possible exposure dates so results can be interpreted correctly.',
+        service_reproductive_title: 'Reproductive health',
+        service_reproductive_short: 'Hormonal tests, fertility, pregnancy, and biological follow-up adapted to each stage.',
+        service_reproductive_detail: 'Biological tests for fertility, pregnancy, hormones, and gynecological follow-up, with discretion and appropriate support.',
+        service_reproductive_item1: 'Hormonal assessments',
+        service_reproductive_item2: 'Pregnancy follow-up',
+        service_reproductive_item3: 'Fertility and ovarian reserve',
+        service_reproductive_item4: 'Prenatal tests',
+        service_reproductive_context: 'We support sensitive stages with confidentiality: pregnancy planning, hormonal follow-up, fertility, and prenatal monitoring.',
+        service_reproductive_indications: 'Cycle disorders, fertility assessment, pregnancy confirmation or follow-up, hormonal monitoring, or assisted reproduction pathway.',
+        service_reproductive_preparation: 'Some tests depend on the day of the cycle. Note the date of your last period and any current treatments.',
+        service_sport_title: 'Sports health',
+        service_sport_short: 'Biological assessments for performance, recovery, deficiencies, and safe return to sport.',
+        service_sport_detail: 'Assessments adapted to athletes to monitor recovery, inflammation, deficiencies, hydration, and return after rest or injury.',
+        service_sport_item1: 'Deficiency and vitamin assessment',
+        service_sport_item2: 'Inflammation and recovery',
+        service_sport_item3: 'Metabolism and energy',
+        service_sport_item4: 'Return-to-sport follow-up',
+        service_sport_context: 'A sports assessment helps adjust training, prevent deficiencies, and secure a return to activity with reliable biological markers.',
+        service_sport_indications: 'Exercise fatigue, lower performance, return after injury, competition preparation, or nutritional monitoring.',
+        service_sport_preparation: 'Avoid intense exercise the day before if your doctor wants to measure baseline recovery status.',
+        advice_home_title: 'Advice & tips',
+        advice_home_intro: 'Advice to help you prepare.',
+        advice_fasting_title: 'Check fasting requirements',
+        advice_fasting_desc: 'Some tests require 8 to 12 hours of fasting. Please confirm before your appointment.',
+        advice_fasting_detail: 'For blood glucose, triglycerides, or some check-ups, fast for 8 to 12 hours unless your doctor advises otherwise.',
+        advice_hydration_title: 'Stay hydrated',
+        advice_hydration_desc: 'Drinking water makes sampling easier, unless your doctor advises otherwise.',
+        advice_hydration_detail: 'Drink water before the blood draw. This makes sampling easier and improves your comfort.',
+        advice_docs_title: 'Prepare your documents',
+        advice_docs_desc: 'Bring your prescription, ID card, and previous useful results for a complete file.',
+        advice_docs_detail: 'Bring your prescription, ID card, insurance information, and previous results if requested by the doctor.',
+        advice_treatment_title: 'Mention your treatments',
+        advice_treatment_desc: 'Inform the team about any medication, supplements, or anticoagulants taken before sampling.',
+        advice_time_title: 'Respect the appointment time',
+        advice_time_desc: 'Arrive at the scheduled time, especially for tests sensitive to sampling time.',
+        advice_avoid_title: 'Avoid certain excesses',
+        advice_avoid_desc: 'Avoid alcohol, very fatty meals, and intense exercise the day before if your check-up requires it.',
+        advice_cta_title: 'Ready for your test?',
+        advice_cta_desc: 'Book your appointment online for fast, personalized service.',
+        advice_cta_button: 'Book an appointment',
+        conseils_title: 'Advice for your tests',
+        conseils_intro: 'Follow these recommendations to ensure reliable results and comfort during sampling.',
+        hours_title: 'Opening hours and location',
+        hours_heading: 'Opening hours',
+        day_lun: 'Monday - Friday:',
+        day_sam: 'Saturday:',
+        day_dim: 'Sunday:',
+        closed: 'Closed',
+        hours_emergency: 'Sampling and information during opening hours.',
+        contact_heading: 'Contact us',
+        phone_label: 'Phone:',
+        email_label: 'Email:',
+        address_label: 'Address:',
+        map_heading: 'Find us',
+        footer_about: 'Laboratoire Le Colisée has provided reliable diagnostic services for more than 15 years with modern equipment and an experienced team.',
+        footer_services: 'Services',
+        footer_blood: 'Blood tests',
+        footer_hormones: 'Hormone tests',
+        footer_bacterio: 'Bacteriology',
+        footer_home: 'Home sampling',
+        footer_links: 'Useful links',
+        footer_home_link: 'Home',
+        footer_about_link: 'About',
+        footer_tariffs: 'Prices',
+        footer_contact_link: 'Contact',
+        footer_contact_info: 'Contact information',
+        footer_city: 'Marrakech 40000, Morocco',
+        footer_privacy: 'Privacy policy',
+        footer_terms: 'Terms of use',
       },
       ar: {
         nav_accueil: 'الرئيسية',
@@ -652,14 +963,16 @@ class LaboApp {
         nav_contact: 'اتصل بنا',
         nav_rdv: 'موعد',
         nav_language: 'اللغة',
+        nav_language_title: 'تغيير اللغة',
+        close_menu_label: 'إغلاق القائمة',
         site_title: 'مختبر الكوليسي',
         footer: '© 2026 مختبر الكوليسي – جميع الحقوق محفوظة',
-        hero_title: 'مختبر كوليزي للتحاليل الطبية',
-        hero_desc: 'مختبر كوليزي للتحاليل الطبية في مراكش',
+        hero_title: 'مختبر لو كوليسي للتحاليل الطبية',
+        hero_desc: 'مختبر للتحاليل الطبية في مراكش',
         hero_li1: 'مختبر معتمد ISO ونتائج سريعة',
         hero_li2: 'طاقم ذو خبرة واستقبال دافئ',
         hero_li3: 'أخذ العينات متاح في المنزل',
-        btn_rdv: 'تحضير زيارتك',
+        btn_rdv: 'حضّروا زيارتكم',
         services_title: 'خدماتنا',
         services_intro: 'نقدم مجموعة واسعة من التحاليل الطبية، منجزة بدقة وسرية.',
         services_page_kicker: 'بيولوجيا طبية شاملة',
@@ -740,8 +1053,8 @@ class LaboApp {
         tarif_urine_desc: 'كشف العدوى، فحص الكلى',
         tarif_pcr: 'اختبار PCR',
         tarif_pcr_desc: 'كشف كوفيد-19، الإنفلونزا، إلخ.',
-        tarifs_cta: 'طلب عرض خاص',
-        contact_title: 'اتصل بنا',
+        tarifs_cta: 'طلب عرض مخصص',
+        contact_title: 'اتصلوا بنا',
         contact_kicker: 'تواصل ومواكبة',
         contact_intro: 'فريقنا يجيب عن مواعيدكم ونتائجكم والطلبات الإدارية والمعلومات العملية.',
         contact_info: 'معلومات',
@@ -750,6 +1063,9 @@ class LaboApp {
         contact_name: 'الاسم',
         contact_email: 'البريد الإلكتروني',
         contact_message: 'رسالتك',
+        contact_name_placeholder: 'اسمكم',
+        contact_email_placeholder: 'بريدكم الإلكتروني',
+        contact_message_placeholder: 'رسالتكم',
         contact_send: 'إرسال',
         contact_call_button: 'الاتصال بالمختبر',
         contact_feedback_button: 'آراء وشكايات',
@@ -758,13 +1074,13 @@ class LaboApp {
         contact_visit_2: 'بالنسبة للتحاليل التي تتطلب الصيام، يفضل الحضور صباحا قبل الإفطار.',
         contact_visit_3: 'عند الشك في طريقة التحضير، اتصلوا بنا قبل التنقل.',
         contact_form_title: 'إرسال طلب',
-        contact_form_desc: 'صفوا حاجتكم في بضعة أسطر. سيتم تجهيز الرسالة لإرسال سريع.',
+        contact_form_desc: 'صفوا حاجتكم في بضعة أسطر. سيتم تجهيز الرسالة لإرسالها بسرعة.',
         contact_map_desc: 'المختبر متاح للمرضى والعائلات ومهنيي الصحة. تحققوا من الطريق قبل الانطلاق.',
         contact_maps_button: 'فتح Google Maps',
         contact_hours_week: 'استقبال وأخذ عينات ومعلومات',
         contact_hours_sat: 'خدمة صباحية',
         contact_hours_sun: 'راحة أسبوعية',
-        contact_success: 'تم تجهيز رسالتك لإرسالها عبر واتساب.',
+        contact_success: 'تم تجهيز رسالتكم لإرسالها عبر واتساب.',
         contact_error: 'يرجى ملء جميع الحقول.',
         testimonials_title: 'آراء عملائنا',
         test1_text: '"استقبال جيد ونتائج سريعة ودقيقة. أنصح به بشدة!"',
@@ -777,12 +1093,13 @@ class LaboApp {
         test3_name: 'مريم ل.',
         test3_date: 'فاس',
         why_title: 'لماذا تختاروننا؟',
+        why_intro: 'رعاية واضحة وسريعة وسرية، مع تحاليل تنجز في إطار مهني.',
         why_1: 'رضا المرضى',
         why_2: 'سنوات من الخبرة',
-        why_3: 'مريض تم خدمته',
+        why_3: 'مرضى تمت خدمتهم',
         why_4: 'نتائج سريعة',
         why_expertise_title: 'خبرة طبية',
-        why_expertise_desc: 'تحاليل بإشراف الدكتورة بناني هند مع دقة وإنصات وتفسير بيولوجي موثوق.',
+        why_expertise_desc: 'تحاليل مؤطرة بدقة وإنصات وتفسير بيولوجي موثوق لتوجيه كل مريض بوضوح.',
         why_equipment_title: 'معدات حديثة',
         why_equipment_desc: 'أجهزة حديثة وإجراءات مضبوطة لضمان نتائج سريعة ودقيقة وقابلة للتكرار.',
         why_privacy_title: 'السرية',
@@ -867,7 +1184,7 @@ class LaboApp {
         advice_treatment_desc: 'أخبر الفريق بالأدوية أو المكملات أو مضادات التخثر قبل أخذ العينة.',
         advice_time_title: 'احترام الموعد',
         advice_time_desc: 'احضر في الوقت المحدد خصوصا للتحاليل الحساسة لتوقيت أخذ العينة.',
-        advice_avoid_title: 'تجنب بعض الإفراط',
+        advice_avoid_title: 'تجنب بعض العادات',
         advice_avoid_desc: 'تجنب الكحول والوجبات الدسمة والجهد الشديد في اليوم السابق إذا لزم الأمر.',
         advice_cta_title: 'هل أنت مستعد للتحليل؟',
         advice_cta_desc: 'احجز موعدك عبر الإنترنت لخدمة سريعة وشخصية.',
@@ -881,7 +1198,7 @@ class LaboApp {
         day_dim: 'الأحد:',
         closed: 'مغلق',
         hours_emergency: 'أخذ العينات والمعلومات خلال أوقات العمل.',
-        contact_heading: 'اتصلوا بنا',
+        contact_heading: 'تواصلوا معنا',
         phone_label: 'الهاتف:',
         email_label: 'البريد الإلكتروني:',
         address_label: 'العنوان:',
