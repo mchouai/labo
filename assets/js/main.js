@@ -217,6 +217,134 @@ class LaboApp {
   }
 
   // Language switcher functionality
+  updateSeoMetadata(lang) {
+    const page = window.location.pathname.split('/').pop() || 'index.html';
+    const seo = {
+      'index.html': {
+        fr: {
+          title: 'Laboratoire d’analyses médicales à Marrakech | Le Colisée',
+          description: 'Laboratoire Le Colisée, laboratoire d’analyses médicales à Marrakech : prises de sang, bilans de santé, dépistage et suivi médical.'
+        },
+        en: {
+          title: 'Medical Analysis Laboratory in Marrakech | Le Colisée',
+          description: 'Laboratoire Le Colisée is a medical analysis laboratory in Marrakech offering blood tests, health check-ups, screening, and medical monitoring.'
+        },
+        ar: {
+          title: 'مختبر التحاليل الطبية في مراكش | مختبر لو كوليسي',
+          description: 'مختبر لو كوليسي للتحاليل الطبية في مراكش يقدم تحاليل الدم والفحوصات الشاملة والكشف المبكر والمتابعة الطبية بدقة وسرية.'
+        }
+      },
+      'about.html': {
+        fr: {
+          title: 'À propos | Laboratoire Le Colisée Marrakech',
+          description: 'Découvrez le Laboratoire Le Colisée à Marrakech, dirigé par Dr Hind Bennani : expertise en biologie médicale, technologie avancée et confidentialité.'
+        },
+        en: {
+          title: 'About Us | Laboratoire Le Colisée Marrakech',
+          description: 'Discover Laboratoire Le Colisée in Marrakech, led by Dr. Hind Bennani: medical biology expertise, advanced technology, and confidential patient care.'
+        },
+        ar: {
+          title: 'من نحن | مختبر لو كوليسي للتحاليل الطبية بمراكش',
+          description: 'تعرفوا على مختبر لو كوليسي في مراكش بإدارة الدكتورة هند بناني، وخبرته في البيولوجيا الطبية والتقنيات الحديثة وسرية المرضى.'
+        }
+      },
+      'services.html': {
+        fr: {
+          title: 'Services d’analyses médicales à Marrakech | Le Colisée',
+          description: 'Analyses médicales à Marrakech : bilans de santé, analyses de routine, dépistage, suivi des maladies chroniques, santé reproductive et sportive.'
+        },
+        en: {
+          title: 'Medical Laboratory Services in Marrakech | Le Colisée',
+          description: 'Medical laboratory services in Marrakech: routine tests, health check-ups, screening, chronic disease monitoring, reproductive and sports health.'
+        },
+        ar: {
+          title: 'خدمات التحاليل الطبية في مراكش | مختبر لو كوليسي',
+          description: 'خدمات التحاليل الطبية في مراكش: تحاليل روتينية وفحوصات شاملة وكشف مبكر ومتابعة الأمراض المزمنة والصحة الإنجابية والرياضية.'
+        }
+      },
+      'conseils.html': {
+        fr: {
+          title: 'Conseils avant analyses médicales | Laboratoire Le Colisée',
+          description: 'Préparez vos analyses médicales à Marrakech : jeûne, hydratation, documents, médicaments et recommandations avant votre prélèvement.'
+        },
+        en: {
+          title: 'Preparing for Medical Tests | Le Colisée Marrakech',
+          description: 'Prepare for your medical tests in Marrakech with guidance about fasting, hydration, documents, medication, and blood collection.'
+        },
+        ar: {
+          title: 'الاستعداد للتحاليل الطبية | مختبر لو كوليسي مراكش',
+          description: 'استعدوا للتحاليل الطبية في مراكش مع إرشادات حول الصيام وشرب الماء والوثائق والأدوية وأخذ العينات.'
+        }
+      },
+      'contact.html': {
+        fr: {
+          title: 'Contact | Laboratoire Le Colisée Marrakech',
+          description: 'Contactez le Laboratoire Le Colisée à Marrakech. Adresse, téléphone, horaires, itinéraire et informations pratiques pour vos analyses médicales.'
+        },
+        en: {
+          title: 'Contact | Laboratoire Le Colisée Marrakech',
+          description: 'Contact Laboratoire Le Colisée in Marrakech for its address, phone number, opening hours, directions, and medical testing information.'
+        },
+        ar: {
+          title: 'اتصل بنا | مختبر لو كوليسي للتحاليل الطبية بمراكش',
+          description: 'تواصلوا مع مختبر لو كوليسي في مراكش لمعرفة العنوان ورقم الهاتف وأوقات العمل والوصول ومعلومات التحاليل الطبية.'
+        }
+      },
+      'rdv.html': {
+        fr: {
+          title: 'Prendre rendez-vous | Laboratoire Le Colisée Marrakech',
+          description: 'Prenez rendez-vous au Laboratoire Le Colisée à Marrakech pour vos analyses médicales et bénéficiez d’un accueil rapide et personnalisé.'
+        },
+        en: {
+          title: 'Book an Appointment | Le Colisée Laboratory Marrakech',
+          description: 'Book an appointment at Laboratoire Le Colisée in Marrakech for medical testing with fast service and personalized patient care.'
+        },
+        ar: {
+          title: 'حجز موعد | مختبر لو كوليسي للتحاليل الطبية بمراكش',
+          description: 'احجزوا موعدا في مختبر لو كوليسي بمراكش لإجراء التحاليل الطبية والاستفادة من خدمة سريعة ورعاية شخصية.'
+        }
+      },
+      'tarifs.html': {
+        fr: {
+          title: 'Tarifs des analyses médicales | Le Colisée Marrakech',
+          description: 'Consultez les tarifs des analyses médicales courantes au Laboratoire Le Colisée à Marrakech ou demandez un devis personnalisé.'
+        },
+        en: {
+          title: 'Medical Test Prices | Le Colisée Laboratory Marrakech',
+          description: 'View common medical test prices at Laboratoire Le Colisée in Marrakech or request a personalized laboratory quote.'
+        },
+        ar: {
+          title: 'أسعار التحاليل الطبية | مختبر لو كوليسي بمراكش',
+          description: 'اطلعوا على أسعار التحاليل الطبية الشائعة في مختبر لو كوليسي بمراكش أو اطلبوا عرض سعر مخصصا.'
+        }
+      }
+    };
+
+    const pageSeo = seo[page] || seo['index.html'];
+    const content = pageSeo[lang] || pageSeo.fr;
+    const basePath = page === 'index.html' ? '/' : window.location.pathname;
+    const languageUrls = {
+      fr: new URL(basePath, 'https://www.labolecolisee.com'),
+      en: new URL(`${basePath}?lang=en`, 'https://www.labolecolisee.com'),
+      ar: new URL(`${basePath}?lang=ar`, 'https://www.labolecolisee.com')
+    };
+    const currentUrl = languageUrls[lang] || languageUrls.fr;
+    const description = document.querySelector('meta[name="description"]');
+    const canonical = document.getElementById('canonical-url');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    const ogLocale = document.querySelector('meta[property="og:locale"]');
+
+    document.title = content.title;
+    if (description) description.setAttribute('content', content.description);
+    if (canonical) canonical.setAttribute('href', currentUrl.href);
+    if (ogTitle) ogTitle.setAttribute('content', content.title);
+    if (ogDescription) ogDescription.setAttribute('content', content.description);
+    if (ogUrl) ogUrl.setAttribute('content', currentUrl.href);
+    if (ogLocale) ogLocale.setAttribute('content', lang === 'ar' ? 'ar_MA' : lang === 'en' ? 'en_MA' : 'fr_MA');
+  }
+
   setupLanguageSwitcher() {
     const langFr = document.getElementById('lang-fr');
     const langAr = document.getElementById('lang-ar');
@@ -266,7 +394,18 @@ class LaboApp {
         footerText.textContent = translations[activeLang].footer;
       }
 
+      document.documentElement.lang = activeLang;
+      document.documentElement.dir = activeLang === 'ar' ? 'rtl' : 'ltr';
       document.body.dir = activeLang === 'ar' ? 'rtl' : 'ltr';
+
+      const languageUrl = new URL(window.location.href);
+      if (activeLang === 'fr') {
+        languageUrl.searchParams.delete('lang');
+      } else {
+        languageUrl.searchParams.set('lang', activeLang);
+      }
+      window.history.replaceState({}, '', `${languageUrl.pathname}${languageUrl.search}${languageUrl.hash}`);
+      this.updateSeoMetadata(activeLang);
 
       // Store language preference
       localStorage.setItem('preferred-language', activeLang);
@@ -340,7 +479,8 @@ class LaboApp {
     }
 
     // Load saved language preference
-    const savedLang = localStorage.getItem('preferred-language') || 'fr';
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    const savedLang = translations[urlLang] ? urlLang : (localStorage.getItem('preferred-language') || 'fr');
     setLang(savedLang);
   }
 
@@ -713,11 +853,11 @@ class LaboApp {
         hero_li2: 'Experienced staff and a warm welcome',
         hero_li3: 'Home sampling available',
         btn_rdv: 'Prepare your visit',
-        home_about_desc: 'Laboratoire Le Colisée Medical Analysis Laboratory, led by Dr Hind BENNANI, is a reference center dedicated to medical biology and precision diagnostics. Our laboratory provides patients and healthcare professionals with reliable, fast analyses that meet the strictest quality standards. With modern equipment and a qualified team, we ensure rigorous and personalized care for every patient.',
-        services_title: 'Our services',
+        home_about_desc: 'Founded and directed by Dr. Hind Bennani, Laboratoire Le Colisée is a leading medical analysis laboratory in Marrakech dedicated to providing accurate, reliable, and timely diagnostic testing. Combining advanced laboratory technology with a highly qualified team, we deliver high-quality medical analyses while ensuring personalized care, precision, and confidentiality for every patient.',
+        services_title: 'Our Services',
         services_intro: 'We provide a wide range of medical tests performed with precision and confidentiality.',
         services_page_kicker: 'Complete medical biology',
-        services_page_intro: 'Tests designed for diagnosis, prevention, and medical follow-up, with clear guidance at every step.',
+        services_page_intro: 'Comprehensive laboratory testing services designed to support diagnosis, prevention, and ongoing health monitoring.',
         services_nav_label: 'Quick access to services',
         service_included_label: 'Included tests',
         service_indications_label: 'Indications',
@@ -736,8 +876,8 @@ class LaboApp {
         service6: 'Complete check-ups',
         service6_desc: 'Preoperative assessments, check-ups, chronic follow-up.',
         about_kicker: 'Excellence in medical biology',
-        about_title: 'About the laboratory',
-        about_intro: 'Laboratoire Le Colisée combines medical expertise, modern equipment, and human support for reliable, fast, and confidential testing.',
+        about_title: 'About the Laboratory',
+        about_intro: 'Founded and directed by Dr. Hind Bennani, Laboratoire Le Colisée is a leading medical analysis laboratory in Marrakech dedicated to providing accurate, reliable, and timely diagnostic testing. Combining advanced laboratory technology with a highly qualified team, we deliver high-quality medical analyses while ensuring personalized care, precision, and confidentiality for every patient.',
         doctor_name: 'Dr Hind BENNANI',
         doctor_role: 'Medical Biologist',
         doctor_bio_title: 'Medical biologist profile',
@@ -839,20 +979,20 @@ class LaboApp {
         why_2: 'Years of experience',
         why_3: 'Patients served',
         why_4: 'Fast results',
-        why_expertise_title: 'Medical expertise',
-        why_expertise_desc: 'Tests handled with rigor, listening, and reliable biological interpretation to guide each patient with precision.',
-        why_equipment_title: 'Modern equipment',
-        why_equipment_desc: 'Recent equipment and controlled procedures for fast, accurate, and reproducible results.',
-        why_privacy_title: 'Confidentiality',
-        why_privacy_desc: 'Personal data and results protected with discretion, secure access, and strict respect for medical confidentiality.',
+        why_expertise_title: 'Medical Expertise',
+        why_expertise_desc: 'Accurate analyses performed by experienced medical biology professionals, ensuring reliable results and personalized support for every patient.',
+        why_equipment_title: 'Advanced Technology',
+        why_equipment_desc: 'State-of-the-art laboratory equipment and rigorous quality controls deliver fast, precise, and dependable diagnostic results.',
+        why_privacy_title: 'Confidentiality & Security',
+        why_privacy_desc: 'Your medical information and test results are handled with the highest level of confidentiality, security, and respect for patient privacy.',
         details_about_link: 'View details',
         details_services_link: 'All services',
         details_advice_link: 'More advice',
         details_contact_link: 'Contact details',
-        services_home_intro: 'Services designed for diagnosis, follow-up, and prevention, with personalized support.',
-        service_routine_title: 'Routine tests',
-        service_routine_short: 'Common tests to monitor key parameters and quickly guide medical diagnosis.',
-        service_routine_detail: 'Hematology, biochemistry, electrolytes, kidney and liver function: common tests to monitor essential parameters and quickly guide your doctor.',
+        services_home_intro: 'Comprehensive laboratory testing services designed to support diagnosis, prevention, and ongoing health monitoring.',
+        service_routine_title: 'Routine Laboratory Tests',
+        service_routine_short: 'Essential blood, urine, and biological analyses to assess overall health and support accurate medical diagnoses.',
+        service_routine_detail: 'Essential blood, urine, and biological analyses to assess overall health and support accurate medical diagnoses.',
         service_routine_item1: 'Complete blood count',
         service_routine_item2: 'Blood glucose and lipid profile',
         service_routine_item3: 'Kidney and liver function',
@@ -860,9 +1000,9 @@ class LaboApp {
         service_routine_context: 'This service is suitable for tests prescribed by your doctor, recent symptoms, or simple follow-up of your general health.',
         service_routine_indications: 'Fatigue, infection, annual check-up, treatment follow-up, or investigation of a biological imbalance.',
         service_routine_preparation: 'Some tests require fasting. Bring your prescription and recent results if available.',
-        service_bilan_title: 'Health check-up',
-        service_bilan_short: 'A complete check-up to assess your general health and detect imbalances early.',
-        service_bilan_detail: 'Personalized assessments based on age, history, and prevention goals to evaluate overall health and identify imbalances early.',
+        service_bilan_title: 'Health Check-Ups',
+        service_bilan_short: 'Comprehensive screening panels designed to evaluate your health status and identify potential concerns at an early stage.',
+        service_bilan_detail: 'Comprehensive screening panels designed to evaluate your health status and identify potential concerns at an early stage.',
         service_bilan_item1: 'General check-up',
         service_bilan_item2: 'Fatigue and deficiency assessment',
         service_bilan_item3: 'Preoperative assessment',
@@ -870,9 +1010,9 @@ class LaboApp {
         service_bilan_context: 'The check-up is designed to provide an overall view: metabolism, deficiencies, inflammation, key organs, and risk factors.',
         service_bilan_indications: 'Annual prevention, persistent fatigue, family history, lifestyle change, or medical preparation.',
         service_bilan_preparation: 'Ideally, come in the morning. Fasting may be required depending on the lipid or glucose assessment.',
-        service_chronic_title: 'Chronic disease follow-up',
-        service_chronic_short: 'Regular monitoring for diabetes, kidneys, liver, thyroid, and long-term treatments.',
-        service_chronic_detail: 'Regular tests to monitor chronic diseases, adjust treatments, and prevent complications with your doctor.',
+        service_chronic_title: 'Chronic Disease Monitoring',
+        service_chronic_short: 'Regular laboratory testing for diabetes, kidney disease, liver function, thyroid disorders, and long-term treatment follow-up.',
+        service_chronic_detail: 'Regular laboratory testing for diabetes, kidney disease, liver function, thyroid disorders, and long-term treatment follow-up.',
         service_chronic_item1: 'Diabetes and HbA1c',
         service_chronic_item2: 'Thyroid and hormones',
         service_chronic_item3: 'Kidney function',
@@ -880,9 +1020,9 @@ class LaboApp {
         service_chronic_context: 'We make regular follow-up easier, comparable over time, with clear results for patients and physicians.',
         service_chronic_indications: 'Diabetes, hypertension, thyroid disorders, kidney failure, long-term treatments, or dosage adjustment.',
         service_chronic_preparation: 'Follow the medication timing indicated by your doctor, especially for treatment level measurements.',
-        service_prevention_title: 'Screening and prevention',
-        service_prevention_short: 'Targeted tests to detect infectious, metabolic, or hormonal risks before complications occur.',
-        service_prevention_detail: 'Targeted screening to identify infectious, metabolic, or hormonal risks early and support fast care.',
+        service_prevention_title: 'Preventive Screening',
+        service_prevention_short: 'Targeted tests for the early detection of infectious diseases, metabolic disorders, hormonal imbalances, and other health risks.',
+        service_prevention_detail: 'Targeted tests for the early detection of infectious diseases, metabolic disorders, hormonal imbalances, and other health risks.',
         service_prevention_item1: 'Serology and infections',
         service_prevention_item2: 'Metabolic screening',
         service_prevention_item3: 'Cardiovascular assessment',
@@ -890,9 +1030,9 @@ class LaboApp {
         service_prevention_context: 'Prevention helps act before complications, with tests adapted to age, context, and risk factors.',
         service_prevention_indications: 'Infectious exposure, family history, vaccine follow-up, cardiovascular assessment, or check-up before a personal project.',
         service_prevention_preparation: 'Mention recent vaccines, treatments, and possible exposure dates so results can be interpreted correctly.',
-        service_reproductive_title: 'Reproductive health',
-        service_reproductive_short: 'Hormonal tests, fertility, pregnancy, and biological follow-up adapted to each stage.',
-        service_reproductive_detail: 'Biological tests for fertility, pregnancy, hormones, and gynecological follow-up, with discretion and appropriate support.',
+        service_reproductive_title: "Women's Health & Reproductive Testing",
+        service_reproductive_short: 'Specialized analyses for hormonal balance, fertility assessment, pregnancy monitoring, and reproductive health.',
+        service_reproductive_detail: 'Specialized analyses for hormonal balance, fertility assessment, pregnancy monitoring, and reproductive health.',
         service_reproductive_item1: 'Hormonal assessments',
         service_reproductive_item2: 'Pregnancy follow-up',
         service_reproductive_item3: 'Fertility and ovarian reserve',
@@ -900,9 +1040,9 @@ class LaboApp {
         service_reproductive_context: 'We support sensitive stages with confidentiality: pregnancy planning, hormonal follow-up, fertility, and prenatal monitoring.',
         service_reproductive_indications: 'Cycle disorders, fertility assessment, pregnancy confirmation or follow-up, hormonal monitoring, or assisted reproduction pathway.',
         service_reproductive_preparation: 'Some tests depend on the day of the cycle. Note the date of your last period and any current treatments.',
-        service_sport_title: 'Sports health',
-        service_sport_short: 'Biological assessments for performance, recovery, deficiencies, and safe return to sport.',
-        service_sport_detail: 'Assessments adapted to athletes to monitor recovery, inflammation, deficiencies, hydration, and return after rest or injury.',
+        service_sport_title: 'Sports & Performance Health',
+        service_sport_short: 'Laboratory evaluations to monitor fitness, recovery, nutritional deficiencies, and overall physical performance.',
+        service_sport_detail: 'Laboratory evaluations to monitor fitness, recovery, nutritional deficiencies, and overall physical performance.',
         service_sport_item1: 'Deficiency and vitamin assessment',
         service_sport_item2: 'Inflammation and recovery',
         service_sport_item3: 'Metabolism and energy',
@@ -910,28 +1050,28 @@ class LaboApp {
         service_sport_context: 'A sports assessment helps adjust training, prevent deficiencies, and secure a return to activity with reliable biological markers.',
         service_sport_indications: 'Exercise fatigue, lower performance, return after injury, competition preparation, or nutritional monitoring.',
         service_sport_preparation: 'Avoid intense exercise the day before if your doctor wants to measure baseline recovery status.',
-        advice_home_title: 'Advice & tips',
-        advice_home_intro: 'Advice to help you prepare.',
-        advice_fasting_title: 'Check fasting requirements',
-        advice_fasting_desc: 'Some tests require 8 to 12 hours of fasting. Please confirm before your appointment.',
-        advice_fasting_detail: 'For blood glucose, triglycerides, or some check-ups, fast for 8 to 12 hours unless your doctor advises otherwise.',
-        advice_hydration_title: 'Stay hydrated',
-        advice_hydration_desc: 'Drinking water makes sampling easier, unless your doctor advises otherwise.',
-        advice_hydration_detail: 'Drink water before the blood draw. This makes sampling easier and improves your comfort.',
-        advice_docs_title: 'Prepare your documents',
-        advice_docs_desc: 'Bring your prescription, ID card, and previous useful results for a complete file.',
-        advice_docs_detail: 'Bring your prescription, ID card, insurance information, and previous results if requested by the doctor.',
-        advice_treatment_title: 'Mention your treatments',
-        advice_treatment_desc: 'Inform the team about any medication, supplements, or anticoagulants taken before sampling.',
-        advice_time_title: 'Respect the appointment time',
-        advice_time_desc: 'Arrive at the scheduled time, especially for tests sensitive to sampling time.',
-        advice_avoid_title: 'Avoid certain excesses',
-        advice_avoid_desc: 'Avoid alcohol, very fatty meals, and intense exercise the day before if your check-up requires it.',
-        advice_cta_title: 'Ready for your test?',
-        advice_cta_desc: 'Book your appointment online for fast, personalized service.',
-        advice_cta_button: 'Book an appointment',
-        conseils_title: 'Advice for your tests',
-        conseils_intro: 'Follow these recommendations to ensure reliable results and comfort during sampling.',
+        advice_home_title: 'Preparing for Your Tests',
+        advice_home_intro: 'Follow these recommendations to help ensure accurate results and a comfortable experience.',
+        advice_fasting_title: 'Follow Fasting Instructions',
+        advice_fasting_desc: "Some tests, including blood glucose and lipid profiles, may require fasting for 8–12 hours. Follow your doctor's instructions or contact us if you have questions.",
+        advice_fasting_detail: "Some tests, including blood glucose and lipid profiles, may require fasting for 8–12 hours. Follow your doctor's instructions or contact us if you have questions.",
+        advice_hydration_title: 'Stay Hydrated',
+        advice_hydration_desc: 'Drinking water before your appointment can make blood collection easier and help improve your comfort.',
+        advice_hydration_detail: 'Drinking water before your appointment can make blood collection easier and help improve your comfort.',
+        advice_docs_title: 'Bring Required Documents',
+        advice_docs_desc: 'Please bring your prescription, identification, insurance information, and any previous laboratory results if requested.',
+        advice_docs_detail: 'Please bring your prescription, identification, insurance information, and any previous laboratory results if requested.',
+        advice_treatment_title: 'Inform Us About Medications',
+        advice_treatment_desc: 'Let our team know about any medications, supplements, or treatments you are currently taking, as they may affect certain test results.',
+        advice_time_title: 'Arrive on Time',
+        advice_time_desc: 'Some analyses are sensitive to collection times. Arriving at your scheduled appointment helps ensure the most accurate results.',
+        advice_avoid_title: 'Avoid Alcohol and Intense Exercise',
+        advice_avoid_desc: 'For certain tests, alcohol consumption, heavy meals, and vigorous physical activity should be avoided in the 24 hours before sampling.',
+        advice_cta_title: 'Ready for Your Medical Test?',
+        advice_cta_desc: 'Schedule your appointment today and benefit from fast service, accurate testing, and personalized care.',
+        advice_cta_button: 'Book an Appointment',
+        conseils_title: 'Preparing for Your Tests',
+        conseils_intro: 'Follow these recommendations to help ensure accurate results and a comfortable experience.',
         hours_title: 'Opening hours and location',
         hours_heading: 'Opening hours',
         day_lun: 'Monday - Friday:',
